@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Masala - Anderson Multiverse</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Futura:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: #f7f3e9;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 3px solid #2d2d2d;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Futura', 'Trebuchet MS', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #2d2d2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .demo-card {
+            background: white;
+            border: 3px solid #2d2d2d;
+            padding: 0;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .demo-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 #2d2d2d;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 2px solid #2d2d2d;
+        }
+
+        .card-number {
+            font-family: 'Futura', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-family: 'Futura', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .card-theme {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-description {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .port-badge {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid #ddd;
+        }
+
+        .lang-badge {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        /* Tenant-specific accent colors */
+        .desgoffe .card-header {
+            background: linear-gradient(135deg, #FDF5E6, #f0e6d3);
+        }
+
+        .desgoffe .card-title {
+            color: #5D3A5D;
+        }
+
+        .desgoffe .lang-badge {
+            color: #5D3A5D;
+        }
+
+        .whitman .card-header {
+            background: linear-gradient(135deg, #DDE4E8, #c8d4dc);
+        }
+
+        .whitman .card-title {
+            color: #004B87;
+        }
+
+        .whitman .lang-badge {
+            color: #004B87;
+        }
+
+        .liberty .card-header {
+            background: linear-gradient(135deg, #2F3131, #1a1a1a);
+        }
+
+        .liberty .card-title {
+            color: #E1AD01;
+        }
+
+        .liberty .card-number {
+            color: #666;
+        }
+
+        .liberty .card-theme {
+            color: #888;
+        }
+
+        .liberty .lang-badge {
+            color: #E1AD01;
+        }
+
+        .hennessey .card-header {
+            background: linear-gradient(135deg, #F5F9FA, #e8f0f4);
+        }
+
+        .hennessey .card-title {
+            color: #75AADB;
+        }
+
+        .hennessey .lang-badge {
+            color: #75AADB;
+        }
+
+        .tenant-logo {
+            max-height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 3px solid #2d2d2d;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #2d2d2d;
+            text-decoration: none;
+            margin: 0 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>The Anderson Multiverse</h1>
+            <p class="subtitle">Four Industries. Four Visual Languages. One Engine.</p>
+        </header>
+
+        <div class="demo-grid">
+            <!-- Tenant A: Desgoffe -->
+            <a href="http://localhost:8091/Identity/Account/Login" class="demo-card desgoffe">
+                <div class="card-header">
+                    <img src="assets/desgoffe.png" alt="Desgoffe Logo" class="tenant-logo">
+                    <div class="card-number">Tenant A</div>
+                    <h2 class="card-title">Ville de Desgoffe</h2>
+                    <p class="card-theme">"Confectionery Bureaucracy"</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        <strong>The Bureaucratic Engine.</strong> Old-world charm meets state authority.
+                        Noise complaints, permits, and the meticulous Mayor.
+                    </p>
+                    <div class="card-meta">
+                        <span class="port-badge">:8091</span>
+                        <span class="lang-badge">Français</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tenant B: Whitman -->
+            <a href="http://localhost:8092/Identity/Account/Login" class="demo-card whitman">
+                <div class="card-header">
+                    <img src="assets/whitman.png" alt="Whitman Logo" class="tenant-logo">
+                    <div class="card-number">Tenant B</div>
+                    <h2 class="card-title">Whitman Spoor</h2>
+                    <p class="card-theme">"Scorched Earth Utility"</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        <strong>The Industrial Nervous System.</strong> Steel, schedules, and safety.
+                        Track repairs, broken switches, and gloved technicians.
+                    </p>
+                    <div class="card-meta">
+                        <span class="port-badge">:8092</span>
+                        <span class="lang-badge">Nederlands</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tenant C: Liberty -->
+            <a href="http://localhost:8093/Identity/Account/Login" class="demo-card liberty">
+                <div class="card-header">
+                    <img src="assets/liberty.png" alt="Liberty Logo" class="tenant-logo">
+                    <div class="card-number">Tenant C</div>
+                    <h2 class="card-title">Liberty Systems</h2>
+                    <p class="card-theme">"Cyberpunk Minimalism"</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        <strong>The Agile Loom.</strong> Code, caffeine, and continuous integration.
+                        Bug reports, pull requests, and root cause analysis.
+                    </p>
+                    <div class="card-meta">
+                        <span class="port-badge">:8093</span>
+                        <span class="lang-badge">English</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tenant D: Hennessey -->
+            <a href="http://localhost:8094/Identity/Account/Login" class="demo-card hennessey">
+                <div class="card-header">
+                    <img src="assets/hennessey.png" alt="Hennessey Logo" class="tenant-logo">
+                    <div class="card-number">Tenant D</div>
+                    <h2 class="card-title">Fonds Hennessey</h2>
+                    <p class="card-theme">"Marine Sterile"</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        <strong>The Ivory Tower.</strong> Grants, governance, and prestige.
+                        Research proposals, budget reviews, and Project Jaguar Shark.
+                    </p>
+                    <div class="card-meta">
+                        <span class="port-badge">:8094</span>
+                        <span class="lang-badge">Academic</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>Ticket Masala: The Anderson Multiverse Demo Suite</p>
+            <div style="margin-top: 1rem;">
+                <a href="../marketing-site/index.html">Homepage</a>
+                <a href="http://localhost:8001">Documentation</a>
+                <a href="https://github.com/yourusername/ticket-masala">GitHub</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -24,6 +24,17 @@
     box-shadow: 0 10px 30px -10px rgba(22, 163, 74, 0.15);
 }
 
+.glass-premium {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-left: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 4px 24px -1px rgba(0, 0, 0, 0.05),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+}
+
 /* Text Gradients - Kept only for very specific high-impact text */
 .text-gradient {
     color: var(--text-primary);
@@ -121,8 +132,52 @@
 }
 
 .btn-glass:hover {
-    background: #f0fdf4;
     /* green-50 */
     border-color: var(--color-primary);
     color: var(--color-primary-dark);
+}
+
+/* Code Block Styles */
+.code-window {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.code-keyword {
+    color: #d73a49;
+}
+
+/* Red for keys */
+.code-string {
+    color: #032f62;
+}
+
+/* Blue for values */
+.code-comment {
+    color: #6a737d;
+    font-style: italic;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-card.desgoffe:hover {
+    border-left-color: #5D3A5D;
+}
+
+.testimonial-card.whitman:hover {
+    border-left-color: #004B87;
+}
+
+.testimonial-card.hennessey:hover {
+    border-left-color: #75AADB;
 }

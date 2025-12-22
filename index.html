@@ -120,7 +120,7 @@
                             <li><a class="dropdown-item small" href="#" onclick="setLang('fr')">Français</a></li>
                         </ul>
                     </div>
-                    <a href="../tenants/site/demos.html" class="btn btn-sm btn-glass rounded-pill px-3">
+                    <a href="../ticket-masala-tenants/site/index.html" class="btn btn-sm btn-glass rounded-pill px-3">
                         Live Demos
                     </a>
                     <a href="https://github.com/yourusername/ticket-masala"
@@ -160,11 +160,12 @@
                     </p>
 
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-                        <a href="../tenants/site/demos.html" class="btn btn-glow btn-lg rounded-pill px-5 py-3 fw-bold"
-                            data-i18n="btn_start_trial">
+                        <a href="../ticket-masala-tenants/site/index.html"
+                            class="btn btn-glow btn-lg rounded-pill px-5 py-3 fw-bold" data-i18n="btn_start_trial">
                             Start Free Trial
                         </a>
-                        <a href="../tenants/site/demos.html" class="btn btn-glass btn-lg rounded-pill px-4 py-3">
+                        <a href="../ticket-masala-tenants/site/index.html"
+                            class="btn btn-glass btn-lg rounded-pill px-4 py-3">
                             <i class="fas fa-desktop me-2"></i> View Demos
                         </a>
                     </div>
@@ -201,41 +202,26 @@
                                     <div class="rounded-circle bg-success opacity-75" style="width: 8px; height: 8px;">
                                     </div>
                                 </div>
-                                <div class="small font-monospace text-muted">task-router.ts</div>
+                                <div class="small font-monospace text-muted">tenant-config.yaml</div>
                             </div>
 
-                            <div class="p-4">
-                                <div class="d-flex gap-3 mb-4">
-                                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center text-success"
-                                        style="width: 40px; height: 40px;">
-                                        <i class="fas fa-robot"></i>
-                                    </div>
-                                    <div>
-                                        <div class="small text-secondary mb-1">GERDA AI • Now</div>
-                                        <div class="p-3 rounded-3 bg-light text-dark border" style="font-size: 0.9rem;">
-                                            New critical ticket detected: <strong>"Database Latency
-                                                Spike"</strong>.<br><br>
-                                            <span class="text-success fw-medium"><i class="fas fa-check me-1"></i>
-                                                Routing to SRE Team</span><br>
-                                            <span class="text-primary fw-medium"><i class="fas fa-search me-1"></i>
-                                                Pulling logs...</span>
-                                        </div>
-                                    </div>
+                            <div class="p-3 bg-light bg-opacity-10 code-window text-start">
+                                <div class="mb-0"><span class="code-comment"># Define your identity in 5 lines</span>
                                 </div>
-
-                                <div class="d-flex gap-3 justify-content-end">
-                                    <div class="text-end">
-                                        <div class="small text-muted mb-1">Human Agent</div>
-                                        <div class="p-2 px-3 rounded-3 bg-primary text-white"
-                                            style="font-size: 0.9rem;">
-                                            Approving automatic rollback.
-                                        </div>
-                                    </div>
-                                    <div class="rounded-circle bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center text-secondary"
-                                        style="width: 30px; height: 30px;">
-                                        AH
-                                    </div>
-                                </div>
+                                <div class="mb-0"><span class="code-keyword">tenant_id:</span> <span
+                                        class="code-string">"desgoffe"</span></div>
+                                <div class="mb-0"><span class="code-keyword">theme:</span></div>
+                                <div class="mb-0 ps-2"><span class="code-keyword">primary_color:</span> <span
+                                        class="code-string">"#5D3A5D"</span></div>
+                                <div class="mb-0 ps-2"><span class="code-keyword">font_family:</span> <span
+                                        class="code-string">"Archer"</span></div>
+                                <div class="mb-0"><span class="code-keyword">features:</span></div>
+                                <div class="mb-0 ps-2"><span class="code-keyword">ai_persona:</span> <span
+                                        class="code-string">"Formal Bureaucrat"</span></div>
+                                <div class="mb-0 ps-2"><span class="code-keyword">workflow:</span> <span
+                                        class="code-string">"standard_approval"</span></div>
+                                <div class="mt-2 text-success small border-top border-success border-opacity-25 pt-2"><i
+                                        class="fas fa-check me-1"></i> Config Loaded (12ms)</div>
                             </div>
                         </div>
 
@@ -305,6 +291,357 @@
         </div>
     </section>
 
+    <!-- Solutions Section -->
+    <section class="section-spacer position-relative" id="solutions">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-dark mb-3"><span data-i18n="solutions_title">Real-World</span> <span
+                        class="text-gradient-primary" data-i18n="solutions_title_2">Solutions</span></h2>
+                <p class="text-secondary lead" data-i18n="solutions_subtitle">From tax automation to multi-tenant SaaS,
+                    one platform handles it all.</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="glass-card p-5 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="rounded-3 bg-success bg-opacity-10 p-3">
+                                <i class="fas fa-robot fa-2x text-success"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_automation_title">Smart
+                                    Automation</h3>
+                                <p class="text-secondary mb-0" data-i18n="solution_automation_desc">
+                                    Automate repetitive tasks with AI-powered detection and classification. GERDA AI
+                                    identifies patterns, flags anomalies, and suggests actions based on historical data.
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled text-secondary small">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_automation_point1">Automated pattern detection</span></li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_automation_point2">Cross-reference multiple data sources</span>
+                            </li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_automation_point3">Impact tracking & forecasting</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="glass-card p-5 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="rounded-3 bg-primary bg-opacity-10 p-3">
+                                <i class="fas fa-layer-group fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_multitenant_title">
+                                    The Anderson Multiverse</h3>
+                                <p class="text-secondary mb-0" data-i18n="solution_multitenant_desc">
+                                    Explore 4 live demos: Desgoffe (Gov), Whitman (Rail), Liberty (Tech), and Hennessey
+                                    (Grants). All powered by one engine.
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled text-secondary small">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_multitenant_point1">Zero code changes for new tenants</span>
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_multitenant_point2">Custom themes & domain logic via YAML</span>
+                            </li>
+                            <li><i class="fas fa-external-link-alt text-primary me-2"></i><a
+                                    href="../ticket-masala-tenants/site/index.html"
+                                    class="text-primary text-decoration-none fw-bold"
+                                    data-i18n="solution_multitenant_point3">Launch the Multiverse</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="glass-card p-5 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="rounded-3 bg-warning bg-opacity-10 p-3">
+                                <i class="fas fa-route fa-2x text-warning"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_routing_title">Intelligent
+                                    Routing</h3>
+                                <p class="text-secondary mb-0" data-i18n="solution_routing_desc">
+                                    GERDA AI scores cases by complexity and financial impact, then assigns them to the
+                                    right agent based on expertise and capacity.
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled text-secondary small">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_routing_point1">ML-powered priority scoring</span></li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_routing_point2">Agent capacity balancing</span></li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_routing_point3">SLA tracking & escalation</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="glass-card p-5 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="rounded-3 bg-info bg-opacity-10 p-3">
+                                <i class="fas fa-cogs fa-2x text-info"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_workflow_title">End-to-End
+                                    Workflow</h3>
+                                <p class="text-secondary mb-0" data-i18n="solution_workflow_desc">
+                                    From data ingestion to resolution, track every case through validation, routing,
+                                    assignment, and archival with full audit trails.
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled text-secondary small">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_workflow_point1">Strict data validation gates</span></li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_workflow_point2">State machine workflow engine</span></li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i><span
+                                    data-i18n="solution_workflow_point3">Automated sync with legacy systems</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section-spacer position-relative overflow-hidden">
+        <div class="container position-relative z-1">
+            <div class="text-center mb-5">
+                <span
+                    class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3 fw-bold">Architecture</span>
+                <h2 class="display-5 fw-bold text-dark mb-3"><span data-i18n="how_title">One Core.</span> <span
+                        class="text-gradient-primary" data-i18n="how_title_2">Infinite Skins.</span></h2>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="position-relative py-5">
+                        <!-- Connecting Lines (CSS-only) -->
+                        <div class="position-absolute top-50 start-50 translate-middle w-75 border-top border-2 border-primary border-opacity-25 d-none d-lg-block"
+                            style="z-index: -1;"></div>
+                        <div class="position-absolute top-50 start-50 translate-middle h-100 border-start border-2 border-primary border-opacity-25 d-none d-lg-block"
+                            style="z-index: -1;"></div>
+
+                        <div class="row g-4 align-items-center justify-content-center text-center">
+
+                            <!-- Core -->
+                            <div class="col-12 mb-5">
+                                <div class="glass-premium d-inline-block p-4 rounded-4 position-relative">
+                                    <div
+                                        class="position-absolute top-100 start-50 translate-middle-x text-primary opacity-50 h2 mb-0 d-none d-lg-block">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img src="images/logo.png" height="48" alt="Core">
+                                        <div class="text-start">
+                                            <div class="h5 fw-bold mb-0">Ticket Masala Core</div>
+                                            <div class="small text-secondary">Generic .NET 10 Engine</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tenants -->
+                            <div class="col-md-3">
+                                <div class="glass-card p-3 rounded-4 border-top border-4"
+                                    style="border-color: #5D3A5D !important;">
+                                    <div class="small fw-bold text-uppercase text-muted mb-2">Government</div>
+                                    <div class="h6 fw-bold">Desgoffe</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="glass-card p-3 rounded-4 border-top border-4"
+                                    style="border-color: #004B87 !important;">
+                                    <div class="small fw-bold text-uppercase text-muted mb-2">Infrastructure</div>
+                                    <div class="h6 fw-bold">Whitman</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="glass-card p-3 rounded-4 border-top border-4"
+                                    style="border-color: #2F3131 !important;">
+                                    <div class="small fw-bold text-uppercase text-muted mb-2">Tech</div>
+                                    <div class="h6 fw-bold">Liberty</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="glass-card p-3 rounded-4 border-top border-4"
+                                    style="border-color: #75AADB !important;">
+                                    <div class="small fw-bold text-uppercase text-muted mb-2">Research</div>
+                                    <div class="h6 fw-bold">Hennessey</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="section-spacer position-relative bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-dark mb-3"><span data-i18n="arch_title">Built on</span> <span
+                        class="text-gradient-primary" data-i18n="arch_title_2">Modern Architecture</span></h2>
+                <p class="text-secondary lead" data-i18n="arch_subtitle">A modular monolith designed for scale,
+                    flexibility, and maintainability.</p>
+            </div>
+
+            <div class="row g-4 align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h3 class="h3 fw-bold text-dark mb-3" data-i18n="arch_dotnet_title">Full .NET Stack</h3>
+                    <p class="text-secondary mb-4" data-i18n="arch_dotnet_desc">
+                        Built entirely on <strong>.NET 10</strong> with Blazor for rich, interactive UIs. A modular
+                        monolith architecture that combines the simplicity of a single deployment with the flexibility
+                        of pluggable domain modules.
+                    </p>
+                    <div class="d-flex gap-3 mb-3">
+                        <div class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">
+                            <i class="fas fa-code me-2"></i><span data-i18n="arch_dotnet_badge">.NET 10 + Blazor</span>
+                        </div>
+                        <div class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">
+                            <i class="fas fa-database me-2"></i><span data-i18n="arch_ef_badge">Entity Framework
+                                Core</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card p-4 rounded-4 bg-white">
+                        <pre class="mb-0 small text-secondary"
+                            style="font-family: 'Courier New', monospace; line-height: 1.6;"><code>┌─────────────────────────────┐
+│   <span class="text-success fw-bold">TICKET MASALA CORE</span>      │
+│  • Universal Entity Model   │
+│  • GERDA AI Agent           │
+│  • Rule Engine              │
+└──────────┬──────────────────┘
+           │
+           ▼
+┌─────────────────────────────┐
+│   <span class="text-primary fw-bold">TENANT CONFIG LAYER</span>    │
+│  • YAML Logic Definitions   │
+│  • CSS Theme Injection      │
+│  • Custom Field Metadata    │
+└─────────────────────────────┘</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="text-center p-4">
+                        <div class="h1 text-success mb-2"><i class="fas fa-cubes"></i></div>
+                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_plugin_title">Universal Entities</h4>
+                        <p class="small text-secondary mb-0" data-i18n="arch_plugin_desc">Tickets & Projects mapped to
+                            any business domain</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-4">
+                        <div class="h1 text-success mb-2"><i class="fas fa-file-code"></i></div>
+                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_config_title">Configuration-Driven</h4>
+                        <p class="small text-secondary mb-0" data-i18n="arch_config_desc">All business logic defined in
+                            YAML, not hardcoded</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-4">
+                        <div class="h1 text-success mb-2"><i class="fas fa-brain"></i></div>
+                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_sidecar_title">GERDA AI Core</h4>
+                        <p class="small text-secondary mb-0" data-i18n="arch_sidecar_desc">Embedded entity routing and
+                            decision agent</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center p-4">
+                        <div class="h1 text-success mb-2"><i class="fas fa-users"></i></div>
+                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_tenant_title">True Multi-Tenancy</h4>
+                        <p class="small text-secondary mb-0" data-i18n="arch_tenant_desc">Complete isolation with custom
+                            branding per tenant</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-spacer position-relative">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-dark mb-3"><span data-i18n="voices_title">Voices of the</span> <span
+                        class="text-gradient-primary" data-i18n="voices_title_2">Multiverse</span></h2>
+                <p class="text-secondary lead" data-i18n="voices_subtitle">Trusted by leaders across every dimension.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Desgoffe -->
+                <div class="col-md-4">
+                    <div class="glass-card testimonial-card desgoffe p-4 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="rounded-circle bg-light border d-flex align-items-center justify-content-center fw-bold text-secondary"
+                                style="width: 50px; height: 50px; font-family: 'Archer', serif;">BG</div>
+                            <div>
+                                <div class="fw-bold text-dark">Bourgmestre Gustave</div>
+                                <div class="small text-secondary">Ville de Desgoffe</div>
+                            </div>
+                        </div>
+                        <p class="text-secondary mb-0 fst-italic">"Finally, a system that respects proper protocol. The
+                            'Stamp as Approved' workflow is simply exquisite."</p>
+                    </div>
+                </div>
+
+                <!-- Whitman -->
+                <div class="col-md-4">
+                    <div class="glass-card testimonial-card whitman p-4 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold"
+                                style="width: 50px; height: 50px; font-family: 'Oswald', sans-serif;">JW</div>
+                            <div>
+                                <div class="fw-bold text-dark">Jack Whitman</div>
+                                <div class="small text-secondary">Whitman Spoor</div>
+                            </div>
+                        </div>
+                        <p class="text-secondary mb-0 fst-italic">"I don't need fancy menus. I need big buttons and a
+                            map. This system gets me to the broken track fast."</p>
+                    </div>
+                </div>
+
+                <!-- Hennessey -->
+                <div class="col-md-4">
+                    <div class="glass-card testimonial-card hennessey p-4 rounded-4 h-100 bg-white">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="width: 50px; height: 50px; font-family: 'Garamond', serif;">EO</div>
+                            <div>
+                                <div class="fw-bold text-dark">Eleanor Oseary</div>
+                                <div class="small text-secondary">Fonds Hennessey</div>
+                            </div>
+                        </div>
+                        <p class="text-secondary mb-0 fst-italic">"Managing grants requires precision. The AI compliance
+                            checker saves my team hours every single day."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-5 border-top bg-white">
         <div class="container">
@@ -359,7 +696,60 @@
                 feature_workflow_title: "Workflow Engine",
                 feature_workflow_desc: "Visual drag-and-drop workflow builder. Connect tickets to git commits, deployments, and customer approvals.",
                 feature_security_title: "Ironclad Security",
-                feature_security_desc: "Role-based access control (RBAC), audit logs, and self-hosted deployment options keep your data sovereign."
+                feature_security_desc: "Role-based access control (RBAC), audit logs, and self-hosted deployment options keep your data sovereign.",
+                solutions_title: "Real-World",
+                solutions_title_2: "Solutions",
+                solutions_subtitle: "From smart automation to multi-tenant SaaS, one platform handles it all.",
+                solution_automation_title: "Smart Automation",
+                solution_automation_desc: "Automate repetitive tasks with AI-powered detection and classification. GERDA AI identifies patterns, flags anomalies, and suggests actions based on historical data.",
+                solution_automation_point1: "Automated pattern detection",
+                solution_automation_point2: "Cross-reference multiple data sources",
+                solution_automation_point3: "Impact tracking & forecasting",
+                solution_automation_point3: "Impact tracking & forecasting",
+                solution_multitenant_title: "The Multiverse Showcase",
+                solution_multitenant_desc: "Experience adaptive multi-tenancy. Four distinct industries—Government, Infrastructure, Tech, and Research—running on a single instance.",
+                solution_multitenant_point1: "Zero code changes for new tenants",
+                solution_multitenant_point2: "Desgoffe, Whitman, Liberty & Hennessey",
+                solution_multitenant_point3: "Launch Live Demos",
+                solution_routing_title: "Intelligent Routing",
+                solution_routing_desc: "GERDA AI scores cases by complexity and financial impact, then assigns them to the right agent based on expertise and capacity.",
+                solution_routing_point1: "ML-powered priority scoring",
+                solution_routing_point2: "Agent capacity balancing",
+                solution_routing_point3: "SLA tracking & escalation",
+                solution_workflow_title: "End-to-End Workflow",
+                solution_workflow_desc: "From data ingestion to resolution, track every case through validation, routing, assignment, and archival with full audit trails.",
+                solution_workflow_point1: "Strict data validation gates",
+                solution_workflow_point2: "State machine workflow engine",
+                solution_workflow_point3: "Automated sync with legacy systems",
+                arch_title: "Built on",
+                arch_title_2: "Modern Architecture",
+                arch_subtitle: "A modular monolith designed for scale, flexibility, and maintainability.",
+                arch_dotnet_title: "Full .NET Stack",
+                arch_dotnet_desc: "Built entirely on .NET 10 with Blazor for rich, interactive UIs. A modular monolith architecture that combines the simplicity of a single deployment with the flexibility of pluggable domain modules.",
+                arch_dotnet_badge: ".NET 10 + Blazor",
+                arch_ef_badge: "Entity Framework Core",
+                arch_plugin_title: "Plugin Architecture",
+                arch_plugin_desc: "Add new tax domains without touching core code",
+                arch_config_title: "Configuration-Driven",
+                arch_config_desc: "All business logic defined in YAML, not hardcoded",
+                arch_sidecar_title: "Sidecar Pattern",
+                arch_sidecar_desc: "Never write to legacy systems directly",
+                arch_tenant_title: "True Multi-Tenancy",
+                arch_tenant_desc: "Complete isolation with custom branding per tenant",
+                how_title: "One Core.",
+                how_title_2: "Infinite Skins.",
+                voices_title: "Voices of the",
+                voices_title_2: "Multiverse",
+                voices_subtitle: "Trusted by leaders across every dimension.",
+                test_desgoffe_name: "Bourgmestre Gustave",
+                test_desgoffe_title: "Ville de Desgoffe",
+                test_desgoffe_quote: "\"Finally, a system that respects proper protocol. The 'Stamp as Approved' workflow is simply exquisite.\"",
+                test_whitman_name: "Jack Whitman",
+                test_whitman_title: "Whitman Spoor",
+                test_whitman_quote: "\"I don't need fancy menus. I need big buttons and a map. This system gets me to the broken track fast.\"",
+                test_hennessey_name: "Eleanor Oseary",
+                test_hennessey_title: "Fonds Hennessey",
+                test_hennessey_quote: "\"Managing grants requires precision. The AI compliance checker saves my team hours every single day.\""
             },
             nl: {
                 nav_features: "Functies",
@@ -382,7 +772,60 @@
                 feature_workflow_title: "Workflow Engine",
                 feature_workflow_desc: "Visuele drag-and-drop workflow builder. Verbind tickets met git commits, deployments en klantgoedkeuringen.",
                 feature_security_title: "IJzersterke Beveiliging",
-                feature_security_desc: "Role-based access control (RBAC), auditlogs en self-hosted deployment-opties houden uw gegevens soeverein."
+                feature_security_desc: "Role-based access control (RBAC), auditlogs en self-hosted deployment-opties houden uw gegevens soeverein.",
+                solutions_title: "Echte",
+                solutions_title_2: "Oplossingen",
+                solutions_subtitle: "Van slimme automatisering tot multi-tenant SaaS, één platform regelt alles.",
+                solution_automation_title: "Slimme Automatisering",
+                solution_automation_desc: "Automatiseer repetitieve taken met AI-aangedreven detectie en classificatie. GERDA AI identificeert patronen, markeert anomalieën en suggereert acties op basis van historische gegevens.",
+                solution_automation_point1: "Geautomatiseerde patroondetectie",
+                solution_automation_point2: "Kruisverwijzing met meerdere databronnen",
+                solution_automation_point3: "Impact tracking & prognoses",
+                solution_automation_point3: "Impact tracking & prognoses",
+                solution_multitenant_title: "De Multiverse Showcase",
+                solution_multitenant_desc: "Ervaar adaptieve multi-tenancy. Vier verschillende industrieën—Overheid, Infrastructuur, Tech en Onderzoek—draaiend op één instantie.",
+                solution_multitenant_point1: "Geen codewijzigingen voor nieuwe tenants",
+                solution_multitenant_point2: "Desgoffe, Whitman, Liberty & Hennessey",
+                solution_multitenant_point3: "Bekijk Live Demo's",
+                solution_routing_title: "Intelligente Routing",
+                solution_routing_desc: "GERDA AI scoort zaken op complexiteit en financiële impact, en wijst ze toe aan de juiste agent op basis van expertise en capaciteit.",
+                solution_routing_point1: "ML-aangedreven prioriteitsscoring",
+                solution_routing_point2: "Agent capaciteitsbalancering",
+                solution_routing_point3: "SLA tracking & escalatie",
+                solution_workflow_title: "End-to-End Workflow",
+                solution_workflow_desc: "Van data-inname tot oplossing, volg elke zaak door validatie, routing, toewijzing en archivering met volledige audittrails.",
+                solution_workflow_point1: "Strikte datavalidatiepoorten",
+                solution_workflow_point2: "State machine workflow engine",
+                solution_workflow_point3: "Geautomatiseerde sync met legacy systemen",
+                arch_title: "Gebouwd op",
+                arch_title_2: "Moderne Architectuur",
+                arch_subtitle: "Een modulaire monoliet ontworpen voor schaal, flexibiliteit en onderhoudbaarheid.",
+                arch_dotnet_title: "Volledige .NET Stack",
+                arch_dotnet_desc: "Volledig gebouwd op .NET 10 met Blazor voor rijke, interactieve UI's. Een modulaire monoliet architectuur die de eenvoud van een enkele deployment combineert met de flexibiliteit van pluggable domeinmodules.",
+                arch_dotnet_badge: ".NET 10 + Blazor",
+                arch_ef_badge: "Entity Framework Core",
+                arch_plugin_title: "Universele Entiteiten",
+                arch_plugin_desc: "Eisen gekoppeld aan generieke modellen",
+                arch_config_title: "Configuratiegestuurd",
+                arch_config_desc: "Bedrijfslogica in YAML, niet hardcoded",
+                arch_sidecar_title: "GERDA AI",
+                arch_sidecar_desc: "Geïntegreerde beslissingsagent kern",
+                arch_tenant_title: "Echte Multi-Tenancy",
+                arch_tenant_desc: "Volledige isolatie met aangepaste branding per tenant",
+                how_title: "Eén Kern.",
+                how_title_2: "Oneindige Skins.",
+                voices_title: "Stemmen van het",
+                voices_title_2: "Universum",
+                voices_subtitle: "Vertrouwd door leiders in elke dimensie.",
+                test_desgoffe_name: "Bourgmestre Gustave",
+                test_desgoffe_title: "Ville de Desgoffe",
+                test_desgoffe_quote: "\"Eindelijk een systeem dat het juiste protocol respecteert. De 'Goedkeuren' workflow is gewoonweg voortreffelijk.\"",
+                test_whitman_name: "Jack Whitman",
+                test_whitman_title: "Whitman Spoor",
+                test_whitman_quote: "\"Ik heb geen mooie menu's nodig. Ik heb grote knoppen en een kaart nodig. Dit systeem brengt me snel naar het kapotte spoor.\"",
+                test_hennessey_name: "Eleanor Oseary",
+                test_hennessey_title: "Fonds Hennessey",
+                test_hennessey_quote: "\"Het beheren van subsidies vereist precisie. De AI-compliance checker bespaart mijn team elke dag uren.\""
             },
             fr: {
                 nav_features: "Fonctionnalités",
@@ -405,9 +848,62 @@
                 feature_workflow_title: "Moteur de Workflow",
                 feature_workflow_desc: "Constructeur de workflow visuel par glisser-déposer. Connectez les tickets aux commits git, déploiements et approbations clients.",
                 feature_security_title: "Sécurité Inébranlable",
-                feature_security_desc: "Contrôle d'accès basé sur les rôles (RBAC), journaux d'audit et options de déploiement auto-hébergé gardent vos données souveraines."
+                feature_security_desc: "Contrôle d'accès basé sur les rôles (RBAC), journaux d'audit et options de déploiement auto-hébergé gardent vos données souveraines.",
+                solutions_title: "Solutions",
+                solutions_title_2: "Concrètes",
+                solutions_subtitle: "De l'automatisation intelligente au SaaS multi-tenant, une plateforme gère tout.",
+                solution_automation_title: "Automatisation Intelligente",
+                solution_automation_desc: "Automatisez les tâches répétitives avec détection et classification par IA. GERDA AI identifie les modèles, signale les anomalies et suggère des actions basées sur les données historiques.",
+                solution_automation_point1: "Détection automatisée de modèles",
+                solution_automation_point2: "Référencement croisé de sources multiples",
+                solution_automation_point3: "Suivi d'impact & prévision",
+                solution_automation_point3: "Suivi d'impact & prévision",
+                solution_multitenant_title: "Vitrine Multivers",
+                solution_multitenant_desc: "Découvrez le multi-tenant adaptatif. Quatre industries distinctes—Gouvernement, Infrastructure, Tech et Recherche—sur une seule instance.",
+                solution_multitenant_point1: "Zéro changement de code pour nouveaux tenants",
+                solution_multitenant_point2: "Desgoffe, Whitman, Liberty & Hennessey",
+                solution_multitenant_point3: "Lancer les Démos",
+                solution_routing_title: "Routage Intelligent",
+                solution_routing_desc: "GERDA AI note les cas par complexité et impact financier, puis les assigne au bon agent selon l'expertise et la capacité.",
+                solution_routing_point1: "Notation de priorité par ML",
+                solution_routing_point2: "Équilibrage de capacité des agents",
+                solution_routing_point3: "Suivi SLA & escalade",
+                solution_workflow_title: "End-to-End Workflow",
+                solution_workflow_desc: "De l'ingestion à la résolution, suivez chaque cas à travers validation, routage, affectation et archivage avec pistes d'audit complètes.",
+                solution_workflow_point1: "Portes strictes de validation de données",
+                solution_workflow_point2: "Moteur de workflow à machine d'états",
+                solution_workflow_point3: "Synchronisation automatisée avec systèmes legacy",
+                arch_title: "Construit sur",
+                arch_title_2: "Architecture Moderne",
+                arch_subtitle: "Un monolithe modulaire conçu pour l'échelle, la flexibilité et la maintenabilité.",
+                arch_dotnet_title: "Stack .NET Complet",
+                arch_dotnet_desc: "Entièrement construit sur .NET 10 avec Blazor pour des UI riches et interactives. Une architecture monolithe modulaire qui combine la simplicité d'un déploiement unique avec la flexibilité de modules de domaine enfichables.",
+                arch_dotnet_badge: ".NET 10 + Blazor",
+                arch_ef_badge: "Entity Framework Core",
+                arch_plugin_title: "Universal Entities",
+                arch_plugin_desc: "Requirements mapped to generic models",
+                arch_config_title: "Config-Driven",
+                arch_config_desc: "Business logic in YAML, not code",
+                arch_sidecar_title: "GERDA AI",
+                arch_sidecar_desc: "Embedded decision agent core",
+                arch_tenant_title: "Vrai Multi-Tenancy",
+                arch_tenant_desc: "Isolation complète avec branding personnalisé par tenant",
+                how_title: "Un Cœur.",
+                how_title_2: "Skins Infinis.",
+                voices_title: "Voix du",
+                voices_title_2: "Multivers",
+                voices_subtitle: "Approuvé par les leaders de chaque dimension.",
+                test_desgoffe_name: "Bourgmestre Gustave",
+                test_desgoffe_title: "Ville de Desgoffe",
+                test_desgoffe_quote: "\"Enfin, un système qui respecte le protocole approprié. Le flux de travail 'Approuver' est tout simplement exquis.\"",
+                test_whitman_name: "Jack Whitman",
+                test_whitman_title: "Whitman Spoor",
+                test_whitman_quote: "\"Je n'ai pas besoin de menus fantaisistes. J'ai besoin de gros boutons et d'une carte. Ce système me permet d'atteindre rapidement la voie cassée.\"",
+                test_hennessey_name: "Eleanor Oseary",
+                test_hennessey_title: "Fonds Hennessey",
+                test_hennessey_quote: "\"La gestion des subventions exige de la précision. Le vérificateur de conformité IA fait gagner des heures à mon équipe chaque jour.\""
             }
-        };
+        }
 
         function setLang(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {

@@ -93,13 +93,14 @@
     <!-- Navigation -->
     <nav class="fixed-top py-3 transition-all" id="navbar">
         <div class="container">
-            <div class="glass-panel rounded-pill px-4 py-2 d-flex align-items-center justify-content-between">
+            <div class="glass-panel rounded-pill px-3 px-md-4 py-2 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
-                    <img src="images/logo.png" alt="Ticket Masala" height="32" class="d-block">
-                    <span class="fw-bold text-dark h5 mb-0" style="font-family: 'Rajdhani'">Ticket Masala</span>
+                    <img src="images/logo.png" alt="Ticket Masala" height="28" class="d-block">
+                    <span class="fw-bold text-dark h6 h5-md mb-0" style="font-family: 'Rajdhani'">Ticket Masala</span>
                 </div>
 
-                <div class="d-none d-md-flex align-items-center gap-4">
+                <!-- Desktop Navigation -->
+                <div class="d-none d-lg-flex align-items-center gap-4">
                     <a href="#features" class="nav-link-custom small text-decoration-none"
                         data-i18n="nav_features">Features</a>
                     <a href="#solutions" class="nav-link-custom small text-decoration-none"
@@ -108,7 +109,8 @@
                         data-i18n="nav_docs">Docs</a>
                 </div>
 
-                <div class="d-flex gap-2">
+                <!-- Desktop Actions -->
+                <div class="d-none d-lg-flex gap-2">
                     <div class="dropdown">
                         <button class="btn btn-sm btn-glass rounded-pill px-3 dropdown-toggle" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,22 +122,70 @@
                             <li><a class="dropdown-item small" href="#" onclick="setLang('fr')">Français</a></li>
                         </ul>
                     </div>
-                    <a href="https://ticket-masala-demos.fly.dev/" class="btn btn-sm btn-glass rounded-pill px-3"> <i
-                            class="fas fa-desktop me-1"></i> Live Demos </a>
+                    <a href="https://ticket-masala-demos.fly.dev/" class="btn btn-sm btn-glass rounded-pill px-3">
+                        <i class="fas fa-desktop me-1"></i> Live Demos
+                    </a>
                     <a href="https://github.com/yourusername/ticket-masala"
                         class="btn btn-sm btn-glow rounded-pill px-3">
                         <i class="fab fa-github me-1"></i> Star
                     </a>
                 </div>
+
+                <!-- Mobile Actions -->
+                <div class="d-flex d-lg-none gap-2">
+                    <a href="https://ticket-masala-demos.fly.dev/" class="btn btn-sm btn-glow rounded-pill px-3">
+                        <i class="fas fa-desktop"></i>
+                    </a>
+                    <button class="btn btn-sm btn-glass rounded-pill px-3" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="mobileMenuLabel">
+                <img src="images/logo.png" alt="Ticket Masala" height="24" class="me-2">
+                <span style="font-family: 'Rajdhani'">Ticket Masala</span>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-flex flex-column gap-3">
+                <a href="#features" class="nav-link-custom text-decoration-none" data-bs-dismiss="offcanvas"
+                    data-i18n="nav_features">Features</a>
+                <a href="#solutions" class="nav-link-custom text-decoration-none" data-bs-dismiss="offcanvas"
+                    data-i18n="nav_solutions">Solutions</a>
+                <a href="http://localhost:8001" class="nav-link-custom text-decoration-none" data-bs-dismiss="offcanvas"
+                    data-i18n="nav_docs">Docs</a>
+                <hr>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-glass rounded-pill px-3 dropdown-toggle w-100" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-globe me-2"></i> <span id="current-lang-mobile">EN</span>
+                    </button>
+                    <ul class="dropdown-menu w-100 shadow-sm">
+                        <li><a class="dropdown-item" href="#" onclick="setLang('en')">English</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="setLang('nl')">Nederlands</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="setLang('fr')">Français</a></li>
+                    </ul>
+                </div>
+                <a href="https://github.com/yourusername/ticket-masala" class="btn btn-glass rounded-pill px-3">
+                    <i class="fab fa-github me-2"></i> Star on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="min-vh-100 d-flex align-items-center pt-5 position-relative overflow-hidden">
         <div class="container position-relative z-1 pt-5">
-            <div class="row align-items-center">
-                <div class="col-lg-7 text-center text-lg-start mb-5 mb-lg-0 reveal">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-7 text-center text-lg-start mb-4 mb-lg-0 reveal">
                     <div
                         class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill glass-panel mb-4 interactive-glow">
                         <span class="badge bg-success rounded-pill px-2">v2.4</span>
@@ -147,27 +197,31 @@
                     </div>
 
                     <h1 class="display-2 fw-bold mb-4 section-title">
-                        <span data-i18n="hero_title_1">Orchestrate Your</span> <br>
+                        <span data-i18n="hero_title_1">Orchestrate Your</span> <br class="d-none d-lg-block">
                         <span class="text-gradient-primary" data-i18n="hero_title_2">Digital Empire</span>
                     </h1>
 
-                    <p class="lead text-secondary mb-5 pe-lg-5 fw-normal" style="max-width: 600px; font-size: 1.25rem;">
+                    <p class="lead text-secondary mb-4 mb-lg-5 mx-auto mx-lg-0 fw-normal"
+                        style="max-width: 600px; font-size: 1.25rem;">
                         <span data-i18n="hero_desc_1">Stop drowning in chaos. Unify support, projects, and
                             autonomous intelligence into one</span>
                         <span class="text-dark fw-semibold" data-i18n="hero_desc_2">premium, intelligent operating
                             system</span> <span data-i18n="hero_desc_3">for your business.</span>
                     </p>
 
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                    <div
+                        class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
                         <a href="https://ticket-masala-demos.fly.dev/"
-                            class="btn btn-primary btn-glow btn-lg px-5 py-3"> <i class="fas fa-rocket me-2"></i>
-                            Explore Multiverse </a>
+                            class="btn btn-primary btn-glow btn-lg px-4 px-lg-5 py-3">
+                            <i class="fas fa-rocket me-2"></i> Explore Multiverse
+                        </a>
                         <a href="#features" class="btn btn-glass btn-lg px-4 py-3">
                             <i class="fas fa-info-circle me-2"></i> How it works
                         </a>
                     </div>
 
-                    <div class="mt-5 pt-4 d-flex gap-5 justify-content-center justify-content-lg-start opacity-75">
+                    <div
+                        class="mt-4 pt-3 d-flex flex-wrap gap-4 gap-sm-5 justify-content-center justify-content-lg-start opacity-75">
                         <div class="text-center">
                             <div class="h4 fw-bold text-dark mb-0">100%</div>
                             <div class="small text-muted">Open Source</div>
@@ -183,7 +237,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5 position-relative reveal reveal-right">
+                <div class="col-12 col-lg-5 position-relative reveal reveal-right">
                     <!-- Glassmorphism Card Stack -->
                     <div class="position-relative" style="perspective: 2000px;">
 

@@ -6,57 +6,55 @@
 
 :root {
     /* --------------------------------------------------
-       PALETTE: ENTERPRISE GREEN
+       PALETTE: PREMIUM ENTERPRISE GREEN (HSL Based)
        -------------------------------------------------- */
     --color-bg-deep: #ffffff;
-    /* Pure white */
-    --color-bg-surface: #f8fafc;
-    /* Very light grey */
-    --color-bg-glass: rgba(255, 255, 255, 0.85);
+    --color-bg-surface: #fdfdfd;
+    --color-bg-glass: rgba(255, 255, 255, 0.75);
 
-    /* Primary Brand: Forest & Emerald */
-    --color-primary: #15803d;
-    /* green-700 */
-    --color-primary-dark: #14532d;
-    /* green-900 */
-    --color-primary-light: #86efac;
-    /* green-300 */
+    /* Primary Brand: Forest & Emerald with more saturation */
+    --color-primary: hsl(142, 70%, 25%);    /* Rich Forest */
+    --color-primary-hover: hsl(142, 70%, 20%);
+    --color-primary-light: hsl(142, 70%, 45%);   /* Vibrant Emerald */
+    --color-primary-subtle: hsl(142, 70%, 95%);
+    
+    --color-accent: hsl(160, 84%, 39%);      /* Hyper Emerald */
+    --color-accent-subtle: hsl(160, 84%, 96%);
 
-    --color-primary-glow: rgba(22, 163, 74, 0.4);
+    /* Specialized Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-surface: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,1) 100%);
 
-    /* Accents: Fresh & Vivid */
-    --color-neon-cyan: #059669;
-    /* emerald-600 */
-    --color-neon-purple: #166534;
-    /* green-800 replaced purple for brand consistency */
-    --color-neon-pink: #dcfce7;
-    /* green-100 (subtle background accent) */
+    /* Text - Precise Contrast */
+    --text-primary: #0f172a;        /* Slate-900 */
+    --text-secondary: #334155;      /* Slate-700 */
+    --text-muted: #64748b;         /* Slate-500 */
+    --text-tertiary: #94a3b8;      /* Slate-400 */
 
-    /* Text - High Contrast */
-    --text-primary: #1e293b;
-    /* slate-800 */
-    --text-secondary: #475569;
-    /* slate-600 */
-    --text-muted: #94a3b8;
-    /* slate-400 */
-
-    /* Borders & Lines */
-    --border-color: #e2e8f0;
-    --border-glass: rgba(255, 255, 255, 0.5);
+    /* Borders */
+    --border-color: rgba(15, 23, 42, 0.08);
+    --border-glass: rgba(255, 255, 255, 0.4);
+    --border-highlight: rgba(255, 255, 255, 0.8);
 
     /* --------------------------------------------------
-       TYPOGRAPHY
+       TYPOGRAPHY POLISH
        -------------------------------------------------- */
     --font-family-heading: 'Rajdhani', sans-serif;
     --font-family-body: 'Inter', sans-serif;
+    
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-wide: 0.05em;
 
     /* --------------------------------------------------
-       SHADOWS & GLOWS
+       EXTENDED SHADOWS (Premium Depth)
        -------------------------------------------------- */
-    --shadow-glass: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --glow-primary: 0 0 20px rgba(22, 163, 74, 0.2);
-    --glow-text: none;
-    /* Removed for readability */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-glass: 0 8px 32px 0 rgba(15, 23, 42, 0.08);
+
+    --glow-primary: 0 0 20px rgba(16, 185, 129, 0.2);
 }
 
 /* Base Overrides */

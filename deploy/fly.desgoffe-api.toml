@@ -2,7 +2,7 @@ app = "ticket-masala-api-desgoffe"
 primary_region = "ams"
 
 [build]
-context = "../ticket-masala"
+context = "../../ticket-masala"
 dockerfile = "Dockerfile"
 
 [env]

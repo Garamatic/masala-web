@@ -76,17 +76,17 @@
     ],
     "UnassignedWorkItems": [
         {
-            "Description": "Grant Proposal: Deep Sea Telemetry for Submarine Mapping.",
+            "Description": "Grant Proposal: Deep Sea Telemetry - Phase II",
             "Status": "New",
             "Type": "Task",
             "CustomerEmail": "steve@zissou.edu",
             "CompletionTargetDays": 30,
             "EstimatedEffortPoints": 13,
-            "PriorityScore": 10,
-            "GerdaTags": "Proposal, Submarine, Telemetry",
+            "PriorityScore": 60,
+            "GerdaTags": "Proposal, Submarine, Telemetry, Policy_Check",
             "Comments": [
                 {
-                    "Body": "Full proposal PDF attached in the portal. Looking forward to the review.",
+                    "Body": "We are requesting an additional allocation of $2.5M for the new submersible equipment. Existing Tier 1 cap is $1M but this is a special exception request.",
                     "AuthorEmail": "steve@zissou.edu",
                     "CreatedDaysAgo": 1
                 }

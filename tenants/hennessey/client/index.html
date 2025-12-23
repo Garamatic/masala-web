@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Wizard - Fonds Hennessey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="../hennessey.png" alt="Fonds Hennessey" class="logo" loading="lazy">
+            <h1 class="main-title">Grant Application Wizard</h1>
+            <p class="subtitle">Fonds Hennessey • Research & Innovation Funding</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Project Info</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Research Details</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Budget</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Documentation</div>
+                </div>
+                <div class="step" data-step="5">
+                    <div class="step-circle">5</div>
+                    <div class="step-label">Review</div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <form id="grantForm" class="grant-form">
+                <!-- Step 1: Project Information -->
+                <div class="form-step active" data-step="1">
+                    <h2 class="step-title">Project Information</h2>
+
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title *</label>
+                        <input type="text" id="projectTitle" name="projectTitle" required
+                            placeholder="e.g., Project Jaguar Shark: Deep Sea Telemetry">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grantType">Grant Type *</label>
+                        <select id="grantType" name="grantType" required>
+                            <option value="">Select grant type...</option>
+                            <option value="BASIC">Basic Research Grant</option>
+                            <option value="APPLIED">Applied Research Grant</option>
+                            <option value="INNOVATION">Innovation Grant</option>
+                            <option value="COLLABORATION">Collaborative Grant</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="principalInvestigator">Principal Investigator *</label>
+                            <input type="text" id="principalInvestigator" name="principalInvestigator" required
+                                placeholder="Prof. Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="institution">Institution *</label>
+                            <input type="text" id="institution" name="institution" required
+                                placeholder="University/Research Center">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="piEmail">Contact Email *</label>
+                        <input type="email" id="piEmail" name="piEmail" required placeholder="pi@institution.edu">
+                    </div>
+                </div>
+
+                <!-- Step 2: Research Details -->
+                <div class="form-step" data-step="2">
+                    <h2 class="step-title">Research Details</h2>
+
+                    <div class="form-group">
+                        <label for="researchField">Research Field *</label>
+                        <select id="researchField" name="researchField" required>
+                            <option value="">Select field...</option>
+                            <option value="Marine Biology">Marine Biology</option>
+                            <option value="Oceanography">Oceanography</option>
+                            <option value="Environmental Science">Environmental Science</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="abstract">Project Abstract *</label>
+                        <textarea id="abstract" name="abstract" rows="6" required
+                            placeholder="Provide a concise summary of your research project (max 500 words)"></textarea>
+                        <small class="form-hint">Minimum 100 characters</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="objectives">Key Objectives *</label>
+                        <textarea id="objectives" name="objectives" rows="4" required
+                            placeholder="List the main objectives of your research"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="duration">Duration (months) *</label>
+                            <input type="number" id="duration" name="duration" min="6" max="60" required
+                                placeholder="24">
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate">Proposed Start Date *</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Budget -->
+                <div class="form-step" data-step="3">
+                    <h2 class="step-title">Budget Information</h2>
+
+                    <div class="form-group">
+                        <label for="requestedAmount">Requested Amount (EUR) *</label>
+                        <input type="number" id="requestedAmount" name="requestedAmount" min="1000" required
+                            placeholder="250000">
+                        <small class="form-hint">Tier 1: up to €200,000 | Tier 2: €200,001-€500,000 | Tier 3: above
+                            €500,000</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budgetJustification">Budget Justification *</label>
+                        <textarea id="budgetJustification" name="budgetJustification" rows="5" required
+                            placeholder="Explain how the funds will be allocated"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="coFunding" name="coFunding">
+                            This project has co-funding from other sources
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="coFundingDetails" style="display: none;">
+                        <label for="coFundingSources">Co-funding Sources</label>
+                        <textarea id="coFundingSources" name="coFundingSources" rows="3"
+                            placeholder="List other funding sources and amounts"></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 4: Documentation -->
+                <div class="form-step" data-step="4">
+                    <h2 class="step-title">Supporting Documentation</h2>
+
+                    <div class="form-group">
+                        <label for="proposal">Full Proposal Document * (PDF)</label>
+                        <div class="file-upload">
+                            <input type="file" id="proposal" name="proposal" accept=".pdf" required>
+                            <label for="proposal" class="file-label">
+                                <i class="fas fa-file-pdf"></i>
+                                <span id="proposalName">Choose PDF file...</span>
+                            </label>
+                        </div>
+                        <small class="form-hint">Upload your detailed research proposal (max 50 pages)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cv">Principal Investigator CV (PDF)</label>
+                        <div class="file-upload">
+                            <input type="file" id="cv" name="cv" accept=".pdf">
+                            <label for="cv" class="file-label">
+                                <i class="fas fa-file-pdf"></i>
+                                <span id="cvName">Choose PDF file...</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ethics">Ethics Approval</label>
+                        <select id="ethics" name="ethics">
+                            <option value="not-required">Not Required</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 5: Review -->
+                <div class="form-step" data-step="5">
+                    <h2 class="step-title">Review & Submit</h2>
+
+                    <div class="review-section">
+                        <h3>Application Summary</h3>
+                        <div id="reviewContent" class="review-content"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="certify" required>
+                            I certify that all information provided is accurate and complete. I understand that false
+                            statements may result in disqualification.
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            I agree to the Fonds Hennessey <a href="#" target="_blank">Terms and Conditions</a>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" id="prevBtn" class="btn btn-secondary" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" id="saveDraftBtn" class="btn btn-outline">
+                        <i class="fas fa-save"></i>
+                        Save as Draft
+                    </button>
+                    <button type="button" id="nextBtn" class="btn btn-primary">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display: none;">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Application
+                    </button>
+                </div>
+            </form>
+
+            <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                <div class="spinner"></div>
+                <p>Submitting your application...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Fonds Hennessey © 2025 • <a href="#">Contact</a> • <a href="#">FAQ</a> • <a href="#">Guidelines</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+{
+    "Admins": [
+        {
+            "UserName": "president.oseary",
+            "Email": "oseary@hennessey.fund",
+            "FirstName": "Oseary",
+            "LastName": "Fonds",
+            "Phone": "+44 20 7946 0101",
+            "Code": "PRES-01"
+        }
+    ],
+    "Employees": [
+        {
+            "UserName": "officer.eleanor",
+            "Email": "eleanor@hennessey.fund",
+            "FirstName": "Eleanor",
+            "LastName": "Banks",
+            "Team": "Grant Review Board",
+            "Level": "Lead",
+            "Language": "en-GB",
+            "Specializations": "Oceanography, Policy",
+            "MaxCapacityPoints": 40,
+            "Region": "Europe"
+        },
+        {
+            "UserName": "analyst.klaus",
+            "Email": "klaus@hennessey.fund",
+            "FirstName": "Klaus",
+            "LastName": "Daimler",
+            "Team": "Operations",
+            "Level": "Support",
+            "Language": "de-DE",
+            "Specializations": "Budgeting, Compliance",
+            "MaxCapacityPoints": 30,
+            "Region": "Germany"
+        }
+    ],
+    "Customers": [
+        {
+            "UserName": "prof.steve",
+            "Email": "steve@zissou.edu",
+            "FirstName": "Steve",
+            "LastName": "Zissou",
+            "Phone": "+44 20 7946 9999",
+            "Code": "RES-007"
+        }
+    ],
+    "WorkContainers": [
+        {
+            "Name": "Deep Sea Grants - 2025 Cycle",
+            "Description": "Funding cycle for marine biology and deep sea telemetry research.",
+            "Status": "Active",
+            "CustomerEmail": "steve@zissou.edu",
+            "ProjectManagerEmail": "eleanor@hennessey.fund",
+            "CompletionTargetMonths": 18,
+            "WorkItems": [
+                {
+                    "Description": "Compliance Review: Project Jaguar Shark",
+                    "Status": "In_Progress",
+                    "Type": "Task",
+                    "ResponsibleEmail": "analyst.klaus",
+                    "CompletionTargetDays": 14,
+                    "EstimatedEffortPoints": 5,
+                    "PriorityScore": 25,
+                    "GerdaTags": "Compliance, Tier3",
+                    "Comments": [
+                        {
+                            "Body": "Budget exceeds Tier 1 limit by 15%. Need PI to justify the telemetry hardware costs.",
+                            "AuthorEmail": "eleanor@hennessey.fund",
+                            "CreatedDaysAgo": 2
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "UnassignedWorkItems": [
+        {
+            "Description": "Grant Proposal: Deep Sea Telemetry for Submarine Mapping.",
+            "Status": "New",
+            "Type": "Task",
+            "CustomerEmail": "steve@zissou.edu",
+            "CompletionTargetDays": 30,
+            "EstimatedEffortPoints": 13,
+            "PriorityScore": 10,
+            "GerdaTags": "Proposal, Submarine, Telemetry",
+            "Comments": [
+                {
+                    "Body": "Full proposal PDF attached in the portal. Looking forward to the review.",
+                    "AuthorEmail": "steve@zissou.edu",
+                    "CreatedDaysAgo": 1
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,112 @@
+version: '3.8'
+
+services:
+  # ════════════════════════════════════════════════════════════
+  # 🏛️ DESGOFFE (GOVERNMENT)
+  # ════════════════════════════════════════════════════════════
+  api-desgoffe:
+    build:
+      context: ../ticket-masala
+      dockerfile: Dockerfile
+    container_name: masala_api_desgoffe
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - MASALA_TENANT_ID=desgoffe
+      - MASALA_DB_PATH=/app/data/masala.db
+    volumes:
+      - ./tenants/desgoffe/data:/app/inputs/data # Mount local data if testing persistence
+    ports:
+      - "5081:8080" # Maps to localhost:5081
+
+  portal-desgoffe:
+    build:
+      context: .
+      dockerfile: Dockerfile.tenant
+    container_name: masala_portal_desgoffe
+    environment:
+      - MASALA_TENANT_ID=desgoffe
+    ports:
+      - "8081:8080" # Maps to localhost:8081
+    depends_on:
+      - api-desgoffe
+
+  # ════════════════════════════════════════════════════════════
+  # 🚂 WHITMAN (INFRASTRUCTURE)
+  # ════════════════════════════════════════════════════════════
+  api-whitman:
+    build:
+      context: ../ticket-masala
+      dockerfile: Dockerfile
+    container_name: masala_api_whitman
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - MASALA_TENANT_ID=whitman
+      - MASALA_DB_PATH=/app/data/masala.db
+    ports:
+      - "5082:8080"
+
+  portal-whitman:
+    build:
+      context: .
+      dockerfile: Dockerfile.tenant
+    container_name: masala_portal_whitman
+    environment:
+      - MASALA_TENANT_ID=whitman
+    ports:
+      - "8082:8080"
+    depends_on:
+      - api-whitman
+
+  # ════════════════════════════════════════════════════════════
+  # 💻 LIBERTY (TECH)
+  # ════════════════════════════════════════════════════════════
+  api-liberty:
+    build:
+      context: ../ticket-masala
+      dockerfile: Dockerfile
+    container_name: masala_api_liberty
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - MASALA_TENANT_ID=liberty
+      - MASALA_DB_PATH=/app/data/masala.db
+    ports:
+      - "5083:8080"
+
+  portal-liberty:
+    build:
+      context: .
+      dockerfile: Dockerfile.tenant
+    container_name: masala_portal_liberty
+    environment:
+      - MASALA_TENANT_ID=liberty
+    ports:
+      - "8083:8080"
+    depends_on:
+      - api-liberty
+
+  # ════════════════════════════════════════════════════════════
+  # 🔬 HENNESSEY (RESEARCH)
+  # ════════════════════════════════════════════════════════════
+  api-hennessey:
+    build:
+      context: ../ticket-masala
+      dockerfile: Dockerfile
+    container_name: masala_api_hennessey
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - MASALA_TENANT_ID=hennessey
+      - MASALA_DB_PATH=/app/data/masala.db
+    ports:
+      - "5084:8080"
+
+  portal-hennessey:
+    build:
+      context: .
+      dockerfile: Dockerfile.tenant
+    container_name: masala_portal_hennessey
+    environment:
+      - MASALA_TENANT_ID=hennessey
+    ports:
+      - "8084:8080"
+    depends_on:
+      - api-hennessey

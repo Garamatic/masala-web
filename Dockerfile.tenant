@@ -1,0 +1,12 @@
+FROM nginx:alpine
+
+# Copy all tenant files to Nginx web root
+COPY . /usr/share/nginx/html
+
+# Copy Nginx template for env var substitution
+COPY nginx/default.conf.template /etc/nginx/templates/default.conf.template
+
+# Fly.io env vars are available at runtime
+# Nginx will replace ${MASALA_TENANT_ID} in the template
+
+EXPOSE 8080

@@ -1,0 +1,107 @@
+{
+    "Admins": [
+        {
+            "UserName": "directeur.francis",
+            "Email": "francis@whitman.infra",
+            "FirstName": "Francis",
+            "LastName": "Van Damme",
+            "Phone": "+32 2 444 01 01",
+            "Code": "DIR-001"
+        }
+    ],
+    "Employees": [
+        {
+            "UserName": "ploegbaas.peter",
+            "Email": "peter@whitman.infra",
+            "FirstName": "Peter",
+            "LastName": "Peeters",
+            "Team": "Sectie Oost",
+            "Level": "Lead",
+            "Language": "nl-BE",
+            "Specializations": "Sporen, Wissels",
+            "MaxCapacityPoints": 100,
+            "Region": "Schaarbeek"
+        },
+        {
+            "UserName": "technicus.jack",
+            "Email": "jack@whitman.infra",
+            "FirstName": "Jack",
+            "LastName": "Smit",
+            "Team": "Mobiele Brigade",
+            "Level": "Support",
+            "Language": "nl-BE",
+            "Specializations": "Signalisatie, Elektronica",
+            "MaxCapacityPoints": 60,
+            "Region": "Brussel-Noord"
+        }
+    ],
+    "Customers": [
+        {
+            "UserName": "stationschef.alice",
+            "Email": "alice@nmbs-sncb.be",
+            "FirstName": "Alice",
+            "LastName": "Dubois",
+            "Phone": "+32 2 444 99 99",
+            "Code": "STA-42"
+        }
+    ],
+    "WorkContainers": [
+        {
+            "Name": "Spoorwegonderhoud Lijn 36",
+            "Description": "Regulier onderhoud en noodherstellingen voor Lijn 36.",
+            "Status": "Active",
+            "CustomerEmail": "alice@nmbs-sncb.be",
+            "ProjectManagerEmail": "peter@whitman.infra",
+            "CompletionTargetMonths": 6,
+            "WorkItems": [
+                {
+                    "Description": "Gepland Onderhoud Overweg Hasselt",
+                    "Status": "Closed",
+                    "Type": "Task",
+                    "ResponsibleEmail": "technicus.jack",
+                    "CompletionTargetDays": 14,
+                    "CompletionDaysAgo": 30,
+                    "EstimatedEffortPoints": 21,
+                    "PriorityScore": 5,
+                    "GerdaTags": "Onderhoud, Veiligheid",
+                    "Comments": [
+                        {
+                            "Body": "Wisselmechanisme geolied en getest. Alles conform standaard.",
+                            "AuthorEmail": "jack@whitman.infra",
+                            "CreatedDaysAgo": 31
+                        }
+                    ]
+                },
+                {
+                    "Description": "Inspectie Bovenleiding Mechelen",
+                    "Status": "In_Progress",
+                    "Type": "Task",
+                    "ResponsibleEmail": "technicus.jack",
+                    "CompletionTargetDays": 7,
+                    "EstimatedEffortPoints": 13,
+                    "PriorityScore": 12,
+                    "GerdaTags": "Inspectie, Elektrisch"
+                }
+            ]
+        }
+    ],
+    "UnassignedWorkItems": [
+        {
+            "Description": "Defecte Wissel #42 - Schaarbeek. Wissel blokkeert bij vriesweer.",
+            "Status": "New",
+            "Type": "Task",
+            "CustomerEmail": "alice@nmbs-sncb.be",
+            "CompletionTargetDays": 1,
+            "EstimatedEffortPoints": 34,
+            "PriorityScore": 50,
+            "GerdaTags": "Storing, Kritiek, Winter",
+            "Comments": [
+                {
+                    "Body": "Treinverkeer naar Leuven ondervindt ernstige vertragingen.",
+                    "AuthorEmail": "alice@nmbs-sncb.be",
+                    "CreatedDaysAgo": 0
+                }
+            ]
+        }
+    ]
+}

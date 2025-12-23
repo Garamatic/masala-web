@@ -1,0 +1,25 @@
+{
+    "AppInstanceName": "Whitman Spoor",
+    "AppSubtitle": "Meldpunt Infrastructuur",
+    "DefaultLocale": "nl",
+    "GerdaAI": {
+        "IsEnabled": true,
+        "SystemPrompt": "Je bent een veiligheidsingenieur bij Whitman Spoor. Wees beknopt en technisch. Prioriteer veiligheid boven alles. Gebruik standaard spoorwegjargon.",
+        "SpamDetection": {
+            "IsEnabled": true
+        },
+        "ComplexityEstimation": {
+            "IsEnabled": true
+        },
+        "Ranking": {
+            "IsEnabled": true
+        },
+        "Dispatching": {
+            "IsEnabled": true,
+            "Strategy": "GeoLocation"
+        },
+        "Anticipation": {
+            "IsEnabled": true
+        }
+    }
+}

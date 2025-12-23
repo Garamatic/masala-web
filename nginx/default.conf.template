@@ -1,0 +1,20 @@
+server {
+    listen 8080;
+    server_name localhost;
+    
+    error_log /dev/stderr debug;
+    access_log /dev/stdout;
+
+    # Root is specific to the tenant ID passed via env var
+    root /usr/share/nginx/html/tenants/${MASALA_TENANT_ID};
+    index client/index.html;
+
+    # Redirect root to /client/ to ensure relative paths (like ../logo.png) work correctly
+    location = / {
+        return 301 /client/;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guichet Citoyen - Ville de Desgoffe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="container">
+        <a href="#main-content" class="skip-link">Passer au contenu principal</a>
+
+        <header class="header">
+            <div class="logo-section">
+                <img src="../desgoffe.png" alt="Ville de Desgoffe" class="logo" loading="lazy">
+            </div>
+            <h1 class="main-title">Guichet Citoyen</h1>
+            <p class="subtitle">Ville de Desgoffe - Services Municipaux</p>
+        </header>
+
+        <main id="main-content" class="main-content" role="main">
+            <div class="info-banner" role="status">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                <p>Bienvenue au Guichet Citoyen. Veuillez remplir le formulaire ci-dessous pour soumettre votre demande
+                    officielle.</p>
+            </div>
+
+            <form id="submissionForm" class="official-form" novalidate>
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                        Informations du Citoyen
+                    </h2>
+
+                    <div class="form-group">
+                        <label for="customerName" class="required">Nom Complet</label>
+                        <input type="text" id="customerName" name="customerName" required aria-required="true"
+                            placeholder="Prénom Nom" autocomplete="name">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerEmail" class="required">Adresse Électronique</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required aria-required="true"
+                                placeholder="citoyen@example.be" autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone">Téléphone</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" placeholder="+32 2 555 00 00"
+                                autocomplete="tel">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>
+                        Détails de la Demande
+                    </h2>
+
+                    <div class="form-group">
+                        <label for="requestType" class="required">Type de Demande</label>
+                        <select id="requestType" name="requestType" required aria-required="true">
+                            <option value="">-- Sélectionnez un type --</option>
+                            <option value="NUISANCE">Nuisance Sonore</option>
+                            <option value="PERMIS">Demande de Permis</option>
+                            <option value="PLAINTE">Plainte</option>
+                            <option value="DEMANDE">Demande Générale</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quartier" class="required">Quartier</label>
+                        <select id="quartier" name="quartier" required aria-required="true">
+                            <option value="">-- Sélectionnez un quartier --</option>
+                            <option value="Centre-Ville">Centre-Ville</option>
+                            <option value="Faubourg Nord">Faubourg Nord</option>
+                            <option value="Quartier Est">Quartier Est</option>
+                            <option value="Zone Industrielle">Zone Industrielle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priorite" class="required">Priorité</label>
+                        <select id="priorite" name="priorite" required aria-required="true">
+                            <option value="5">Standard</option>
+                            <option value="10">Urgent</option>
+                            <option value="15">Très Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="required">Description de la Demande</label>
+                        <textarea id="description" name="description" rows="6" required aria-required="true"
+                            aria-describedby="desc-hint"
+                            placeholder="Veuillez décrire votre demande en détail. Soyez aussi précis que possible."></textarea>
+                        <small id="desc-hint" class="form-hint">Minimum 10 caractères</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachment">Document Justificatif (PDF uniquement)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="attachment" name="attachment" accept=".pdf"
+                                aria-describedby="file-hint">
+                            <label for="attachment" class="file-upload-label">
+                                <i class="fas fa-paperclip" aria-hidden="true"></i>
+                                <span id="fileName">Choisir un fichier PDF</span>
+                            </label>
+                        </div>
+                        <span id="file-hint" class="sr-only">Seuls les fichiers PDF sont acceptés</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-stamp" aria-hidden="true"></i>
+                        Soumission
+                    </h2>
+
+                    <div class="declaration">
+                        <input type="checkbox" id="declaration" required aria-required="true">
+                        <label for="declaration">
+                            Je certifie que les informations fournies sont exactes et conformes à la réalité.
+                        </label>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            Soumettre la Demande
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-redo" aria-hidden="true"></i>
+                            Réinitialiser
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                <div class="spinner"></div>
+                <p>Traitement de votre demande...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Ville de Desgoffe - Tous droits réservés</p>
+            <p class="footer-note">Pour toute question, contactez le Service Municipal au +32 2 555 01 01</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

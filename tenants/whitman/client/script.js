@@ -1,7 +1,6 @@
 // Whitman Spoor Portal - Meldpunt Spoor
-// Mobile-first with camera and geolocation support
-
-const API_BASE_URL = 'http://localhost:5000';
+// Mobile-first with camera and geolocation supp// Configuration
+const API_BASE_URL = 'https://ticket-masala-api-whitman.fly.dev';
 const API_ENDPOINT = `${API_BASE_URL}/api/portal/submit`;
 
 // Type selection

@@ -1,7 +1,6 @@
 // Liberty Systems Portal - The Newsroom
-// Markdown editor with preview and code highlighting
-
-const API_BASE_URL = 'http://localhost:5000';
+// Markdown editor with preview and code// Configuration
+const API_BASE_URL = 'https://ticket-masala-api-liberty.fly.dev';
 const API_ENDPOINT = `${API_BASE_URL}/api/portal/submit`;
 
 // Tab switching

@@ -56,20 +56,20 @@
         --shadow-glow: 0 0 40px rgba(34, 197, 94, 0.15);
     }
 
-    /* --- THEME: DESGOFFE (Government - Modern Professional) --- */
+    /* --- THEME: DESGOFFE (Government - Confectionery Bureaucracy) --- */
     [data-theme="desgoffe"] {
-        --color-primary: #3b82f6;
-        --color-masala-hover: #2563eb;
-        --font-heading: 'Inter', sans-serif;
-        --bg-canvas: #fafbfc;
-        --bg-surface: rgba(0, 0, 0, 0.02);
-        --bg-surface-elevated: rgba(0, 0, 0, 0.04);
-        --text-primary: #0f172a;
-        --text-secondary: #475569;
-        --text-muted: #94a3b8;
-        --border-structural: rgba(0, 0, 0, 0.08);
-        --radius-component: var(--radius-md);
-        --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+        --color-primary: #5D3A5D;
+        --color-masala-hover: #4a2e4a;
+        --font-heading: 'Rockwell', 'Roboto Slab', serif;
+        --bg-canvas: #FDF5E6;
+        --bg-surface: #FFFAF0;
+        --bg-surface-elevated: #FFF0E0;
+        --text-primary: #3d3d3d;
+        --text-secondary: #5D3A5D;
+        --text-muted: #9A2A2A;
+        --border-structural: rgba(93, 58, 93, 0.2);
+        --radius-component: 4px;
+        --shadow-glow: 0 0 40px rgba(93, 58, 93, 0.15);
     }
 
     /* --- THEME: WHITMAN (Infrastructure - Industrial Modern) --- */

@@ -54,13 +54,13 @@
 /* 👥 TESTIMONIAL CARDS */
 .testimonial-card {
     border-bottom: 4px solid transparent;
-    background: white;
+    background: var(--bg-surface);
     padding: 2.5rem !important;
 }
 
 .testimonial-card:hover {
-    border-bottom-color: var(--color-primary-light);
-    background: var(--color-primary-subtle);
+    border-bottom-color: var(--color-primary);
+    background: var(--bg-surface-elevated);
 }
 
 .testimonial-card.desgoffe:hover {

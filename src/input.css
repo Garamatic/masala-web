@@ -72,43 +72,43 @@
         --shadow-glow: 0 0 40px rgba(93, 58, 93, 0.15);
     }
 
-    /* --- THEME: WHITMAN (Infrastructure - Industrial Modern) --- */
+    /* --- THEME: WHITMAN (Infrastructure - Scorched Earth Utility) --- */
     [data-theme="whitman"] {
-        --color-primary: #f59e0b;
-        --color-masala-hover: #d97706;
-        --font-heading: 'Space Grotesk', sans-serif;
-        --bg-canvas: #0c0a09;
-        --text-inverse: #000000;
-        --radius-component: var(--radius-sm);
-        --border-glow: rgba(245, 158, 11, 0.3);
-        --shadow-glow: 0 0 40px rgba(245, 158, 11, 0.15);
+        --color-primary: #004B87;
+        --color-masala-hover: #003a6a;
+        --font-heading: 'Oswald', 'Impact', sans-serif;
+        --bg-canvas: #DDE4E8;
+        --text-inverse: #ffffff;
+        --radius-component: 0px;
+        --border-glow: rgba(0, 75, 135, 0.3);
+        --shadow-glow: 0 0 40px rgba(0, 75, 135, 0.15);
     }
 
-    /* --- THEME: LIBERTY (Tech - Cyberpunk) --- */
+    /* --- THEME: LIBERTY (Tech - Cyberpunk Minimalism) --- */
     [data-theme="liberty"] {
-        --color-primary: #a855f7;
-        --color-masala-hover: #9333ea;
-        --font-heading: 'JetBrains Mono', monospace;
-        --bg-canvas: #09090b;
-        --radius-component: var(--radius-xl);
-        --status-success: #22d3ee;
-        --border-glow: rgba(168, 85, 247, 0.3);
-        --shadow-glow: 0 0 40px rgba(168, 85, 247, 0.2);
+        --color-primary: #E1AD01;
+        --color-masala-hover: #c99a01;
+        --font-heading: 'Inter', sans-serif;
+        --bg-canvas: #1a1a1a;
+        --radius-component: 6px;
+        --status-success: #98FF98;
+        --border-glow: rgba(225, 173, 1, 0.3);
+        --shadow-glow: 0 0 40px rgba(225, 173, 1, 0.2);
     }
 
-    /* --- THEME: HENNESSEY (Research - Clean Scientific) --- */
+    /* --- THEME: HENNESSEY (Research - Marine Sterile) --- */
     [data-theme="hennessey"] {
-        --color-primary: #14b8a6;
-        --color-masala-hover: #0d9488;
-        --font-heading: 'Inter', sans-serif;
-        --bg-canvas: #f8fafc;
-        --bg-surface: rgba(20, 184, 166, 0.04);
-        --bg-surface-elevated: rgba(20, 184, 166, 0.08);
-        --text-primary: #0f172a;
-        --text-secondary: #475569;
-        --border-structural: rgba(20, 184, 166, 0.12);
-        --radius-component: var(--radius-xl);
-        --shadow-glow: 0 0 40px rgba(20, 184, 166, 0.15);
+        --color-primary: #75AADB;
+        --color-masala-hover: #5d94c7;
+        --font-heading: 'EB Garamond', 'Georgia', serif;
+        --bg-canvas: #F5F9FA;
+        --bg-surface: rgba(117, 170, 219, 0.04);
+        --bg-surface-elevated: rgba(117, 170, 219, 0.08);
+        --text-primary: #333333;
+        --text-secondary: #7a8b9a;
+        --border-structural: rgba(117, 170, 219, 0.12);
+        --radius-component: 4px;
+        --shadow-glow: 0 0 40px rgba(117, 170, 219, 0.15);
     }
 
     /* Global Styles */
@@ -433,19 +433,19 @@
 
     /* Theme glow colors */
     [data-theme="desgoffe"] .btn-glow {
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 0 40px rgba(93, 58, 93, 0.3);
     }
 
     [data-theme="whitman"] .btn-glow {
-        box-shadow: 0 0 40px rgba(245, 158, 11, 0.3);
+        box-shadow: 0 0 40px rgba(0, 75, 135, 0.3);
     }
 
     [data-theme="liberty"] .btn-glow {
-        box-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+        box-shadow: 0 0 40px rgba(225, 173, 1, 0.3);
     }
 
     [data-theme="hennessey"] .btn-glow {
-        box-shadow: 0 0 40px rgba(20, 184, 166, 0.3);
+        box-shadow: 0 0 40px rgba(117, 170, 219, 0.3);
     }
 }
 

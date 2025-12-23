@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="default">
 
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,11 @@
         content="Stop drowning in tickets. Ticket Masala unifies your support tickets, projects, and team workflows into one beautiful, AI-powered platform.">
 
     <!-- Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -23,11 +24,10 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/design-system.css">
-    <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/site.css">
 
     <style>
-        /* Landing Page Specific Overrides for Light Mode */
+        /* Landing Page Specific Overrides */
         .hero-bg-glow {
             position: absolute;
             top: 0;
@@ -75,12 +75,10 @@
             justify-content: center;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            background: #f0fdf4;
-            /* green-50 */
-            border: 1px solid #dcfce7;
-            /* green-100 */
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-structural);
             color: var(--color-primary);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -93,10 +91,10 @@
     <!-- Navigation -->
     <nav class="fixed-top py-3 transition-all" id="navbar">
         <div class="container">
-            <div class="glass-panel rounded-pill px-3 px-md-4 py-2 d-flex align-items-center justify-content-between">
+            <div class="glass-panel rounded-sm px-3 px-md-4 py-2 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <img src="images/logo.png" alt="Ticket Masala" height="42" class="d-block">
-                    <span class="fw-bold text-dark h5 mb-0" style="font-family: 'Rajdhani'; font-size: 1.5rem;">Ticket
+                    <span class="fw-bold text-primary h5 mb-0" style="font-size: 1.5rem;">Ticket
                         Masala</span>
                 </div>
 
@@ -106,14 +104,13 @@
                         data-i18n="nav_features">Features</a>
                     <a href="#solutions" class="nav-link-custom small text-decoration-none"
                         data-i18n="nav_solutions">Solutions</a>
-                    <a href="http://localhost:8001" class="nav-link-custom small text-decoration-none"
-                        data-i18n="nav_docs">Docs</a>
+                    <a href="#docs" class="nav-link-custom small text-decoration-none" data-i18n="nav_docs">Docs</a>
                 </div>
 
                 <!-- Desktop Actions -->
                 <div class="d-none d-lg-flex gap-2">
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-glass rounded-pill px-3 dropdown-toggle" type="button"
+                        <button class="btn btn-sm btn-glass rounded-sm px-3 dropdown-toggle" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-globe me-1"></i> <span id="current-lang">EN</span>
                         </button>
@@ -123,21 +120,54 @@
                             <li><button class="dropdown-item small" onclick="setLang('fr')">Français</button></li>
                         </ul>
                     </div>
-                    <a href="https://ticket-masala-demos.fly.dev/" class="btn btn-sm btn-glass rounded-pill px-3">
+
+                    <!-- Theme Switcher -->
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-glass rounded-sm px-3 dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-palette me-1"></i> <span class="d-none d-xl-inline">Theme</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 glass-panel"
+                            style="min-width: 200px;">
+                            <li>
+                                <h6 class="dropdown-header">Select Skin</h6>
+                            </li>
+                            <li><button class="dropdown-item small d-flex align-items-center gap-2"
+                                    onclick="setTheme('default')"><span class="rounded-circle"
+                                        style="width:10px;height:10px;background:#4CAF50"></span> Ticket Masala
+                                    (Core)</button></li>
+                            <li><button class="dropdown-item small d-flex align-items-center gap-2"
+                                    onclick="setTheme('desgoffe')"><span class="rounded-circle"
+                                        style="width:10px;height:10px;background:#2C3E50"></span> Desgoffe
+                                    (Gov)</button></li>
+                            <li><button class="dropdown-item small d-flex align-items-center gap-2"
+                                    onclick="setTheme('whitman')"><span class="rounded-circle"
+                                        style="width:10px;height:10px;background:#FFB703"></span> Whitman
+                                    (Rail)</button></li>
+                            <li><button class="dropdown-item small d-flex align-items-center gap-2"
+                                    onclick="setTheme('liberty')"><span class="rounded-circle"
+                                        style="width:10px;height:10px;background:#7B2CBF"></span> Liberty
+                                    (Tech)</button></li>
+                            <li><button class="dropdown-item small d-flex align-items-center gap-2"
+                                    onclick="setTheme('hennessey')"><span class="rounded-circle"
+                                        style="width:10px;height:10px;background:#00A896"></span> Hennessey
+                                    (Lab)</button></li>
+                        </ul>
+                    </div>
+                    <a href="#architecture" class="btn btn-sm btn-glass rounded-sm px-3">
                         <i class="fas fa-desktop me-1"></i> Live Demos
                     </a>
-                    <a href="https://github.com/yourusername/ticket-masala"
-                        class="btn btn-sm btn-glow rounded-pill px-3">
+                    <a href="https://github.com/garamatic/ticket-masala" class="btn btn-sm btn-glow rounded-sm px-3">
                         <i class="fab fa-github me-1"></i> Star
                     </a>
                 </div>
 
                 <!-- Mobile Actions -->
                 <div class="d-flex d-lg-none gap-2">
-                    <a href="https://ticket-masala-demos.fly.dev/" class="btn btn-sm btn-glow rounded-pill px-3">
+                    <a href="#architecture" class="btn btn-sm btn-glow rounded-sm px-3">
                         <i class="fas fa-desktop"></i>
                     </a>
-                    <button class="btn btn-sm btn-glass rounded-pill px-3" type="button" data-bs-toggle="offcanvas"
+                    <button class="btn btn-sm btn-glass rounded-sm px-3" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#mobileMenu">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -151,7 +181,7 @@
         <div class="offcanvas-header border-bottom">
             <h5 class="offcanvas-title" id="mobileMenuLabel">
                 <img src="images/logo.png" alt="Ticket Masala" height="24" class="me-2">
-                <span style="font-family: 'Rajdhani'">Ticket Masala</span>
+                <span>Ticket Masala</span>
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -161,11 +191,11 @@
                     data-i18n="nav_features">Features</a>
                 <a href="#solutions" class="nav-link-custom text-decoration-none" data-bs-dismiss="offcanvas"
                     data-i18n="nav_solutions">Solutions</a>
-                <a href="http://localhost:8001" class="nav-link-custom text-decoration-none" data-bs-dismiss="offcanvas"
+                <a href="#docs" class="nav-link-custom text-decoration-none" data-bs-dismiss="offcanvas"
                     data-i18n="nav_docs">Docs</a>
                 <hr>
                 <div class="dropdown">
-                    <button class="btn btn-sm btn-glass rounded-pill px-3 dropdown-toggle w-100" type="button"
+                    <button class="btn btn-sm btn-glass rounded-sm px-3 dropdown-toggle w-100" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-globe me-2"></i> <span id="current-lang-mobile">EN</span>
                     </button>
@@ -175,7 +205,7 @@
                         <li><button class="dropdown-item" onclick="setLang('fr')">Français</button></li>
                     </ul>
                 </div>
-                <a href="https://github.com/yourusername/ticket-masala" class="btn btn-glass rounded-pill px-3">
+                <a href="https://github.com/garamatic/ticket-masala" class="btn btn-glass rounded-sm px-3">
                     <i class="fab fa-github me-2"></i> Star on GitHub
                 </a>
             </div>
@@ -188,8 +218,8 @@
             <div class="row align-items-center g-4">
                 <div class="col-12 col-lg-7 text-center text-lg-start mb-4 mb-lg-0 reveal">
                     <div
-                        class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill glass-panel mb-4 interactive-glow">
-                        <span class="badge bg-success rounded-pill px-2">v3.0</span>
+                        class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-sm glass-panel mb-4 interactive-glow">
+                        <span class="badge bg-success rounded-sm px-2">v3.0</span>
                         <span class="small text-secondary fw-semibold">
                             <span data-i18n="hero_intro">Announcing</span> <span class="text-primary">GERDA
                                 AI</span> Autonomous Agents
@@ -212,11 +242,10 @@
 
                     <div
                         class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-4">
-                        <a href="https://ticket-masala-demos.fly.dev/"
-                            class="btn btn-primary btn-glow btn-lg px-4 px-lg-5 py-3">
+                        <a href="https://ticket-masala-demos.fly.dev/" class="btn btn-masala btn-lg px-4 px-lg-5 py-3">
                             <i class="fas fa-rocket me-2"></i> Explore Ecosystem
                         </a>
-                        <a href="#features" class="btn btn-glass btn-lg px-4 py-3">
+                        <a href="#architecture" class="btn btn-glass btn-lg px-4 py-3">
                             <i class="fas fa-info-circle me-2"></i> How it works
                         </a>
                     </div>
@@ -228,7 +257,7 @@
                             <div class="small text-muted">Open Source</div>
                         </div>
                         <div class="text-center">
-                            <div class="h4 fw-bold text-dark mb-0">2.4ms</div>
+                            <div class="h4 fw-bold text-dark mb-0">Real-time</div>
                             <div class="small text-muted">Latency</div>
                         </div>
                         <div class="text-center">
@@ -243,7 +272,7 @@
                     <div class="position-relative" style="perspective: 2000px;">
 
                         <!-- Main Interface Card -->
-                        <div class="glass-premium rounded-4 p-0 overflow-hidden shadow-xl animate-float"
+                        <div class="card-dossier p-0 overflow-hidden shadow-xl animate-float"
                             style="z-index: 2; transform: rotate3d(1, 1, 1, -5deg); border: 1px solid rgba(255,255,255,0.6);">
                             <div
                                 class="p-3 border-bottom d-flex align-items-center justify-content-between bg-dark bg-opacity-10 backdrop-blur">
@@ -279,7 +308,7 @@
                         </div>
 
                         <!-- Floating Accent -->
-                        <div class="position-absolute glass-panel rounded-4 p-3 d-flex flex-column gap-2 shadow-lg reveal"
+                        <div class="position-absolute glass-panel rounded-sm p-3 d-flex flex-column gap-2 shadow-lg reveal"
                             style="bottom: -40px; right: -20px; z-index: 3; width: 180px;">
                             <div class="small fw-bold text-primary">System Processing</div>
                             <div class="progress" style="height: 4px; background: rgba(0,0,0,0.05);">
@@ -300,7 +329,7 @@
     <section class="section-spacer position-relative overflow-hidden" id="features">
         <div class="container">
             <div class="text-center mb-5 reveal">
-                <h2 class="display-5 fw-bold text-dark mb-3">
+                <h2 class="display-5 fw-bold text-primary mb-3">
                     <span data-i18n="features_title_1">Built for</span>
                     <span class="text-gradient-primary" data-i18n="features_title_2">Modern Teams</span>
                 </h2>
@@ -311,11 +340,11 @@
 
             <div class="row g-4">
                 <div class="col-md-4 reveal">
-                    <div class="glass-premium p-4 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="feature-icon mb-4">
                             <i class="fas fa-brain fa-2x text-primary"></i>
                         </div>
-                        <h4 class="text-dark fw-bold mb-3" data-i18n="feature_ai_title">AI Autopilot</h4>
+                        <h4 class="text-primary fw-bold mb-3" data-i18n="feature_ai_title">AI Autopilot</h4>
                         <p class="text-secondary mb-0" data-i18n="feature_ai_desc">
                             GERDA AI automatically categorizes tickets, assigns priority, and even drafts responses
                             based on your knowledge base.
@@ -323,11 +352,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 reveal" style="transition-delay: 0.1s;">
-                    <div class="glass-premium p-4 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="feature-icon mb-4">
                             <i class="fas fa-project-diagram fa-2x text-accent"></i>
                         </div>
-                        <h4 class="text-dark fw-bold mb-3" data-i18n="feature_workflow_title">Workflow Engine</h4>
+                        <h4 class="text-primary fw-bold mb-3" data-i18n="feature_workflow_title">Workflow Engine</h4>
                         <p class="text-secondary mb-0" data-i18n="feature_workflow_desc">
                             Visual drag-and-drop workflow builder. Connect tickets to git commits, deployments, and
                             customer approvals.
@@ -335,11 +364,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 reveal" style="transition-delay: 0.2s;">
-                    <div class="glass-premium p-4 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="feature-icon mb-4">
                             <i class="fas fa-shield-halved fa-2x text-success"></i>
                         </div>
-                        <h4 class="text-dark fw-bold mb-3" data-i18n="feature_security_title">Ironclad Security</h4>
+                        <h4 class="text-primary fw-bold mb-3" data-i18n="feature_security_title">Ironclad Security</h4>
                         <p class="text-secondary mb-0" data-i18n="feature_security_desc">
                             Role-based access control (RBAC), audit logs, and self-hosted deployment options keep your
                             data sovereign.
@@ -351,24 +380,25 @@
     </section>
 
     <!-- Solutions Section -->
-    <section class="section-spacer position-relative bg-light" id="solutions">
+    <section class="section-spacer position-relative" id="solutions">
         <div class="container">
             <div class="text-center mb-5 reveal">
-                <h2 class="display-5 fw-bold text-dark mb-3"><span data-i18n="solutions_title">Real-World</span> <span
-                        class="text-gradient-primary" data-i18n="solutions_title_2">Solutions</span></h2>
+                <h2 class="display-5 fw-bold text-primary mb-3"><span data-i18n="solutions_title">Real-World</span>
+                    <span class="text-gradient-primary" data-i18n="solutions_title_2">Solutions</span>
+                </h2>
                 <p class="text-secondary lead" data-i18n="solutions_subtitle">From tax automation to multi-tenant SaaS,
                     one platform handles it all.</p>
             </div>
 
             <div class="row g-4 mb-5">
                 <div class="col-lg-6 reveal reveal-left">
-                    <div class="glass-premium p-5 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="d-flex align-items-start gap-3 mb-4">
                             <div class="rounded-3 bg-success bg-opacity-10 p-3">
                                 <i class="fas fa-robot fa-2x text-success"></i>
                             </div>
                             <div>
-                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_automation_title">Smart
+                                <h3 class="h4 fw-bold text-primary mb-2" data-i18n="solution_automation_title">Smart
                                     Automation</h3>
                                 <p class="text-secondary mb-0" data-i18n="solution_automation_desc">
                                     Automate repetitive tasks with AI-powered detection and classification. GERDA AI
@@ -392,13 +422,13 @@
                 </div>
 
                 <div class="col-lg-6 reveal reveal-right">
-                    <div class="glass-premium p-5 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="d-flex align-items-start gap-4 mb-4">
                             <div class="rounded-3 bg-primary bg-opacity-10 p-3">
                                 <i class="fas fa-layer-group fa-2x text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_multitenant_title">
+                                <h3 class="h4 fw-bold text-primary mb-2" data-i18n="solution_multitenant_title">
                                     The Enterprise Hub</h3>
                                 <p class="text-secondary mb-0" data-i18n="solution_multitenant_desc">
                                     Experience adaptive multi-tenancy. Four distinct industries—Government,
@@ -416,9 +446,9 @@
                                     data-i18n="solution_multitenant_point2">Desgoffe, Whitman, Liberty &
                                     Hennessey</span>
                             </li>
-                            <li>
-                                <a href="https://ticket-masala-demos.fly.dev/"
-                                    class="btn btn-primary btn-glow px-4 py-2"
+                            <li class="d-flex align-items-center gap-2"><i
+                                    class="fas fa-check-circle text-success"></i><a
+                                    href="https://ticket-masala-demos.fly.dev/" class="text-primary fw-bold"
                                     data-i18n="solution_multitenant_point3">Launch the Ecosystem</a>
                             </li>
                         </ul>
@@ -428,13 +458,13 @@
 
             <div class="row g-4">
                 <div class="col-lg-6 reveal reveal-left">
-                    <div class="glass-premium p-5 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="d-flex align-items-start gap-4 mb-4">
                             <div class="rounded-3 bg-warning bg-opacity-10 p-3">
                                 <i class="fas fa-route fa-2x text-warning"></i>
                             </div>
                             <div>
-                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_routing_title">Intelligent
+                                <h3 class="h4 fw-bold text-primary mb-2" data-i18n="solution_routing_title">Intelligent
                                     Routing</h3>
                                 <p class="text-secondary mb-0" data-i18n="solution_routing_desc">
                                     GERDA AI scores cases by complexity and financial impact, then assigns them to the
@@ -457,13 +487,13 @@
                 </div>
 
                 <div class="col-lg-6 reveal reveal-right">
-                    <div class="glass-premium p-5 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier h-100 interactive-lift">
                         <div class="d-flex align-items-start gap-4 mb-4">
                             <div class="rounded-3 bg-info bg-opacity-10 p-3">
                                 <i class="fas fa-cogs fa-2x text-info"></i>
                             </div>
                             <div>
-                                <h3 class="h4 fw-bold text-dark mb-2" data-i18n="solution_workflow_title">End-to-End
+                                <h3 class="h4 fw-bold text-primary mb-2" data-i18n="solution_workflow_title">End-to-End
                                     Workflow</h3>
                                 <p class="text-secondary mb-0" data-i18n="solution_workflow_desc">
                                     From data ingestion to resolution, track every case through validation, routing,
@@ -493,71 +523,161 @@
         <div class="container position-relative z-1">
             <div class="text-center mb-5 reveal">
                 <span
-                    class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3 fw-bold">Architecture</span>
-                <h2 class="display-5 fw-bold text-dark mb-3">
+                    class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-sm mb-3 fw-bold">Architecture</span>
+                <h2 class="display-5 fw-bold text-primary mb-3">
                     <span data-i18n="how_title">One Core.</span>
                     <span class="text-gradient-primary" data-i18n="how_title_2">Infinite Skins.</span>
                 </h2>
             </div>
 
-            <!-- Architecture Diagram -->
+            <!-- Interactive Demos Grid -->
             <div class="row justify-content-center">
-                <div class="col-lg-10 reveal">
-                    <div class="position-relative py-5">
-                        <div class="row g-4 align-items-center justify-content-center text-center">
-                            <!-- Core -->
-                            <div class="col-12 mb-5">
+                <div class="col-lg-12">
+                    <div class="row g-4 justify-content-center">
+
+                        <!-- Tenant A: Desgoffe -->
+                        <div class="col-lg-6 reveal reveal-left">
+                            <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none text-primary">
                                 <div
-                                    class="glass-premium d-inline-block p-4 rounded-4 position-relative interactive-glow">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="rounded-pill bg-primary bg-opacity-10 p-2">
-                                            <i class="fas fa-microchip fa-2x text-primary"></i>
+                                    class="card-dossier h-100 position-relative border-start border-5 border-success interactive-lift">
+                                    <div class="d-flex justify-content-between align-items-start mb-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="rounded-circle bg-success bg-opacity-10 p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 48px; height: 48px;">
+                                                <i class="fas fa-university text-success fa-lg"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 fw-bold text-primary mb-0"
+                                                    style="font-family: 'Rajdhani'">
+                                                    Ville de Desgoffe</h3>
+                                                <div class="small text-muted text-uppercase fw-bold">Node A</div>
+                                            </div>
                                         </div>
-                                        <div class="text-start">
-                                            <div class="h5 fw-bold mb-0">Ticket Masala Core</div>
-                                            <div class="small text-secondary">Generic .NET 10 Engine</div>
-                                        </div>
+                                        <div
+                                            class="badge-premium text-success bg-success bg-opacity-10 border-success border-opacity-25">
+                                            Français</div>
+                                    </div>
+                                    <p class="text-secondary mb-4 small">
+                                        <strong>The Bureaucratic Engine.</strong> Old-world charm meets state authority.
+                                        Noise complaints, permits, and the meticulous Mayor.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-2 text-success small fw-bold">
+                                        <span class="badge bg-surface text-primary border-structural">Port 8091</span>
+                                        <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Tenants Staggered Reveal -->
-                            <div class="col-md-3 reveal reveal-left">
-                                <div class="glass-premium p-3 rounded-4 border-top border-4 interactive-lift"
-                                    style="border-color: #5D3A5D !important;">
-                                    <div class="small fw-bold text-uppercase text-muted mb-2">Government</div>
-                                    <div class="h6 fw-bold">Desgoffe</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 reveal" style="transition-delay: 0.1s;">
-                                <div class="glass-premium p-3 rounded-4 border-top border-4 interactive-lift"
-                                    style="border-color: #004B87 !important;">
-                                    <div class="small fw-bold text-uppercase text-muted mb-2">Infrastructure</div>
-                                    <div class="h6 fw-bold">Whitman</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 reveal" style="transition-delay: 0.2s;">
-                                <div class="glass-premium p-3 rounded-4 border-top border-4 interactive-lift"
-                                    style="border-color: #2F3131 !important;">
-                                    <div class="small fw-bold text-uppercase text-muted mb-2">Tech</div>
-                                    <div class="h6 fw-bold">Liberty</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 reveal reveal-right" style="transition-delay: 0.3s;">
-                                <div class="glass-premium p-3 rounded-4 border-top border-4 interactive-lift"
-                                    style="border-color: #75AADB !important;">
-                                    <div class="small fw-bold text-uppercase text-muted mb-2">Research</div>
-                                    <div class="h6 fw-bold">Hennessey</div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
+
+                        <!-- Tenant B: Whitman -->
+                        <div class="col-lg-6 reveal" style="transition-delay: 0.1s;">
+                            <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none text-primary">
+                                <div
+                                    class="card-dossier h-100 position-relative border-start border-5 border-info interactive-lift">
+                                    <div class="d-flex justify-content-between align-items-start mb-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="rounded-circle bg-info bg-opacity-10 p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 48px; height: 48px;">
+                                                <i class="fas fa-train text-info fa-lg"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 fw-bold text-primary mb-0"
+                                                    style="font-family: 'Rajdhani'">
+                                                    Whitman Spoor</h3>
+                                                <div class="small text-muted text-uppercase fw-bold">Node B</div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="badge-premium text-info bg-info bg-opacity-10 border-info border-opacity-25">
+                                            Nederlands</div>
+                                    </div>
+                                    <p class="text-secondary mb-4 small">
+                                        <strong>The Industrial Nervous System.</strong> Steel, schedules, and safety.
+                                        Track repairs, broken switches, and gloved technicians.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-2 text-success small fw-bold">
+                                        <span class="badge bg-surface text-primary border-structural">Port 8092</span>
+                                        <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Tenant C: Liberty -->
+                        <div class="col-lg-6 reveal" style="transition-delay: 0.2s;">
+                            <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none text-primary">
+                                <div
+                                    class="card-dossier h-100 position-relative border-start border-5 border-warning interactive-lift">
+                                    <div class="d-flex justify-content-between align-items-start mb-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="rounded-circle bg-warning bg-opacity-10 p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 48px; height: 48px;">
+                                                <i class="fas fa-microchip text-warning fa-lg"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 fw-bold text-primary mb-0"
+                                                    style="font-family: 'Rajdhani'">
+                                                    Liberty Systems</h3>
+                                                <div class="small text-muted text-uppercase fw-bold">Node C</div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="badge-premium text-warning bg-warning bg-opacity-10 border-warning border-opacity-25">
+                                            English</div>
+                                    </div>
+                                    <p class="text-secondary mb-4 small">
+                                        <strong>The Agile Loom.</strong> Code, caffeine, and continuous integration.
+                                        Bug reports, pull requests, and root cause analysis.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-2 text-success small fw-bold">
+                                        <span class="badge bg-surface text-primary border-structural">Port 8093</span>
+                                        <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Tenant D: Hennessey -->
+                        <div class="col-lg-6 reveal reveal-right" style="transition-delay: 0.3s;">
+                            <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none text-primary">
+                                <div
+                                    class="card-dossier h-100 position-relative border-start border-5 border-secondary interactive-lift">
+                                    <div class="d-flex justify-content-between align-items-start mb-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="rounded-circle bg-secondary bg-opacity-10 p-2 d-flex align-items-center justify-content-center"
+                                                style="width: 48px; height: 48px;">
+                                                <i class="fas fa-graduation-cap text-secondary fa-lg"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="h5 fw-bold text-primary mb-0"
+                                                    style="font-family: 'Rajdhani'">
+                                                    Fonds Hennessey</h3>
+                                                <div class="small text-muted text-uppercase fw-bold">Node D</div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="badge-premium text-secondary bg-secondary bg-opacity-10 border-secondary border-opacity-25">
+                                            Academic</div>
+                                    </div>
+                                    <p class="text-secondary mb-4 small">
+                                        <strong>The Ivory Tower.</strong> Grants, governance, and prestige.
+                                        Research proposals, budget reviews, and Project Jaguar Shark.
+                                    </p>
+                                    <div class="d-flex align-items-center gap-2 text-success small fw-bold">
+                                        <span class="badge bg-surface text-primary border-structural">Port 8094</span>
+                                        <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="row g-5 align-items-center mt-5">
                 <div class="col-lg-6 reveal reveal-left">
-                    <h3 class="h3 fw-bold text-dark mb-4" data-i18n="arch_dotnet_title">Full .NET Stack</h3>
+                    <h3 class="h3 fw-bold text-primary mb-4" data-i18n="arch_dotnet_title">Full .NET Stack</h3>
                     <p class="text-secondary mb-4 lead" data-i18n="arch_dotnet_desc">
                         Built entirely on <strong>.NET 10</strong> with Blazor for rich, interactive UIs. A modular
                         monolith architecture that combines the simplicity of a single deployment with the flexibility
@@ -574,7 +694,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 reveal reveal-right">
-                    <div class="glass-premium p-4 rounded-4 code-window">
+                    <div class="card-dossier rounded-sm code-window">
                         <div class="d-flex gap-2 mb-3">
                             <span class="rounded-circle" style="width: 10px; height: 10px; background: #ff5f56;"></span>
                             <span class="rounded-circle" style="width: 10px; height: 10px; background: #ffbd2e;"></span>
@@ -596,33 +716,33 @@
 
             <div class="row g-4 mt-5">
                 <div class="col-md-3 reveal" style="transition-delay: 0.1s;">
-                    <div class="text-center p-4 interactive-lift h-100 glass-premium rounded-4">
+                    <div class="text-center p-4 interactive-lift h-100 card-dossier">
                         <div class="h2 text-primary mb-3"><i class="fas fa-cubes"></i></div>
-                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_plugin_title">Universal Entities</h4>
+                        <h4 class="h6 fw-bold text-primary mb-2" data-i18n="arch_plugin_title">Universal Entities</h4>
                         <p class="small text-secondary mb-0" data-i18n="arch_plugin_desc">Tickets & Projects mapped to
                             any business domain</p>
                     </div>
                 </div>
                 <div class="col-md-3 reveal" style="transition-delay: 0.2s;">
-                    <div class="text-center p-4 interactive-lift h-100 glass-premium rounded-4">
+                    <div class="text-center p-4 interactive-lift h-100 card-dossier">
                         <div class="h2 text-accent mb-3"><i class="fas fa-file-code"></i></div>
-                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_config_title">Config-Driven</h4>
+                        <h4 class="h6 fw-bold text-primary mb-2" data-i18n="arch_config_title">Config-Driven</h4>
                         <p class="small text-secondary mb-0" data-i18n="arch_config_desc">All business logic defined in
                             YAML</p>
                     </div>
                 </div>
                 <div class="col-md-3 reveal" style="transition-delay: 0.3s;">
-                    <div class="text-center p-4 interactive-lift h-100 glass-premium rounded-4">
+                    <div class="text-center p-4 interactive-lift h-100 card-dossier">
                         <div class="h2 text-success mb-3"><i class="fas fa-brain"></i></div>
-                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_sidecar_title">GERDA AI Core</h4>
+                        <h4 class="h6 fw-bold text-primary mb-2" data-i18n="arch_sidecar_title">GERDA AI Core</h4>
                         <p class="small text-secondary mb-0" data-i18n="arch_sidecar_desc">Embedded entity routing agent
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3 reveal" style="transition-delay: 0.4s;">
-                    <div class="text-center p-4 interactive-lift h-100 glass-premium rounded-4">
+                    <div class="text-center p-4 interactive-lift h-100 card-dossier">
                         <div class="h2 text-info mb-3"><i class="fas fa-users"></i></div>
-                        <h4 class="h6 fw-bold text-dark mb-2" data-i18n="arch_tenant_title">True Multi-Tenancy</h4>
+                        <h4 class="h6 fw-bold text-primary mb-2" data-i18n="arch_tenant_title">True Multi-Tenancy</h4>
                         <p class="small text-secondary mb-0" data-i18n="arch_tenant_desc">Isolation with custom branding
                         </p>
                     </div>
@@ -637,8 +757,9 @@
     <section class="section-spacer position-relative overflow-hidden" id="testimonials">
         <div class="container">
             <div class="text-center mb-5 reveal">
-                <h2 class="display-5 fw-bold text-dark mb-3"><span data-i18n="voices_title">Voices of the</span> <span
-                        class="text-gradient-primary" data-i18n="voices_title_2">Ecosystem</span></h2>
+                <h2 class="display-5 fw-bold text-primary mb-3"><span data-i18n="voices_title">Voices of the</span>
+                    <span class="text-gradient-primary" data-i18n="voices_title_2">Ecosystem</span>
+                </h2>
                 <p class="text-secondary lead mx-auto" style="max-width: 600px;" data-i18n="voices_subtitle">
                     Trusted by leaders across every dimension.
                 </p>
@@ -647,12 +768,12 @@
             <div class="row g-4">
                 <!-- Desgoffe -->
                 <div class="col-md-4 reveal reveal-left">
-                    <div class="glass-premium testimonial-card desgoffe p-4 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier testimonial-card desgoffe h-100 interactive-lift">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="rounded-circle bg-light border d-flex align-items-center justify-content-center fw-bold text-secondary shadow-sm"
+                            <div class="rounded-circle bg-surface-elevated border-structural d-flex align-items-center justify-content-center fw-bold text-secondary shadow-sm"
                                 style="width: 50px; height: 50px; font-family: 'Archer', serif;">BG</div>
                             <div>
-                                <div class="fw-bold text-dark">Bourgmestre Gustave</div>
+                                <div class="fw-bold text-primary">Bourgmestre Gustave</div>
                                 <div class="small text-muted">Ville de Desgoffe</div>
                             </div>
                         </div>
@@ -663,12 +784,12 @@
 
                 <!-- Whitman -->
                 <div class="col-md-4 reveal" style="transition-delay: 0.1s;">
-                    <div class="glass-premium testimonial-card whitman p-4 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier testimonial-card whitman h-100 interactive-lift">
                         <div class="d-flex align-items-center gap-3 mb-4">
                             <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold shadow-sm"
                                 style="width: 50px; height: 50px; font-family: 'Oswald', sans-serif;">JW</div>
                             <div>
-                                <div class="fw-bold text-dark">Jack Whitman</div>
+                                <div class="fw-bold text-primary">Jack Whitman</div>
                                 <div class="small text-muted">Whitman Spoor</div>
                             </div>
                         </div>
@@ -679,12 +800,12 @@
 
                 <!-- Hennessey -->
                 <div class="col-md-4 reveal reveal-right" style="transition-delay: 0.2s;">
-                    <div class="glass-premium testimonial-card hennessey p-4 rounded-4 h-100 interactive-lift">
+                    <div class="card-dossier testimonial-card hennessey h-100 interactive-lift">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center fw-bold shadow-sm"
+                            <div class="rounded-circle bg-info text-dark d-flex align-items-center justify-content-center fw-bold shadow-sm"
                                 style="width: 50px; height: 50px; font-family: 'Garamond', serif;">EO</div>
                             <div>
-                                <div class="fw-bold text-dark">Eleanor Oseary</div>
+                                <div class="fw-bold text-primary">Eleanor Oseary</div>
                                 <div class="small text-muted">Fonds Hennessey</div>
                             </div>
                         </div>
@@ -703,7 +824,7 @@
                 <div class="col-md-4">
                     <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-3">
                         <img src="images/logo.png" alt="Ticket Masala" height="24" class="opacity-75">
-                        <div class="fw-bold text-dark h5 mb-0" style="font-family: 'Rajdhani'">Ticket Masala</div>
+                        <div class="fw-bold text-dark h5 mb-0">Ticket Masala</div>
                     </div>
                     <p class="small text-secondary mb-0">
                         &copy; 2024 Garamatic. Open Source.
@@ -961,6 +1082,39 @@
         };
 
         let currentLang = 'en';
+
+        function setTheme(themeName) {
+            // Set data-attribute on body
+            document.body.setAttribute('data-theme', themeName);
+
+            // Update Hero Text Dynamically
+            const heroTitle1 = document.querySelector('[data-i18n="hero_title_1"]'); // "Orchestrate Your"
+            const heroTitle2 = document.querySelector('[data-i18n="hero_title_2"]'); // "Digital Empire"
+            const heroDesc1 = document.querySelector('[data-i18n="hero_desc_1"]');
+
+            if (themeName === 'desgoffe') {
+                if (heroTitle1) heroTitle1.innerText = "Governing The";
+                if (heroTitle2) heroTitle2.innerText = "Municipality";
+                if (heroDesc1) heroDesc1.innerText = "Efficient bureaucracy compliant with protocol v3.0. Digital sovereignty for the modern state.";
+            } else if (themeName === 'whitman') {
+                if (heroTitle1) heroTitle1.innerText = "Maintaining The";
+                if (heroTitle2) heroTitle2.innerText = "Tracks";
+                if (heroDesc1) heroDesc1.innerText = "Heavy infrastructure management with zero latency. Safety signals and scheduling in real-time.";
+            } else if (themeName === 'liberty') {
+                if (heroTitle1) heroTitle1.innerText = "Deploying The";
+                if (heroTitle2) heroTitle2.innerText = "Future";
+                if (heroDesc1) heroDesc1.innerText = "Agile workflows for high-velocity dev teams. CI/CD pipelines compliant with your caffeine intake.";
+            } else if (themeName === 'hennessey') {
+                if (heroTitle1) heroTitle1.innerText = "Securing The";
+                if (heroTitle2) heroTitle2.innerText = "Grant";
+                if (heroDesc1) heroDesc1.innerText = "Research proposals, budget reviews, and peer-reviewed workflow automation.";
+            } else {
+                // Reset to default (English) - ideally we should check currentLang but for demo purposes:
+                if (heroTitle1) heroTitle1.innerText = "Orchestrate Your";
+                if (heroTitle2) heroTitle2.innerText = "Digital Empire";
+                if (heroDesc1) heroDesc1.innerText = "Stop drowning in chaos. Unify support, projects, and autonomous intelligence into one";
+            }
+        }
 
         function setLang(lang) {
             currentLang = lang;

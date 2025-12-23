@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Gustave H.",
+    "role": "Meticulous Administrator",
+    "tenant": "Desgoffe",
+    "avatar": "assets/avatars/desgoffe/gustave.png"
+  },
+  {
+    "name": "Alice Whitman",
+    "role": "Safety Manager",
+    "tenant": "Whitman",
+    "avatar": "assets/avatars/whitman/alice.png"
+  },
+  {
+    "name": "Roebuck Wright",
+    "role": "Lead Developer",
+    "tenant": "Liberty",
+    "avatar": "assets/avatars/liberty/roebuck.png"
+  },
+  {
+    "name": "Steve Zissou",
+    "role": "Lead Researcher",
+    "tenant": "Hennessey",
+    "avatar": "assets/avatars/hennessey/steve.png"
+  }
+]

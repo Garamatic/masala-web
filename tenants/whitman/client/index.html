@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Meldpunt Spoor - Whitman Spoor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="../whitman.png" alt="Whitman Spoor" class="logo" loading="lazy">
+            <h1 class="main-title">MELDPUNT SPOOR</h1>
+            <p class="subtitle">VEILIGHEID • SNELHEID • BETROUWBAARHEID</p>
+        </header>
+
+        <main class="main-content">
+            <div class="alert-banner">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>NOODGEVAL?</strong> Bel direct: <a href="tel:+3225550200">+32 2 555 02 00</a>
+            </div>
+
+            <form id="reportForm" class="report-form">
+                <!-- Type Selection -->
+                <div class="form-section">
+                    <label class="section-label">TYPE INTERVENTIE</label>
+                    <div class="button-grid">
+                        <button type="button" class="option-btn" data-type="DEFECT">
+                            <i class="fas fa-wrench"></i>
+                            <span>DEFECTE WISSEL</span>
+                        </button>
+                        <button type="button" class="option-btn" data-type="HAZARD">
+                            <i class="fas fa-warning"></i>
+                            <span>GEVAAR</span>
+                        </button>
+                        <button type="button" class="option-btn" data-type="MAINTENANCE">
+                            <i class="fas fa-tools"></i>
+                            <span>ONDERHOUD</span>
+                        </button>
+                        <button type="button" class="option-btn" data-type="OTHER">
+                            <i class="fas fa-ellipsis-h"></i>
+                            <span>ANDERE</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="interventionType" name="interventionType" required>
+                </div>
+
+                <!-- Location -->
+                <div class="form-section">
+                    <label class="section-label">LOCATIE</label>
+                    <div class="location-group">
+                        <input type="text" id="location" name="location" placeholder="Bijv: Schaarbeek Station, Spoor 3"
+                            required>
+                        <button type="button" id="getLocationBtn" class="icon-btn">
+                            <i class="fas fa-crosshairs"></i>
+                            <span>MIJN LOCATIE</span>
+                        </button>
+                    </div>
+                    <div id="locationStatus" class="location-status"></div>
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                </div>
+
+                <!-- Photo Upload -->
+                <div class="form-section">
+                    <label class="section-label">FOTO</label>
+                    <div class="photo-upload">
+                        <input type="file" id="photo" name="photo" accept="image/*" capture="environment">
+                        <label for="photo" class="photo-btn">
+                            <i class="fas fa-camera"></i>
+                            <span id="photoLabel">FOTO NEMEN</span>
+                        </label>
+                        <div id="photoPreview" class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="form-section">
+                    <label class="section-label" for="description">BESCHRIJVING</label>
+                    <textarea id="description" name="description" rows="4" required
+                        placeholder="Beschrijf het probleem kort en duidelijk..."></textarea>
+                </div>
+
+                <!-- Priority -->
+                <div class="form-section">
+                    <label class="section-label">URGENTIE</label>
+                    <div class="priority-buttons">
+                        <button type="button" class="priority-btn" data-priority="5">
+                            <i class="fas fa-circle"></i>
+                            <span>NORMAAL</span>
+                        </button>
+                        <button type="button" class="priority-btn" data-priority="10">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>URGENT</span>
+                        </button>
+                        <button type="button" class="priority-btn priority-critical" data-priority="15">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>KRITIEK</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="priority" name="priority" value="5" required>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="form-section">
+                    <label class="section-label">UW GEGEVENS</label>
+                    <input type="text" id="reporterName" name="reporterName" placeholder="Naam" required>
+                    <input type="email" id="reporterEmail" name="reporterEmail" placeholder="E-mail" required>
+                    <input type="tel" id="reporterPhone" name="reporterPhone" placeholder="Telefoon (optioneel)">
+                </div>
+
+                <!-- Submit -->
+                <div class="form-section">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>MELDING VERZENDEN</span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                <div class="spinner"></div>
+                <p>VERZENDEN...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>WHITMAN SPOOR NV © 2025</p>
+            <p>24/7 NOODLIJN: +32 2 555 02 00</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

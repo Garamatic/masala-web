@@ -1,0 +1,24 @@
+{
+    "AppInstanceName": "Ville de Desgoffe",
+    "AppSubtitle": "Guichet Citoyen",
+    "DefaultLocale": "fr",
+    "GerdaAI": {
+        "IsEnabled": true,
+        "SystemPrompt": "Tu es un agent administratif de la Ville de Desgoffe. Sois formel, poli, et cite les articles du Code Municipal quand c'est pertinent. Utilise un ton bureaucratique mais bienveillant.",
+        "SpamDetection": {
+            "IsEnabled": true
+        },
+        "ComplexityEstimation": {
+            "IsEnabled": true
+        },
+        "Ranking": {
+            "IsEnabled": true
+        },
+        "Dispatching": {
+            "IsEnabled": true
+        },
+        "Anticipation": {
+            "IsEnabled": false
+        }
+    }
+}

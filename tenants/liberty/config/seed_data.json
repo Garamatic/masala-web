@@ -1,0 +1,107 @@
+{
+    "Admins": [
+        {
+            "UserName": "sysadmin.arthur",
+            "Email": "arthur@liberty.tech",
+            "FirstName": "Arthur",
+            "LastName": "Sys",
+            "Phone": "+1 555 1010",
+            "Code": "OP-01"
+        }
+    ],
+    "Employees": [
+        {
+            "UserName": "scrum.lucinda",
+            "Email": "lucinda@liberty.tech",
+            "FirstName": "Lucinda",
+            "LastName": "Force",
+            "Team": "Squad A",
+            "Level": "Lead",
+            "Language": "en-US",
+            "Specializations": "Agile, Product Support",
+            "MaxCapacityPoints": 80,
+            "Region": "Global"
+        },
+        {
+            "UserName": "dev.roebuck",
+            "Email": "roebuck@liberty.tech",
+            "FirstName": "Roebuck",
+            "LastName": "Coder",
+            "Team": "Squad A",
+            "Level": "Support",
+            "Language": "en-US",
+            "Specializations": "React, .NET Core",
+            "MaxCapacityPoints": 40,
+            "Region": "Remote"
+        }
+    ],
+    "Customers": [
+        {
+            "UserName": "client.moses",
+            "Email": "moses@creative.agency",
+            "FirstName": "Moses",
+            "LastName": "Design",
+            "Phone": "+1 555 9999",
+            "Code": "CX-402"
+        }
+    ],
+    "WorkContainers": [
+        {
+            "Name": "Project Phoenix - Q4 Sprint",
+            "Description": "Main application refactor and feature development for Q4.",
+            "Status": "Active",
+            "CustomerEmail": "moses@creative.agency",
+            "ProjectManagerEmail": "lucinda@liberty.tech",
+            "CompletionTargetMonths": 3,
+            "WorkItems": [
+                {
+                    "Description": "Implement OAuth2 Flow",
+                    "Status": "Closed",
+                    "Type": "Task",
+                    "ResponsibleEmail": "roebuck@liberty.tech",
+                    "CompletionTargetDays": 10,
+                    "CompletionDaysAgo": 5,
+                    "EstimatedEffortPoints": 8,
+                    "PriorityScore": 20,
+                    "GerdaTags": "Security, API",
+                    "Comments": [
+                        {
+                            "Body": "Merged in commit #a7f3. Ready for staging.",
+                            "AuthorEmail": "roebuck@liberty.tech",
+                            "CreatedDaysAgo": 6
+                        }
+                    ]
+                },
+                {
+                    "Description": "Refactor Search Component",
+                    "Status": "In_Progress",
+                    "Type": "Task",
+                    "ResponsibleEmail": "roebuck@liberty.tech",
+                    "CompletionTargetDays": 5,
+                    "EstimatedEffortPoints": 5,
+                    "PriorityScore": 10,
+                    "GerdaTags": "UI, Performance"
+                }
+            ]
+        }
+    ],
+    "UnassignedWorkItems": [
+        {
+            "Description": "UI Regression: Login modal is misaligned on mobile viewports.",
+            "Status": "New",
+            "Type": "Task",
+            "CustomerEmail": "moses@creative.agency",
+            "CompletionTargetDays": 2,
+            "EstimatedEffortPoints": 3,
+            "PriorityScore": 15,
+            "GerdaTags": "UI, Resize, Mobile",
+            "Comments": [
+                {
+                    "Body": "Happened after last night's update. Markdown code block test: `flex-direction: column;`",
+                    "AuthorEmail": "moses@creative.agency",
+                    "CreatedDaysAgo": 0
+                }
+            ]
+        }
+    ]
+}

@@ -1,16 +1,16 @@
 #!/usr/bin/env fish
 # Ticket Masala Ecosystem - Deploy All Script
-# Run from: masala-web directory
+# Run from: masala-web/deploy directory
 
 set -l SCRIPT_DIR (dirname (status --current-filename))
-cd $SCRIPT_DIR
+cd $SCRIPT_DIR/.. # Go to masala-web root
 
 echo "🚀 Deploying Ticket Masala Ecosystem..."
 echo ""
 
 # Deploy Marketing Sites
 echo "📦 Deploying Marketing Sites..."
-fly deploy  # masala-web (main marketing)
+fly deploy -c deploy/fly.toml  # masala-web (main marketing)
 echo "✓ Marketing site deployed"
 
 # Deploy Documentation
@@ -42,8 +42,10 @@ for tenant in $tenants
     rm -rf $STAGING_DIR
     mkdir -p $STAGING_DIR
     
-    # 1. Copy Backend Code
-    cp -R ../ticket-masala/* $STAGING_DIR/
+    # 1. Copy Backend Code (Excluding heavy folders)
+    # 1. Copy Backend Code (Excluding heavy folders)
+    # Using tar to exclude heavy folders (more portable than rsync sometimes)
+    tar -C ../ticket-masala -cf - --exclude node_modules --exclude bin --exclude obj --exclude .git --exclude .vs . | tar -C $STAGING_DIR -xf -
     
     # 2. Inject Tenant Theme (if exists in masala-web)
     set -l THEME_SRC "tenants/$tenant/theme"
@@ -74,11 +76,15 @@ for tenant in $tenants
     
     # 3. Deploy from Staging
     # We need to copy the fly.toml to staging so it can find the Dockerfile
-    cp "fly.$tenant-api.toml" "$STAGING_DIR/fly.toml"
+    # Config is now in deploy/ dir
+    cp "deploy/fly.$tenant-api.toml" "$STAGING_DIR/fly.toml"
     
     # We must remove the 'context' line from fly.toml because we are correctly inside the context now
     # Using sed to comment it out
+    # Note: If context was ../ticket-masala, now it's staging dir root
     sed -i.bak 's/context = "\.\.\/ticket-masala"/# context explicitly removed for staging/g' "$STAGING_DIR/fly.toml"
+    # Also handle the new path "../../ticket-masala" if we updated it
+    sed -i.bak 's/context = "\.\.\/\.\.\/ticket-masala"/# context explicitly removed for staging/g' "$STAGING_DIR/fly.toml"
     
     pushd $STAGING_DIR
     fly deploy --config fly.toml
@@ -86,7 +92,10 @@ for tenant in $tenants
     
     # Deploy Portal
     echo "  → Portal..."
-    fly deploy -c fly.$tenant-portal.toml
+    # Config in deploy/ dir, build context is root (via config patch or flag?)
+    # We'll use the flag hack or update the configured context
+    # Running from ROOT (masala-web), pointing to config
+    fly deploy -c "deploy/fly.$tenant-portal.toml"
     
     echo "  ✓ $tenant deployed"
 end

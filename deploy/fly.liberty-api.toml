@@ -1,17 +1,17 @@
-app = "ticket-masala-api-whitman"
+app = "ticket-masala-api-liberty"
 primary_region = "ams"
 
 [build]
-context = "../ticket-masala"
+context = "../../ticket-masala"
 dockerfile = "Dockerfile"
 
 [env]
 ASPNETCORE_ENVIRONMENT = "Production"
-MASALA_TENANT_ID = "whitman"
+MASALA_TENANT_ID = "liberty"
 MASALA_DB_PATH = "/data/masala.db"
 
 [mounts]
-source = "masala_data_whitman"
+source = "masala_data_liberty"
 destination = "/data"
 
 [http_service]

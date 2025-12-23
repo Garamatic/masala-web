@@ -33,6 +33,18 @@
             "Specializations": "Nuisances Sonores, Voirie",
             "MaxCapacityPoints": 30,
             "Region": "Desgoffe-Nord"
+        },
+        {
+            "UserName": "gerda.system",
+            "Email": "gerda@ticketmasala.ai",
+            "FirstName": "GERDA",
+            "LastName": "AI",
+            "Team": "System Core",
+            "Level": "Lead",
+            "Language": "fr-BE",
+            "Specializations": "Sentiment Analysis, Routing",
+            "MaxCapacityPoints": 999,
+            "Region": "Global"
         }
     ],
     "Customers": [
@@ -100,6 +112,11 @@
                     "Body": "C'est la troisième nuit blanche consécutive! Le niveau de bruit est illégal. Si vos services n'interviennent pas immédiatement, je contacterai la presse et mon avocat dès demain matin. C'est une incompétence totale de la ville!",
                     "AuthorEmail": "villeneuve@charity.org",
                     "CreatedDaysAgo": 0
+                },
+                {
+                    "Body": "🤖 **Analyse GERDA**: Sentiment Négatif Détecté (Confidence: 98%). Mots-clés: 'Presse', 'Avocat'. Ticket escaladé au niveau 'Risque Politique'.",
+                    "AuthorEmail": "gerda@ticketmasala.ai",
+                    "CreatedDaysAgo": 0
                 }
             ]
         },
@@ -113,6 +130,22 @@
             "PriorityScore": 10,
             "GerdaTags": "Urbanisme, Routine",
             "Comments": []
+        }
+    ],
+    "KnowledgeBaseArticles": [
+        {
+            "Title": "Guide: Permis d'Urbanisme",
+            "Content": "Tout projet de modification de façade ou d'extension nécessite un permis.\n\n**Documents Requis:**\n1. Plan cadastral\n2. Photographies de l'état existant\n3. Note descriptive des travaux\n\nDélai de traitement: 30 jours ouvrables.",
+            "Tags": "Urbanisme, Permis, Citoyen",
+            "AuthorEmail": "serge@desgoffe.gov",
+            "CreatedDaysAgo": 30
+        },
+        {
+            "Title": "Code de Déontologie",
+            "Content": "Les agents de la Ville de Desgoffe doivent faire preuve de neutralité et de probité.\n\n**Principes:**\n* Impartialité\n* Confidentialité\n* Respect du citoyen",
+            "Tags": "Interne, RH, Politique",
+            "AuthorEmail": "serge@desgoffe.gov",
+            "CreatedDaysAgo": 60
         }
     ]
 }

@@ -33,6 +33,18 @@
             "Specializations": "Signalisatie, Elektronica",
             "MaxCapacityPoints": 60,
             "Region": "Brussel-Noord"
+        },
+        {
+            "UserName": "gerda.system",
+            "Email": "gerda@ticketmasala.ai",
+            "FirstName": "GERDA",
+            "LastName": "AI",
+            "Team": "System Core",
+            "Level": "Lead",
+            "Language": "nl-BE",
+            "Specializations": "Routing, Safety Protocol",
+            "MaxCapacityPoints": 999,
+            "Region": "Global"
         }
     ],
     "Customers": [
@@ -100,8 +112,29 @@
                     "Body": "Wisselmechanisme reageert niet op commando's vanuit seinhuis. Verwarmingselement lijkt defect. Verkeer L36 volledig geblokkeerd richting Leuven. Prioriteit A++.",
                     "AuthorEmail": "alice@nmbs-sncb.be",
                     "CreatedDaysAgo": 0
+                },
+                {
+                    "Body": "🤖 **GERDA Log**: Winterplan Actief (< 0°C). Trefwoorden 'Wissel', 'Bevroren'. Automatische toewijzing aan **Brussel-Noord** (Mobiele Brigade) aanbevolen.",
+                    "AuthorEmail": "gerda@ticketmasala.ai",
+                    "CreatedDaysAgo": 0
                 }
             ]
+        }
+    ],
+    "KnowledgeBaseArticles": [
+        {
+            "Title": "Winter Plan Protocols (Level 2)",
+            "Content": "**Trigger:** Temperature forecast < -2°C for > 4 hours.\n\n**Actions:**\n1. Activate switch heaters on main lines (L36, L25).\n2. Deploy mobile brigades to strategic junctions.\n3. Increase interval between trains to 15 mins if visibility < 100m.",
+            "Tags": "Winter, Infra, Safety",
+            "AuthorEmail": "peter@whitman.infra",
+            "CreatedDaysAgo": 45
+        },
+        {
+            "Title": "Signal Box Maintenance Manual",
+            "Content": "Standard operating procedure for Siemens/Alstom signal boxes.\n\n**Maintenance Checklist:**\n* Inspect relays for carbon buildup.\n* Verify voltage stability (24V DC).\n* Test emergency override functionality.",
+            "Tags": "Technical, Maintenance, Hardware",
+            "AuthorEmail": "peter@whitman.infra",
+            "CreatedDaysAgo": 90
         }
     ]
 }

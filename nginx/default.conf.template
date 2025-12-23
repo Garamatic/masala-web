@@ -1,17 +1,17 @@
 server {
     listen 8080;
     server_name localhost;
+    absolute_redirect off;
+    port_in_redirect off;
     
     error_log /dev/stderr debug;
     access_log /dev/stdout;
 
-    # Root is specific to the tenant ID passed via env var
     root /usr/share/nginx/html/tenants/${MASALA_TENANT_ID};
-    index client/index.html;
 
-    # Redirect root to /client/ to ensure relative paths (like ../logo.png) work correctly
+    # Redirect root to the client index file
     location = / {
-        return 301 /client/;
+        return 301 /client/index.html;
     }
 
     location / {

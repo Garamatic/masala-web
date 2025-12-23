@@ -33,6 +33,18 @@
             "Specializations": "React, .NET Core",
             "MaxCapacityPoints": 40,
             "Region": "Remote"
+        },
+        {
+            "UserName": "gerda.system",
+            "Email": "gerda@ticketmasala.ai",
+            "FirstName": "GERDA",
+            "LastName": "AI",
+            "Team": "System Core",
+            "Level": "Lead",
+            "Language": "en-US",
+            "Specializations": "Pattern Matching",
+            "MaxCapacityPoints": 999,
+            "Region": "Global"
         }
     ],
     "Customers": [
@@ -100,6 +112,11 @@
                     "Body": "I cannot access the dashboard. Getting a white screen with 500 error since 10am.",
                     "AuthorEmail": "moses@creative.agency",
                     "CreatedDaysAgo": 0
+                },
+                {
+                    "Body": "🤖 **GERDA Insight**: Possible Duplicate detected. This issue matches 2 other incoming tickets (Similarity: 92%). Pattern: 'Login 500 Error'. Grouping recommended.",
+                    "AuthorEmail": "gerda@ticketmasala.ai",
+                    "CreatedDaysAgo": 0
                 }
             ]
         },
@@ -124,6 +141,22 @@
             "PriorityScore": 45,
             "GerdaTags": "Performance, Login",
             "Comments": []
+        }
+    ],
+    "KnowledgeBaseArticles": [
+        {
+            "Title": "Coding Standards 2025",
+            "Content": "**Backend:** C# 10, Minimal APIs\n**Frontend:** React 18, Functional Components\n\n**Code Review:**\nAll PRs require 2 approvals. Unit test coverage must remain > 85%.",
+            "Tags": "Dev, Process, Quality",
+            "AuthorEmail": "lucinda@liberty.tech",
+            "CreatedDaysAgo": 10
+        },
+        {
+            "Title": "Deployment Checklist (Prod)",
+            "Content": "Before merging to main:\n1. Verify database migrations can rollback.\n2. Check Fly.io secrets are synced.\n3. Run smoke tests on Staging environment.",
+            "Tags": "DevOps, Release, Process",
+            "AuthorEmail": "lucinda@liberty.tech",
+            "CreatedDaysAgo": 20
         }
     ]
 }

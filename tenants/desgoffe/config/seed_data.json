@@ -87,21 +87,32 @@
     ],
     "UnassignedWorkItems": [
         {
-            "Description": "Nuisance Sonore: Le coq du voisin viole la paix à 04:00 AM.",
+            "Description": "URGENT: Nuisance Sonore Insupportable - Bar 'Le Tapageur'",
+            "Status": "New",
+            "Type": "Incident",
+            "CustomerEmail": "villeneuve@charity.org",
+            "CompletionTargetDays": 1,
+            "EstimatedEffortPoints": 8,
+            "PriorityScore": 85,
+            "GerdaTags": "Sentiment:Negative, Risque_Politique, Tranquillité",
+            "Comments": [
+                {
+                    "Body": "C'est la troisième nuit blanche consécutive! Le niveau de bruit est illégal. Si vos services n'interviennent pas immédiatement, je contacterai la presse et mon avocat dès demain matin. C'est une incompétence totale de la ville!",
+                    "AuthorEmail": "villeneuve@charity.org",
+                    "CreatedDaysAgo": 0
+                }
+            ]
+        },
+        {
+            "Description": "Demande de Permis: Extension Véranda",
             "Status": "New",
             "Type": "Task",
             "CustomerEmail": "villeneuve@charity.org",
-            "CompletionTargetDays": 3,
+            "CompletionTargetDays": 30,
             "EstimatedEffortPoints": 5,
-            "PriorityScore": 15,
-            "GerdaTags": "Tranquillité, Animaux",
-            "Comments": [
-                {
-                    "Body": "C'est inacceptable. Je demande une intervention immédiate du Service de la Tranquillité.",
-                    "AuthorEmail": "villeneuve@charity.org",
-                    "CreatedDaysAgo": 1
-                }
-            ]
+            "PriorityScore": 10,
+            "GerdaTags": "Urbanisme, Routine",
+            "Comments": []
         }
     ]
 }

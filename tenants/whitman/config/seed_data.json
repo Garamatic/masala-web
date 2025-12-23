@@ -87,17 +87,17 @@
     ],
     "UnassignedWorkItems": [
         {
-            "Description": "Defecte Wissel #42 - Schaarbeek. Wissel blokkeert bij vriesweer.",
+            "Description": "CRITICAL: Wissel #42 Bevroren - Lijn 36 (Schaarbeek)",
             "Status": "New",
-            "Type": "Task",
+            "Type": "Incident",
             "CustomerEmail": "alice@nmbs-sncb.be",
             "CompletionTargetDays": 1,
-            "EstimatedEffortPoints": 34,
-            "PriorityScore": 50,
-            "GerdaTags": "Storing, Kritiek, Winter",
+            "EstimatedEffortPoints": 40,
+            "PriorityScore": 95,
+            "GerdaTags": "Winter_Plan, Infra, Critical_Safety",
             "Comments": [
                 {
-                    "Body": "Treinverkeer naar Leuven ondervindt ernstige vertragingen.",
+                    "Body": "Wisselmechanisme reageert niet op commando's vanuit seinhuis. Verwarmingselement lijkt defect. Verkeer L36 volledig geblokkeerd richting Leuven. Prioriteit A++.",
                     "AuthorEmail": "alice@nmbs-sncb.be",
                     "CreatedDaysAgo": 0
                 }

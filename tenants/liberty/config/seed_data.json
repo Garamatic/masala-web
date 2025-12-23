@@ -87,21 +87,43 @@
     ],
     "UnassignedWorkItems": [
         {
-            "Description": "UI Regression: Login modal is misaligned on mobile viewports.",
+            "Description": "BUG: Login fails with 500 Error after deployment",
             "Status": "New",
-            "Type": "Task",
+            "Type": "Bug",
             "CustomerEmail": "moses@creative.agency",
-            "CompletionTargetDays": 2,
-            "EstimatedEffortPoints": 3,
-            "PriorityScore": 15,
-            "GerdaTags": "UI, Resize, Mobile",
+            "CompletionTargetDays": 1,
+            "EstimatedEffortPoints": 5,
+            "PriorityScore": 50,
+            "GerdaTags": "Login, Critical, Regression",
             "Comments": [
                 {
-                    "Body": "Happened after last night's update. Markdown code block test: `flex-direction: column;`",
+                    "Body": "I cannot access the dashboard. Getting a white screen with 500 error since 10am.",
                     "AuthorEmail": "moses@creative.agency",
                     "CreatedDaysAgo": 0
                 }
             ]
+        },
+        {
+            "Description": "Urgent: Cannot sign in to portal",
+            "Status": "New",
+            "Type": "Bug",
+            "CustomerEmail": "moses@creative.agency",
+            "CompletionTargetDays": 1,
+            "EstimatedEffortPoints": 5,
+            "PriorityScore": 50,
+            "GerdaTags": "Auth, Blocker",
+            "Comments": []
+        },
+        {
+            "Description": "System Down? Login page spinning forever",
+            "Status": "New",
+            "Type": "Bug",
+            "CustomerEmail": "moses@creative.agency",
+            "CompletionTargetDays": 1,
+            "EstimatedEffortPoints": 5,
+            "PriorityScore": 45,
+            "GerdaTags": "Performance, Login",
+            "Comments": []
         }
     ]
 }

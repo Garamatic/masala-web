@@ -2,7 +2,7 @@
 // Form submission and validation logic
 
 // Configuration
-const API_BASE_URL = 'http://localhost:5000'; // Update this to match your backend URL
+const API_BASE_URL = 'https://ticket-masala-api-desgoffe.fly.dev'; // Production URL
 const API_ENDPOINT = `${API_BASE_URL}/api/portal/submit`;
 
 // Character counter for description

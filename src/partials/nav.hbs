@@ -1,0 +1,136 @@
+<nav class="fixed top-0 w-full z-50 py-3 transition-all" id="navbar" aria-label="Main Navigation">
+    <div class="container mx-auto px-4">
+        <div class="glass-panel rounded-sm px-3 md:px-4 py-2 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 no-underline" aria-label="Ticket Masala Home">
+                <img src="images/logo.png" alt="" class="block h-[42px] w-auto">
+                <span class="font-bold text-primary text-2xl">Ticket Masala</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden lg:flex items-center gap-4 list-none mb-0 pl-0">
+                <li><a href="#features" class="nav-link-custom text-sm no-underline"
+                        data-i18n="nav_features">Features</a></li>
+                <li><a href="#solutions" class="nav-link-custom text-sm no-underline"
+                        data-i18n="nav_solutions">Solutions</a></li>
+                <li><a href="https://masala-doc.fly.dev" class="nav-link-custom text-sm no-underline" data-i18n="nav_docs" target="_blank" rel="noopener">Docs</a></li>
+            </ul>
+
+            <!-- Desktop Actions -->
+            <div class="hidden lg:flex gap-2">
+                <!-- Language Switcher (CSS hover) -->
+                <div class="relative group">
+                    <button class="btn btn-sm btn-glass rounded-sm px-3 flex items-center gap-1" type="button"
+                        aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-globe mr-1" aria-hidden="true"></i> <span id="current-lang">EN</span>
+                    </button>
+                    <ul class="absolute right-0 mt-2 w-32 hidden group-hover:block bg-surface-elevated shadow-lg border border-structural rounded-md p-0 list-none z-50"
+                        role="menu">
+                        <li><button class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface"
+                                onclick="setLang('en')" role="menuitem">English</button></li>
+                        <li><button class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface"
+                                onclick="setLang('nl')" role="menuitem">Nederlands</button></li>
+                        <li><button class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface"
+                                onclick="setLang('fr')" role="menuitem">Français</button></li>
+                    </ul>
+                </div>
+
+                <!-- Theme Switcher (CSS hover) -->
+                <div class="relative group">
+                    <button class="btn btn-sm btn-glass rounded-sm px-3 flex items-center gap-1" type="button"
+                        aria-expanded="false" aria-haspopup="true">
+                        <i class="fas fa-palette mr-1" aria-hidden="true"></i> <span
+                            class="hidden xl:inline">Theme</span>
+                    </button>
+                    <ul class="absolute right-0 mt-2 w-56 hidden group-hover:block bg-surface-elevated shadow-lg border border-structural rounded-md p-0 list-none z-50"
+                        role="menu">
+                        <li>
+                            <span class="px-4 py-2 text-xs text-muted uppercase font-bold block">Select Skin</span>
+                        </li>
+                        <li><button
+                                class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface flex items-center gap-2"
+                                onclick="setTheme('default')" role="menuitem"><span
+                                    class="rounded-full w-2.5 h-2.5 bg-[#4CAF50]"></span> Ticket Masala (Core)</button>
+                        </li>
+                        <li><button
+                                class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface flex items-center gap-2"
+                                onclick="setTheme('desgoffe')" role="menuitem"><span
+                                    class="rounded-full w-2.5 h-2.5 bg-[#2C3E50]"></span> Desgoffe (Gov)</button></li>
+                        <li><button
+                                class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface flex items-center gap-2"
+                                onclick="setTheme('whitman')" role="menuitem"><span
+                                    class="rounded-full w-2.5 h-2.5 bg-[#FFB703]"></span> Whitman (Rail)</button></li>
+                        <li><button
+                                class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface flex items-center gap-2"
+                                onclick="setTheme('liberty')" role="menuitem"><span
+                                    class="rounded-full w-2.5 h-2.5 bg-[#7B2CBF]"></span> Liberty (Tech)</button></li>
+                        <li><button
+                                class="dropdown-item text-sm w-full text-left px-4 py-2 hover:bg-surface flex items-center gap-2"
+                                onclick="setTheme('hennessey')" role="menuitem"><span
+                                    class="rounded-full w-2.5 h-2.5 bg-[#00A896]"></span> Hennessey (Lab)</button></li>
+                    </ul>
+                </div>
+                <a href="#architecture" class="btn btn-sm btn-glass rounded-sm px-3 flex items-center no-underline">
+                    <i class="fas fa-desktop mr-1" aria-hidden="true"></i> Live Demos
+                </a>
+                <a href="https://github.com/garamatic/ticket-masala"
+                    class="btn btn-sm btn-glow rounded-sm px-3 flex items-center no-underline">
+                    <i class="fab fa-github mr-1" aria-hidden="true"></i> Star
+                </a>
+            </div>
+
+            <!-- Mobile Actions -->
+            <div class="flex lg:hidden gap-2">
+                <a href="#architecture" class="btn btn-sm btn-glow rounded-sm px-3 flex items-center"
+                    aria-label="Demos">
+                    <i class="fas fa-desktop" aria-hidden="true"></i>
+                </a>
+                <button class="btn btn-sm btn-glass rounded-sm px-3 flex items-center" type="button"
+                    data-toggle="offcanvas" data-target="#mobileMenu" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Offcanvas -->
+<aside class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="p-4 border-b border-structural flex justify-between items-center">
+        <h2 class="text-lg font-bold flex items-center gap-2" id="mobileMenuLabel">
+            <img src="images/logo.png" alt="" class="h-6 w-auto">
+            <span>Ticket Masala</span>
+        </h2>
+        <button type="button" class="btn-close" data-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="p-4">
+        <nav class="flex flex-col gap-3" aria-label="Mobile Navigation">
+            <a href="#features" class="nav-link-custom no-underline" data-i18n="nav_features">Features</a>
+            <a href="#solutions" class="nav-link-custom no-underline" data-i18n="nav_solutions">Solutions</a>
+            <a href="https://masala-doc.fly.dev" class="nav-link-custom no-underline" data-i18n="nav_docs" target="_blank" rel="noopener">Docs</a>
+        </nav>
+        <hr class="my-4 border-structural">
+
+        <!-- Mobile Language Switcher -->
+        <div class="dropdown">
+            <button class="btn btn-sm btn-glass rounded-sm px-3 w-full flex items-center justify-between" type="button"
+                data-toggle="dropdown" aria-expanded="false">
+                <span><i class="fas fa-globe mr-2" aria-hidden="true"></i> <span
+                        id="current-lang-mobile">EN</span></span>
+                <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu w-full mt-2 bg-surface-elevated border border-structural rounded-md p-0 list-none">
+                <li><button class="dropdown-item w-full text-left px-4 py-2" onclick="setLang('en')">English</button>
+                </li>
+                <li><button class="dropdown-item w-full text-left px-4 py-2" onclick="setLang('nl')">Nederlands</button>
+                </li>
+                <li><button class="dropdown-item w-full text-left px-4 py-2" onclick="setLang('fr')">Français</button>
+                </li>
+            </ul>
+        </div>
+
+        <a href="https://github.com/garamatic/ticket-masala"
+            class="btn btn-glass rounded-sm px-3 mt-4 w-full flex items-center justify-center no-underline">
+            <i class="fab fa-github mr-2" aria-hidden="true"></i> Star on GitHub
+        </a>
+    </div>
+</aside>

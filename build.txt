@@ -1,0 +1,6 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+time="2025-12-23T12:19:03+01:00" level=error msg="Can't add file /Users/juanbenjumea/coding/projects/garamatic/masala-web/.git/objects/f5/251c2277d285156db2967909d1e608ac62ef2a to tar: io: read/write on closed pipe"
+time="2025-12-23T12:19:03+01:00" level=error msg="Can't close tar writer: io: read/write on closed pipe"

@@ -1,0 +1,41 @@
+{
+  "name": "masala-web",
+  "version": "1.0.0",
+  "description": "This is the standalone marketing homepage for Ticket Masala.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "format": "prettier --write \"src/**/*.{js,css,hbs}\"",
+    "format:check": "prettier --check \"src/**/*.{js,css,hbs}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Garamatic/masala-web.git"
+  },
+  "keywords": [
+    "ticket-masala",
+    "workflow",
+    "ai",
+    "multi-tenant"
+  ],
+  "author": "Garamatic",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Garamatic/masala-web/issues"
+  },
+  "homepage": "https://github.com/Garamatic/masala-web#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.2.0",
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}

@@ -1,47 +1,83 @@
 # Ticket Masala Marketing Site
 
-This is the standalone marketing homepage for Ticket Masala.
+The standalone marketing homepage for Ticket Masala - an intelligent workflow orchestration platform.
 
-## Purpose
+## Quick Start
 
-Separate commercial/marketing site that showcases Ticket Masala features without being part of tenant deployments.
+```bash
+# Install dependencies
+npm install
 
-## Structure
+# Start dev server (http://localhost:3000)
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Project Structure
 
 ```
-marketing-site/
-├── index.html          # Main homepage
-├── css/                # Copied from main app
-├── images/             # Logos and assets
-└── README.md           # This file
+masala-web/
+├── index.html              # Main entry point
+├── src/
+│   ├── main.js             # JavaScript entry (imports CSS + logic)
+│   ├── input.css           # Tailwind CSS with all styles
+│   └── partials/           # Handlebars templates
+│       ├── nav.hbs
+│       ├── hero.hbs
+│       ├── features.hbs
+│       ├── solutions.hbs
+│       ├── architecture.hbs
+│       ├── testimonials.hbs
+│       └── footer.hbs
+├── images/                 # Logos and assets
+├── vite.config.js          # Vite configuration
+├── tailwind.config.js      # Tailwind configuration
+└── postcss.config.js       # PostCSS configuration
 ```
+
+## Tech Stack
+
+- **Build**: Vite 5
+- **CSS**: Tailwind CSS 3.4 with custom design tokens
+- **Templates**: Handlebars partials
+- **Fonts**: Space Grotesk, Inter, JetBrains Mono
+
+## Features
+
+- 🎨 **Multi-theme support**: 5 distinct visual themes (Core, Desgoffe, Whitman, Liberty, Hennessey)
+- 🌐 **i18n**: Complete translations for EN, NL, FR
+- ♿ **Accessible**: Skip links, ARIA attributes, focus states
+- 📱 **Responsive**: Mobile-first design with offcanvas navigation
+- ⚡ **Fast**: ~560ms build time, optimized assets
 
 ## Deployment
 
-This can be deployed separately as a static site to:
-- GitHub Pages
-- Netlify
-- Vercel
-- Any static hosting
-
-## Development
+### Fly.io (Current)
 
 ```bash
-# Serve locally
-python -m http.server 8000
-
-# Or use any static file server
-npx serve .
+fly deploy
 ```
 
-## Links
+### Static Hosting
 
-- **Live Demos**: Links to `tenants/site/demos.html`
-- **Documentation**: Links to MkDocs site
-- **GitHub**: Repository link
+Build and deploy `dist/` to:
 
-## vs. Tenant Apps
+- Netlify
+- Vercel
+- GitHub Pages
+- Any static host
 
-The tenant applications (`government`, `software-dev`, `rail-infrastructure`, `science`) redirect their root routes directly to login pages and do NOT show this marketing content.
+## Environment
 
-This keeps commercial messaging separate from production deployments.
+- Node.js 18+
+- npm 9+
+
+## Related Projects
+
+- [Ticket Masala Core](https://github.com/garamatic/ticket-masala) - Main application
+- [Documentation](https://ticket-masala-docs.fly.dev) - MkDocs site

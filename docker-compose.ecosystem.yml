@@ -17,9 +17,7 @@ services:
       - "5081:8080" # Maps to localhost:5081
 
   portal-desgoffe:
-    build:
-      context: .
-      dockerfile: Dockerfile.tenant
+    image: ghcr.io/garamatic/ticket-masala-portal:latest
     container_name: masala_portal_desgoffe
     environment:
       - MASALA_TENANT_ID=desgoffe
@@ -42,9 +40,7 @@ services:
       - "5082:8080"
 
   portal-whitman:
-    build:
-      context: .
-      dockerfile: Dockerfile.tenant
+    image: ghcr.io/garamatic/ticket-masala-portal:latest
     container_name: masala_portal_whitman
     environment:
       - MASALA_TENANT_ID=whitman
@@ -67,9 +63,7 @@ services:
       - "5083:8080"
 
   portal-liberty:
-    build:
-      context: .
-      dockerfile: Dockerfile.tenant
+    image: ghcr.io/garamatic/ticket-masala-portal:latest
     container_name: masala_portal_liberty
     environment:
       - MASALA_TENANT_ID=liberty
@@ -92,9 +86,7 @@ services:
       - "5084:8080"
 
   portal-hennessey:
-    build:
-      context: .
-      dockerfile: Dockerfile.tenant
+    image: ghcr.io/garamatic/ticket-masala-portal:latest
     container_name: masala_portal_hennessey
     environment:
       - MASALA_TENANT_ID=hennessey

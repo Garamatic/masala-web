@@ -2,7 +2,7 @@ app = "ticket-masala-portal-whitman"
 primary_region = "ams"
 
 [build]
-dockerfile = "Dockerfile.tenant"
+  image = "ghcr.io/garamatic/ticket-masala-portal:latest"
 
 [env]
 MASALA_TENANT_ID = "whitman"

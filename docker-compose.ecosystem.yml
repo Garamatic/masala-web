@@ -5,9 +5,7 @@ services:
   # 🏛️ DESGOFFE (GOVERNMENT)
   # ════════════════════════════════════════════════════════════
   api-desgoffe:
-    build:
-      context: ../ticket-masala
-      dockerfile: Dockerfile
+    image: ghcr.io/garamatic/ticket-masala:latest
     container_name: masala_api_desgoffe
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
@@ -34,9 +32,7 @@ services:
   # 🚂 WHITMAN (INFRASTRUCTURE)
   # ════════════════════════════════════════════════════════════
   api-whitman:
-    build:
-      context: ../ticket-masala
-      dockerfile: Dockerfile
+    image: ghcr.io/garamatic/ticket-masala:latest
     container_name: masala_api_whitman
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
@@ -61,9 +57,7 @@ services:
   # 💻 LIBERTY (TECH)
   # ════════════════════════════════════════════════════════════
   api-liberty:
-    build:
-      context: ../ticket-masala
-      dockerfile: Dockerfile
+    image: ghcr.io/garamatic/ticket-masala:latest
     container_name: masala_api_liberty
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
@@ -88,9 +82,7 @@ services:
   # 🔬 HENNESSEY (RESEARCH)
   # ════════════════════════════════════════════════════════════
   api-hennessey:
-    build:
-      context: ../ticket-masala
-      dockerfile: Dockerfile
+    image: ghcr.io/garamatic/ticket-masala:latest
     container_name: masala_api_hennessey
     environment:
       - ASPNETCORE_ENVIRONMENT=Production

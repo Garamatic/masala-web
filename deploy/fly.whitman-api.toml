@@ -2,8 +2,7 @@ app = "ticket-masala-api-whitman"
 primary_region = "ams"
 
 [build]
-context = "../../ticket-masala"
-dockerfile = "Dockerfile"
+  image = "ghcr.io/garamatic/ticket-masala:latest"
 
 [env]
 ASPNETCORE_ENVIRONMENT = "Production"

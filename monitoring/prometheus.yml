@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'ticket-masala-tenants'
+    static_configs:
+      - targets: 
+        - 'api-desgoffe:8080'
+        - 'api-whitman:8080'
+        - 'api-liberty:8080'
+        - 'api-hennessey:8080'
+    metrics_path: '/metrics'
+
+  - job_name: 'gatekeeper-api'
+    static_configs:
+      - targets: ['gatekeeper:8080']
+    metrics_path: '/metrics'

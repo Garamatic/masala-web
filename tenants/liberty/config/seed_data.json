@@ -18,8 +18,32 @@
             "Team": "Squad A",
             "Level": "Lead",
             "Language": "en-US",
-            "Specializations": "Agile, Product Support",
+            "Specializations": "Agile, Product Support, Incident Command",
             "MaxCapacityPoints": 80,
+            "Region": "Global"
+        },
+        {
+            "UserName": "sre.miles",
+            "Email": "miles@liberty.tech",
+            "FirstName": "Miles",
+            "LastName": "O'Brien",
+            "Team": "Platform Engineering",
+            "Level": "Expert",
+            "Language": "en-US",
+            "Specializations": "Kubernetes, Fly.io, Terraform",
+            "MaxCapacityPoints": 60,
+            "Region": "Dublin"
+        },
+        {
+            "UserName": "sec.sarah",
+            "Email": "sarah@liberty.tech",
+            "FirstName": "Sarah",
+            "LastName": "Connor",
+            "Team": "Security Audit",
+            "Level": "Lead",
+            "Language": "en-US",
+            "Specializations": "Pentesting, Compliance, RBAC",
+            "MaxCapacityPoints": 50,
             "Region": "Global"
         },
         {
@@ -42,7 +66,7 @@
             "Team": "System Core",
             "Level": "Lead",
             "Language": "en-US",
-            "Specializations": "Pattern Matching",
+            "Specializations": "Anomaly Detection, Log Analysis, SLO Tracking",
             "MaxCapacityPoints": 999,
             "Region": "Global"
         }
@@ -55,108 +79,106 @@
             "LastName": "Design",
             "Phone": "+1 555 9999",
             "Code": "CX-402"
+        },
+        {
+            "UserName": "cto.viktoria",
+            "Email": "viktoria@heavy-metal.io",
+            "FirstName": "Viktoria",
+            "LastName": "Steel",
+            "Phone": "+1 555 7777",
+            "Code": "VIP-01"
         }
     ],
     "WorkContainers": [
         {
-            "Name": "Project Phoenix - Q4 Sprint",
-            "Description": "Main application refactor and feature development for Q4.",
+            "Name": "Operation 'Phoenix' - Cloud Migration",
+            "Description": "Zero-downtime migration of the production cluster from AWS to Fly.io for performance optimization.",
             "Status": "Active",
-            "CustomerEmail": "moses@creative.agency",
+            "CustomerEmail": "viktoria@heavy-metal.io",
             "ProjectManagerEmail": "lucinda@liberty.tech",
             "CompletionTargetMonths": 3,
             "WorkItems": [
                 {
-                    "Description": "Implement OAuth2 Flow",
+                    "Description": "Terraform State Migration & Provider Update",
                     "Status": "Closed",
                     "Type": "Task",
-                    "ResponsibleEmail": "roebuck@liberty.tech",
-                    "CompletionTargetDays": 10,
-                    "CompletionDaysAgo": 5,
-                    "EstimatedEffortPoints": 8,
-                    "PriorityScore": 20,
-                    "GerdaTags": "Security, API",
+                    "ResponsibleEmail": "miles@liberty.tech",
+                    "CompletionTargetDays": 5,
+                    "CompletionDaysAgo": 8,
+                    "EstimatedEffortPoints": 13,
+                    "PriorityScore": 15,
+                    "GerdaTags": "Infra, Automation",
                     "Comments": [
                         {
-                            "Body": "Merged in commit #a7f3. Ready for staging.",
-                            "AuthorEmail": "roebuck@liberty.tech",
-                            "CreatedDaysAgo": 6
+                            "Body": "State file locked and successfully migrated to the new backend. No drift detected.",
+                            "AuthorEmail": "miles@liberty.tech",
+                            "CreatedDaysAgo": 9
                         }
                     ]
                 },
                 {
-                    "Description": "Refactor Search Component",
+                    "Description": "Security Audit of RBAC Policies (New Region)",
                     "Status": "In_Progress",
                     "Type": "Task",
-                    "ResponsibleEmail": "roebuck@liberty.tech",
-                    "CompletionTargetDays": 5,
-                    "EstimatedEffortPoints": 5,
-                    "PriorityScore": 10,
-                    "GerdaTags": "UI, Performance"
+                    "ResponsibleEmail": "sarah@liberty.tech",
+                    "CompletionTargetDays": 7,
+                    "EstimatedEffortPoints": 8,
+                    "PriorityScore": 12,
+                    "GerdaTags": "Compliance, Security",
+                    "Comments": [
+                        {
+                            "Body": "Found 3 orphan service accounts. Need cleanup before production rollout.",
+                            "AuthorEmail": "sarah@liberty.tech",
+                            "CreatedDaysAgo": 1
+                        },
+                        {
+                            "Body": "🤖 **GERDA Insights**: Potential privilege escalation path detected in 'Deployment-Bot' role. Similarity to CVE-2024-XXXX: 88%. Audit recommended for secret exposure.",
+                            "AuthorEmail": "gerda@ticketmasala.ai",
+                            "CreatedDaysAgo": 0
+                        }
+                    ]
                 }
             ]
         }
     ],
     "UnassignedWorkItems": [
         {
-            "Description": "BUG: Login fails with 500 Error after deployment",
+            "Description": "CRITICAL: Latency Spike - API Gateway (p99 > 8s)",
             "Status": "New",
-            "Type": "Bug",
+            "Type": "Incident",
             "CustomerEmail": "moses@creative.agency",
             "CompletionTargetDays": 1,
-            "EstimatedEffortPoints": 5,
-            "PriorityScore": 50,
-            "GerdaTags": "Login, Critical, Regression",
+            "EstimatedEffortPoints": 21,
+            "PriorityScore": 88,
+            "GerdaTags": "Performance, Blocker, Production",
             "Comments": [
                 {
-                    "Body": "I cannot access the dashboard. Getting a white screen with 500 error since 10am.",
+                    "Body": "Our design team is unable to upload assets. The API is timing out constantly. This is blocking our client delivery.",
                     "AuthorEmail": "moses@creative.agency",
                     "CreatedDaysAgo": 0
                 },
                 {
-                    "Body": "🤖 **GERDA Insight**: Possible Duplicate detected. This issue matches 2 other incoming tickets (Similarity: 92%). Pattern: 'Login 500 Error'. Grouping recommended.",
+                    "Body": "🤖 **GERDA Anomaly Engine**: Traffic wave detected from IP 192.x.x.x. Correlated with database lock in 'assets_table'. Autoscaling group reached max capacity. Suggesting immediate cache warmup for region 'ams'.",
                     "AuthorEmail": "gerda@ticketmasala.ai",
                     "CreatedDaysAgo": 0
                 }
             ]
-        },
-        {
-            "Description": "Urgent: Cannot sign in to portal",
-            "Status": "New",
-            "Type": "Bug",
-            "CustomerEmail": "moses@creative.agency",
-            "CompletionTargetDays": 1,
-            "EstimatedEffortPoints": 5,
-            "PriorityScore": 50,
-            "GerdaTags": "Auth, Blocker",
-            "Comments": []
-        },
-        {
-            "Description": "System Down? Login page spinning forever",
-            "Status": "New",
-            "Type": "Bug",
-            "CustomerEmail": "moses@creative.agency",
-            "CompletionTargetDays": 1,
-            "EstimatedEffortPoints": 5,
-            "PriorityScore": 45,
-            "GerdaTags": "Performance, Login",
-            "Comments": []
         }
     ],
     "KnowledgeBaseArticles": [
         {
-            "Title": "Coding Standards 2025",
-            "Content": "**Backend:** C# 10, Minimal APIs\n**Frontend:** React 18, Functional Components\n\n**Code Review:**\nAll PRs require 2 approvals. Unit test coverage must remain > 85%.",
-            "Tags": "Dev, Process, Quality",
-            "AuthorEmail": "lucinda@liberty.tech",
-            "CreatedDaysAgo": 10
+            "Title": "Fly.io Deployment Best Practices",
+            "Content": "**Core Principles:**\n1. Multi-region deployments are mandatory for tier-1 apps.\n2. Use WireGuard for secure cross-region DB access.\n3. Keep Docker images < 200MB.\n\n**Autoscale Config:**\nAdd `[http_service.concurrency]` to fly.toml with `soft_limit = 20`.",
+            "Tags": "Infra, Deployment, DevOps",
+            "AuthorEmail": "miles@liberty.tech",
+            "CreatedDaysAgo": 15
         },
         {
-            "Title": "Deployment Checklist (Prod)",
-            "Content": "Before merging to main:\n1. Verify database migrations can rollback.\n2. Check Fly.io secrets are synced.\n3. Run smoke tests on Staging environment.",
-            "Tags": "DevOps, Release, Process",
-            "AuthorEmail": "lucinda@liberty.tech",
-            "CreatedDaysAgo": 20
+            "Title": "RBAC Troubleshooting Guide",
+            "Content": "How to debug 'Access Denied' errors in the new portal.\n\n**Steps:**\n* Check user's `OrganizationId` claim.\n* Verify `TenantAdmin` flag in the JWT.\n* Run `just verify-permissions <Email>` in the CLI.",
+            "Tags": "Security, Auth, Support",
+            "AuthorEmail": "sarah@liberty.tech",
+            "CreatedDaysAgo": 30
         }
     ]
 }

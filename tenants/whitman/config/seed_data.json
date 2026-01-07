@@ -23,6 +23,30 @@
             "Region": "Schaarbeek"
         },
         {
+            "UserName": "dispatch.inge",
+            "Email": "inge@whitman.infra",
+            "FirstName": "Inge",
+            "LastName": "De Clercq",
+            "Team": "Centrale Dispatching",
+            "Level": "Lead",
+            "Language": "nl-BE",
+            "Specializations": "Logistiek, Crisismanagement",
+            "MaxCapacityPoints": 80,
+            "Region": "Brussel-Halle-Vilvoorde"
+        },
+        {
+            "UserName": "electro.dirk",
+            "Email": "dirk@whitman.infra",
+            "FirstName": "Dirk",
+            "LastName": "Willems",
+            "Team": "HV-Specialisten",
+            "Level": "Expert",
+            "Language": "nl-BE",
+            "Specializations": "Hoogspanning, Bovenleidingen",
+            "MaxCapacityPoints": 50,
+            "Region": "Vlaams-Brabant"
+        },
+        {
             "UserName": "technicus.jack",
             "Email": "jack@whitman.infra",
             "FirstName": "Jack",
@@ -42,7 +66,7 @@
             "Team": "System Core",
             "Level": "Lead",
             "Language": "nl-BE",
-            "Specializations": "Routing, Safety Protocol",
+            "Specializations": "Predictive Maintenance, Safety Protocol, Weather Correlator",
             "MaxCapacityPoints": 999,
             "Region": "Global"
         }
@@ -55,66 +79,68 @@
             "LastName": "Dubois",
             "Phone": "+32 2 444 99 99",
             "Code": "STA-42"
+        },
+        {
+            "UserName": "verkeersleider.marc",
+            "Email": "marc@infraworld.be",
+            "FirstName": "Marc",
+            "LastName": "Janssens",
+            "Phone": "+32 2 444 11 11",
+            "Code": "VL-101"
         }
     ],
     "WorkContainers": [
         {
-            "Name": "Spoorwegonderhoud Lijn 36",
-            "Description": "Regulier onderhoud en noodherstellingen voor Lijn 36.",
+            "Name": "Operatie 'Wintergrip' - L36N",
+            "Description": "Verscherpt toezicht en preventief onderhoud tijdens de stormperiode op de drukke Lijn 36N.",
             "Status": "Active",
-            "CustomerEmail": "alice@nmbs-sncb.be",
-            "ProjectManagerEmail": "peter@whitman.infra",
-            "CompletionTargetMonths": 6,
+            "CustomerEmail": "marc@infraworld.be",
+            "ProjectManagerEmail": "inge@whitman.infra",
+            "CompletionTargetMonths": 4,
             "WorkItems": [
                 {
-                    "Description": "Gepland Onderhoud Overweg Hasselt",
-                    "Status": "Closed",
-                    "Type": "Task",
-                    "ResponsibleEmail": "technicus.jack",
-                    "CompletionTargetDays": 14,
-                    "CompletionDaysAgo": 30,
-                    "EstimatedEffortPoints": 21,
-                    "PriorityScore": 5,
-                    "GerdaTags": "Onderhoud, Veiligheid",
-                    "Comments": [
-                        {
-                            "Body": "Wisselmechanisme geolied en getest. Alles conform standaard.",
-                            "AuthorEmail": "jack@whitman.infra",
-                            "CreatedDaysAgo": 31
-                        }
-                    ]
-                },
-                {
-                    "Description": "Inspectie Bovenleiding Mechelen",
+                    "Description": "Upgrade Wisselverwarming Herent",
                     "Status": "In_Progress",
                     "Type": "Task",
-                    "ResponsibleEmail": "technicus.jack",
-                    "CompletionTargetDays": 7,
+                    "ResponsibleEmail": "electro.dirk",
+                    "CompletionTargetDays": 10,
                     "EstimatedEffortPoints": 13,
-                    "PriorityScore": 12,
-                    "GerdaTags": "Inspectie, Elektrisch"
+                    "PriorityScore": 25,
+                    "GerdaTags": "Modernisering, Winter_Safe",
+                    "Comments": [
+                        {
+                            "Body": "Installatie van de nieuwe inductie-elementen is 60% klaar. We hebben een extra hoogtewerker nodig.",
+                            "AuthorEmail": "dirk@whitman.infra",
+                            "CreatedDaysAgo": 2
+                        },
+                        {
+                            "Body": "🤖 **Analyse GERDA**: Signalisatie-conflict gedetecteerd. Hoogtewerker inzet blokkeert spoor 2. Automatische aanvraag voor buitendienststelling L36N verstuurd naar Verkeersleiding.",
+                            "AuthorEmail": "gerda@ticketmasala.ai",
+                            "CreatedDaysAgo": 1
+                        }
+                    ]
                 }
             ]
         }
     ],
     "UnassignedWorkItems": [
         {
-            "Description": "CRITICAL: Wissel #42 Bevroren - Lijn 36 (Schaarbeek)",
+            "Description": "CODE ROOD: Koperdiefstal & Signaalbreuk - Diegem (L25)",
             "Status": "New",
             "Type": "Incident",
             "CustomerEmail": "alice@nmbs-sncb.be",
-            "CompletionTargetDays": 1,
-            "EstimatedEffortPoints": 40,
-            "PriorityScore": 95,
-            "GerdaTags": "Winter_Plan, Infra, Critical_Safety",
+            "CompletionTargetDays": 0,
+            "EstimatedEffortPoints": 50,
+            "PriorityScore": 99,
+            "GerdaTags": "Infra_Critical, Safety_Risk, Police_Escort_Required",
             "Comments": [
                 {
-                    "Body": "Wisselmechanisme reageert niet op commando's vanuit seinhuis. Verwarmingselement lijkt defect. Verkeer L36 volledig geblokkeerd richting Leuven. Prioriteit A++.",
+                    "Body": "Volledige blackout van de signalisatie tussen Brussel-Noord en Mechelen. 4 kilometer kabel gestript. Meerdere treinen staan stil op de lijn. Noodscenario stap 1 geactiveerd.",
                     "AuthorEmail": "alice@nmbs-sncb.be",
                     "CreatedDaysAgo": 0
                 },
                 {
-                    "Body": "🤖 **GERDA Log**: Winterplan Actief (< 0°C). Trefwoorden 'Wissel', 'Bevroren'. Automatische toewijzing aan **Brussel-Noord** (Mobiele Brigade) aanbevolen.",
+                    "Body": "🤖 **GERDA Crisis Autopilot**: Kritieke Infrastructuur Falen. Impact: 45.000 pendelaars. Toewijzing aan Dirk Willems (HV-Expert) en Peter Peeters (PLOEGBAAS) met prioriteit A++. Politiebegeleiding aangevraagd via centrale dispatch.",
                     "AuthorEmail": "gerda@ticketmasala.ai",
                     "CreatedDaysAgo": 0
                 }
@@ -123,18 +149,18 @@
     ],
     "KnowledgeBaseArticles": [
         {
-            "Title": "Winter Plan Protocols (Level 2)",
-            "Content": "**Trigger:** Temperature forecast < -2°C for > 4 hours.\n\n**Actions:**\n1. Activate switch heaters on main lines (L36, L25).\n2. Deploy mobile brigades to strategic junctions.\n3. Increase interval between trains to 15 mins if visibility < 100m.",
-            "Tags": "Winter, Infra, Safety",
-            "AuthorEmail": "peter@whitman.infra",
-            "CreatedDaysAgo": 45
+            "Title": "Signaalbox Reanimatie-Protocol",
+            "Content": "Stappenplan bij herstart van Siemens S20 modules na stroomuitval.\n\n**Protocol:**\n1. Isoleer de box van de railstroom.\n2. Controleer de backup-batterijen (stabiliteit 24V).\n3. Sequentiële boot van de logische kaarten (Kaart A t/m F).\n4. Handmatige verificatie van wisselstand #42.",
+            "Tags": "Technisch, Crisis, Hardware",
+            "AuthorEmail": "jack@whitman.infra",
+            "CreatedDaysAgo": 120
         },
         {
-            "Title": "Signal Box Maintenance Manual",
-            "Content": "Standard operating procedure for Siemens/Alstom signal boxes.\n\n**Maintenance Checklist:**\n* Inspect relays for carbon buildup.\n* Verify voltage stability (24V DC).\n* Test emergency override functionality.",
-            "Tags": "Technical, Maintenance, Hardware",
-            "AuthorEmail": "peter@whitman.infra",
-            "CreatedDaysAgo": 90
+            "Title": "Veiligheidsvoorschriften bij Koperherstel",
+            "Content": "**Gevaar:** Restspanning op bovenleidingen.\n\n**Regels:**\n* Nooit werken zonder actieve aarding.\n* Minimaal 2 personen per team.\n* Direct contact met Dispatch Inge De Clercq verplicht elke 30 minuten.",
+            "Tags": "Veiligheid, Infra, Personeel",
+            "AuthorEmail": "inge@whitman.infra",
+            "CreatedDaysAgo": 10
         }
     ]
 }

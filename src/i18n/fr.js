@@ -3,7 +3,7 @@ export default {
     nav_features: "Fonctionnalités",
     nav_solutions: "Solutions",
     nav_docs: "Documentation",
-    
+
     // Hero
     badge_new: "Nouveau",
     hero_intro: "Présentation",
@@ -15,7 +15,24 @@ export default {
     btn_start_trial: "Essai Gratuit",
     btn_view_demos: "Voir Démos",
     btn_explore_demos: "Explorer Démos Live",
-    
+
+    // Contenu hero spécifique au thème
+    theme_desgoffe_hero_title_1: "Gouverner La",
+    theme_desgoffe_hero_title_2: "Municipalité",
+    theme_desgoffe_hero_desc: "Bureaucratie efficace conforme au protocole v3.0. Souveraineté numérique pour l'État moderne.",
+
+    theme_whitman_hero_title_1: "Maintenir Les",
+    theme_whitman_hero_title_2: "Voies",
+    theme_whitman_hero_desc: "Gestion d'infrastructures lourdes sans latence. Signaux de sécurité et planification en temps réel.",
+
+    theme_liberty_hero_title_1: "Déployer Le",
+    theme_liberty_hero_title_2: "Futur",
+    theme_liberty_hero_desc: "Workflows agiles pour les équipes dev à haute vélocité. Pipelines CI/CD conformes à votre consommation de caféine.",
+
+    theme_hennessey_hero_title_1: "Sécuriser La",
+    theme_hennessey_hero_title_2: "Bourse",
+    theme_hennessey_hero_desc: "Propositions de recherche, revues budgétaires et automatisation de workflow revue par les pairs.",
+
     // Features
     features_title_1: "Conçu pour",
     features_title_2: "Équipes Modernes",
@@ -26,7 +43,7 @@ export default {
     feature_workflow_desc: "Constructeur de workflow visuel par glisser-déposer. Connectez les tickets aux commits git, aux déploiements et aux approbations des clients.",
     feature_security_title: "Sécurité Renforcée",
     feature_security_desc: "Contrôle d'accès basé sur les rôles (RBAC), journaux d'audit et options de déploiement auto-hébergé pour garder vos données souveraines.",
-    
+
     // Solutions
     solutions_title: "Solutions",
     solutions_title_2: "Réelles",
@@ -51,7 +68,7 @@ export default {
     solution_workflow_point1: "Portes de validation strictes",
     solution_workflow_point2: "Moteur workflow state machine",
     solution_workflow_point3: "Sync automatique systèmes legacy",
-    
+
     // Architecture
     arch_title: "Construit sur",
     arch_title_2: "Architecture Moderne",
@@ -70,7 +87,7 @@ export default {
     arch_tenant_desc: "Isolation complète avec branding personnalisé",
     how_title: "Un Noyau.",
     how_title_2: "Skins Infinis.",
-    
+
     // Testimonials
     voices_title: "Voix de",
     voices_title_2: "l'Écosystème",

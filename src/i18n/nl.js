@@ -3,7 +3,7 @@ export default {
     nav_features: "Functies",
     nav_solutions: "Oplossingen",
     nav_docs: "Documentatie",
-    
+
     // Hero
     badge_new: "Nieuw",
     hero_intro: "Introductie",
@@ -15,7 +15,24 @@ export default {
     btn_start_trial: "Start Gratis Proef",
     btn_view_demos: "Bekijk Demo's",
     btn_explore_demos: "Ontdek Live Demo's",
-    
+
+    // Thema-specifieke hero content
+    theme_desgoffe_hero_title_1: "Besturen Van De",
+    theme_desgoffe_hero_title_2: "Gemeente",
+    theme_desgoffe_hero_desc: "Efficiënte bureaucratie compliant met protocol v3.0. Digitale soevereiniteit voor de moderne staat.",
+
+    theme_whitman_hero_title_1: "Onderhouden Van De",
+    theme_whitman_hero_title_2: "Sporen",
+    theme_whitman_hero_desc: "Beheer van zware infrastructuur met nul latentie. Veiligheidssignalen en planning in real-time.",
+
+    theme_liberty_hero_title_1: "Implementeren Van De",
+    theme_liberty_hero_title_2: "Toekomst",
+    theme_liberty_hero_desc: "Agile workflows voor high-velocity dev-teams. CI/CD pipelines compliant met uw cafeïne-inname.",
+
+    theme_hennessey_hero_title_1: "Verzekeren Van De",
+    theme_hennessey_hero_title_2: "Beurs",
+    theme_hennessey_hero_desc: "Onderzoeksvoorstellen, budgetbeoordelingen en peer-reviewed workflow-automatisering.",
+
     // Features
     features_title_1: "Gebouwd voor",
     features_title_2: "Moderne Teams",
@@ -26,7 +43,7 @@ export default {
     feature_workflow_desc: "Visuele drag-and-drop workflow bouwer. Verbind tickets aan git commits, deployments en goedkeuringen van klanten.",
     feature_security_title: "IJzersterke Beveiliging",
     feature_security_desc: "Role-based access control (RBAC), audit logs en self-hosted deployment opties houden uw data soeverein.",
-    
+
     // Solutions
     solutions_title: "Praktische",
     solutions_title_2: "Oplossingen",
@@ -51,7 +68,7 @@ export default {
     solution_workflow_point1: "Strikte datavalidatie poorten",
     solution_workflow_point2: "State machine workflow engine",
     solution_workflow_point3: "Geautomatiseerde sync met legacy systemen",
-    
+
     // Architecture
     arch_title: "Gebouwd op",
     arch_title_2: "Moderne Architectuur",
@@ -70,7 +87,7 @@ export default {
     arch_tenant_desc: "Volledige isolatie met aangepaste branding",
     how_title: "Eén Kern.",
     how_title_2: "Oneindige Skins.",
-    
+
     // Testimonials
     voices_title: "Stemmen uit het",
     voices_title_2: "Ecosysteem",

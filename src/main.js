@@ -8,7 +8,8 @@ import './input.css';
 // Components
 import { initReveal } from './components/reveal.js';
 import { initNavbar } from './components/navbar.js';
-import { initInteractions } from './components/interactions.js';
+import { initDropdowns } from './components/dropdown.js';
+import { initOffcanvas } from './components/offcanvas.js';
 import { setTheme } from './components/theme.js';
 import { setLang } from './i18n/index.js';
 
@@ -19,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all modules
     initReveal();
     initNavbar();
-    initInteractions();
-    
+    initDropdowns();
+    initOffcanvas();
+
     // Set default language
     setLang('en');
 });

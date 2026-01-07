@@ -3,7 +3,7 @@ export default {
     nav_features: "Features",
     nav_solutions: "Solutions",
     nav_docs: "Docs",
-    
+
     // Hero
     badge_new: "New",
     hero_intro: "Introducing",
@@ -15,7 +15,24 @@ export default {
     btn_start_trial: "Start Free Trial",
     btn_view_demos: "View Demos",
     btn_explore_demos: "Explore Live Demos",
-    
+
+    // Theme-specific hero content
+    theme_desgoffe_hero_title_1: "Governing The",
+    theme_desgoffe_hero_title_2: "Municipality",
+    theme_desgoffe_hero_desc: "Efficient bureaucracy compliant with protocol v3.0. Digital sovereignty for the modern state.",
+
+    theme_whitman_hero_title_1: "Maintaining The",
+    theme_whitman_hero_title_2: "Tracks",
+    theme_whitman_hero_desc: "Heavy infrastructure management with zero latency. Safety signals and scheduling in real-time.",
+
+    theme_liberty_hero_title_1: "Deploying The",
+    theme_liberty_hero_title_2: "Future",
+    theme_liberty_hero_desc: "Agile workflows for high-velocity dev teams. CI/CD pipelines compliant with your caffeine intake.",
+
+    theme_hennessey_hero_title_1: "Securing The",
+    theme_hennessey_hero_title_2: "Grant",
+    theme_hennessey_hero_desc: "Research proposals, budget reviews, and peer-reviewed workflow automation.",
+
     // Features
     features_title_1: "Built for",
     features_title_2: "Modern Teams",
@@ -26,7 +43,7 @@ export default {
     feature_workflow_desc: "Visual drag-and-drop workflow builder. Connect tickets to git commits, deployments, and customer approvals.",
     feature_security_title: "Ironclad Security",
     feature_security_desc: "Role-based access control (RBAC), audit logs, and self-hosted deployment options keep your data sovereign.",
-    
+
     // Solutions
     solutions_title: "Real-World",
     solutions_title_2: "Solutions",
@@ -51,7 +68,7 @@ export default {
     solution_workflow_point1: "Strict data validation gates",
     solution_workflow_point2: "State machine workflow engine",
     solution_workflow_point3: "Automated sync with legacy systems",
-    
+
     // Architecture
     arch_title: "Built on",
     arch_title_2: "Modern Architecture",
@@ -70,7 +87,7 @@ export default {
     arch_tenant_desc: "Complete isolation with custom branding",
     how_title: "One Core.",
     how_title_2: "Infinite Skins.",
-    
+
     // Testimonials
     voices_title: "Voices of the",
     voices_title_2: "Ecosystem",

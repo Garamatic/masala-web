@@ -2,7 +2,7 @@ import en from './en.js';
 import nl from './nl.js';
 import fr from './fr.js';
 
-const translations = { en, nl, fr };
+export const translations = { en, nl, fr };
 let currentLang = 'en';
 
 /**

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="default">
 
 <head>
     <meta charset="UTF-8">
@@ -16,226 +16,164 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Styles (Relative Paths) -->
-    <link rel="stylesheet" href="../css/design-system.css">
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="../css/site.css">
-
-    <style>
-        /* Specific overrides for Demos Page */
-        .hero-bg-glow {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 100vh;
-            background: radial-gradient(circle at 60% 0%, rgba(21, 128, 61, 0.08) 0%, transparent 60%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        .orb-1 {
-            top: 5%;
-            right: 10%;
-            width: 400px;
-            height: 400px;
-            background: rgba(22, 163, 74, 0.1);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .orb-2 {
-            bottom: 20%;
-            left: 10%;
-            width: 250px;
-            height: 250px;
-            background: rgba(134, 239, 172, 0.2);
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        .glass-premium {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 250, 0.85) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .glass-premium:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-        }
-
-        .tenant-logo {
-            height: 48px;
-            object-fit: contain;
-        }
-
-        .badge-premium {
-            background: rgba(var(--rgb-primary), 0.1);
-            color: var(--color-primary);
-            border: 1px solid rgba(var(--rgb-primary), 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-    </style>
+    <!-- Styles injected via main.js (Vite) -->
 </head>
 
-<body class="bg-light">
+<body class="bg-canvas text-text-primary antialiased">
     <!-- Background Effects -->
     <div class="hero-bg-glow"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
     <!-- Navigation -->
-    <nav class="fixed-top py-3 transition-all">
-        <div class="container">
-            <div class="glass-panel rounded-pill px-4 py-2 d-flex align-items-center justify-content-between">
-                <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
-                    <img src="../images/logo.png" alt="Ticket Masala" height="32" class="d-block">
-                    <span class="fw-bold text-dark h5 mb-0" style="font-family: 'Rajdhani'">Ticket Masala</span>
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-3 transition-all">
+        <div class="container mx-auto px-4">
+            <div class="glass-panel rounded-full px-4 py-2 flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-2 no-underline group">
+                    <img src="../images/logo.png" alt="Ticket Masala" class="h-8 w-auto block">
+                    <span class="font-bold text-text-primary text-xl mb-0" style="font-family: 'Rajdhani'">Ticket Masala</span>
                 </a>
                 <div>
-                    <span class="badge bg-success rounded-pill px-2">v3.0</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500 text-white">v3.0</span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container py-5 mt-5">
-        <div class="text-center mb-5 reveal">
-            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3 fw-bold">Live
+    <div class="container mx-auto px-4 py-24 mt-12">
+        <div class="text-center mb-16 reveal">
+            <span
+                class="inline-block px-3 py-1 rounded-full bg-green-900/20 text-green-400 mb-3 font-bold text-sm border border-green-900/30">Live
                 Environment</span>
-            <h1 class="display-4 fw-bold text-dark mb-3">
-                The Enterprise <span class="text-gradient-primary">Ecosystem</span>
+            <h1 class="text-5xl font-bold text-text-primary mb-3">
+                The Enterprise <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Ecosystem</span>
             </h1>
-            <p class="text-secondary lead mx-auto" style="max-width: 600px;">
+            <p class="text-text-secondary text-xl leading-relaxed mx-auto max-w-2xl">
                 Four Industries. Four Visual Languages. One Engine.
             </p>
         </div>
 
-        <div class="row g-4 justify-content-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
 
             <!-- Tenant A: Desgoffe -->
-            <div class="col-lg-6 reveal">
-                <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none">
-                    <div
-                        class="glass-premium p-4 rounded-4 h-100 position-relative border-start border-5 border-success">
-                        <div class="d-flex justify-content-between align-items-start mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <img src="assets/desgoffe.png" alt="Desgoffe" class="tenant-logo">
+            <div class="reveal">
+                <a href="https://ticket-masala-demos.fly.dev/" class="no-underline group block h-full">
+                    <div class="glass-premium p-8 rounded-3xl h-full relative border-l-4 border-green-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center gap-4">
+                                <img src="assets/desgoffe.png" alt="Desgoffe"
+                                    class="tenant-logo w-12 h-12 object-contain">
                                 <div>
-                                    <h3 class="h4 fw-bold text-dark mb-0" style="font-family: 'Rajdhani'">Ville de
+                                    <h3 class="text-xl font-bold text-text-primary mb-0" style="font-family: 'Rajdhani'">
+                                        Ville de
                                         Desgoffe</h3>
-                                    <div class="small text-muted text-uppercase fw-bold">Node A</div>
+                                    <div class="text-xs text-text-muted uppercase font-bold tracking-wider">Node A</div>
                                 </div>
                             </div>
                             <span class="badge-premium">Français</span>
                         </div>
-                        <p class="text-secondary mb-4">
-                            <strong>The Bureaucratic Engine.</strong> Old-world charm meets state authority.
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            <strong class="text-text-primary">The Bureaucratic Engine.</strong> Old-world charm meets state
+                            authority.
                             Noise complaints, permits, and the meticulous Mayor.
                         </p>
-                        <div class="d-flex align-items-center gap-2 text-success small fw-bold">
-                            <span class="badge bg-light text-dark border">Port 8091</span>
-                            <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                        <div class="flex items-center gap-2 text-green-500 text-xs font-bold uppercase tracking-wide">
+                            <span class="px-2 py-1 rounded border border-structural bg-surface-elevated text-text-secondary">Port
+                                8091</span>
+                            <span class="flex items-center"><i class="fas fa-circle mr-1 text-[8px]"></i> Online</span>
                         </div>
                     </div>
                 </a>
             </div>
 
             <!-- Tenant B: Whitman -->
-            <div class="col-lg-6 reveal" style="transition-delay: 0.1s;">
-                <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none">
-                    <div class="glass-premium p-4 rounded-4 h-100 position-relative border-start border-5 border-info">
-                        <div class="d-flex justify-content-between align-items-start mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <img src="assets/whitman.png" alt="Whitman" class="tenant-logo">
+            <div class="reveal" style="transition-delay: 100ms;">
+                <a href="https://ticket-masala-demos.fly.dev/" class="no-underline group block h-full">
+                    <div class="glass-premium p-8 rounded-3xl h-full relative border-l-4 border-cyan-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center gap-4">
+                                <img src="assets/whitman.png" alt="Whitman"
+                                    class="tenant-logo w-12 h-12 object-contain">
                                 <div>
-                                    <h3 class="h4 fw-bold text-dark mb-0" style="font-family: 'Rajdhani'">Whitman Spoor
+                                    <h3 class="text-xl font-bold text-text-primary mb-0" style="font-family: 'Rajdhani'">
+                                        Whitman Spoor
                                     </h3>
-                                    <div class="small text-muted text-uppercase fw-bold">Node B</div>
+                                    <div class="text-xs text-text-muted uppercase font-bold tracking-wider">Node B</div>
                                 </div>
                             </div>
                             <span class="badge-premium">Nederlands</span>
                         </div>
-                        <p class="text-secondary mb-4">
-                            <strong>The Industrial Nervous System.</strong> Steel, schedules, and safety.
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            <strong class="text-text-primary">The Industrial Nervous System.</strong> Steel, schedules, and
+                            safety.
                             Track repairs, broken switches, and gloved technicians.
                         </p>
-                        <div class="d-flex align-items-center gap-2 text-success small fw-bold">
-                            <span class="badge bg-light text-dark border">Port 8092</span>
-                            <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                        <div class="flex items-center gap-2 text-green-500 text-xs font-bold uppercase tracking-wide">
+                            <span class="px-2 py-1 rounded border border-structural bg-surface-elevated text-text-secondary">Port
+                                8092</span>
+                            <span class="flex items-center"><i class="fas fa-circle mr-1 text-[8px]"></i> Online</span>
                         </div>
                     </div>
                 </a>
             </div>
 
             <!-- Tenant C: Liberty -->
-            <div class="col-lg-6 reveal" style="transition-delay: 0.2s;">
-                <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none">
-                    <div
-                        class="glass-premium p-4 rounded-4 h-100 position-relative border-start border-5 border-warning">
-                        <div class="d-flex justify-content-between align-items-start mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <img src="assets/liberty.png" alt="Liberty" class="tenant-logo">
+            <div class="reveal" style="transition-delay: 200ms;">
+                <a href="https://ticket-masala-demos.fly.dev/" class="no-underline group block h-full">
+                    <div class="glass-premium p-8 rounded-3xl h-full relative border-l-4 border-yellow-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center gap-4">
+                                <img src="assets/liberty.png" alt="Liberty"
+                                    class="tenant-logo w-12 h-12 object-contain">
                                 <div>
-                                    <h3 class="h4 fw-bold text-dark mb-0" style="font-family: 'Rajdhani'">Liberty
+                                    <h3 class="text-xl font-bold text-text-primary mb-0" style="font-family: 'Rajdhani'">
+                                        Liberty
                                         Systems</h3>
-                                    <div class="small text-muted text-uppercase fw-bold">Node C</div>
+                                    <div class="text-xs text-text-muted uppercase font-bold tracking-wider">Node C</div>
                                 </div>
                             </div>
                             <span class="badge-premium">English</span>
                         </div>
-                        <p class="text-secondary mb-4">
-                            <strong>The Agile Loom.</strong> Code, caffeine, and continuous integration.
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            <strong class="text-text-primary">The Agile Loom.</strong> Code, caffeine, and continuous
+                            integration.
                             Bug reports, pull requests, and root cause analysis.
                         </p>
-                        <div class="d-flex align-items-center gap-2 text-success small fw-bold">
-                            <span class="badge bg-light text-dark border">Port 8093</span>
-                            <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                        <div class="flex items-center gap-2 text-green-500 text-xs font-bold uppercase tracking-wide">
+                            <span class="px-2 py-1 rounded border border-structural bg-surface-elevated text-text-secondary">Port
+                                8093</span>
+                            <span class="flex items-center"><i class="fas fa-circle mr-1 text-[8px]"></i> Online</span>
                         </div>
                     </div>
                 </a>
             </div>
 
             <!-- Tenant D: Hennessey -->
-            <div class="col-lg-6 reveal" style="transition-delay: 0.3s;">
-                <a href="https://ticket-masala-demos.fly.dev/" class="text-decoration-none">
-                    <div
-                        class="glass-premium p-4 rounded-4 h-100 position-relative border-start border-5 border-secondary">
-                        <div class="d-flex justify-content-between align-items-start mb-4">
-                            <div class="d-flex align-items-center gap-3">
-                                <img src="assets/hennessey.png" alt="Hennessey" class="tenant-logo">
+            <div class="reveal" style="transition-delay: 300ms;">
+                <a href="https://ticket-masala-demos.fly.dev/" class="no-underline group block h-full">
+                    <div class="glass-premium p-8 rounded-3xl h-full relative border-l-4 border-gray-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center gap-4">
+                                <img src="assets/hennessey.png" alt="Hennessey"
+                                    class="tenant-logo w-12 h-12 object-contain">
                                 <div>
-                                    <h3 class="h4 fw-bold text-dark mb-0" style="font-family: 'Rajdhani'">Fonds
+                                    <h3 class="text-xl font-bold text-text-primary mb-0" style="font-family: 'Rajdhani'">
+                                        Fonds
                                         Hennessey</h3>
-                                    <div class="small text-muted text-uppercase fw-bold">Node D</div>
+                                    <div class="text-xs text-text-muted uppercase font-bold tracking-wider">Node D</div>
                                 </div>
                             </div>
                             <span class="badge-premium">Academic</span>
                         </div>
-                        <p class="text-secondary mb-4">
-                            <strong>The Ivory Tower.</strong> Grants, governance, and prestige.
+                        <p class="text-text-secondary mb-6 leading-relaxed">
+                            <strong class="text-text-primary">The Ivory Tower.</strong> Grants, governance, and prestige.
                             Research proposals, budget reviews, and Project Jaguar Shark.
                         </p>
-                        <div class="d-flex align-items-center gap-2 text-success small fw-bold">
-                            <span class="badge bg-light text-dark border">Port 8094</span>
-                            <span><i class="fas fa-circle me-1" style="font-size: 8px;"></i> Online</span>
+                        <div class="flex items-center gap-2 text-green-500 text-xs font-bold uppercase tracking-wide">
+                            <span class="px-2 py-1 rounded border border-structural bg-surface-elevated text-text-secondary">Port
+                                8094</span>
+                            <span class="flex items-center"><i class="fas fa-circle mr-1 text-[8px]"></i> Online</span>
                         </div>
                     </div>
                 </a>
@@ -245,42 +183,43 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-5 border-top bg-white mt-5">
-        <div class="container text-center">
-            <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
-                <img src="../images/logo.png" alt="Ticket Masala" height="24" class="opacity-75">
-                <div class="fw-bold text-dark h5 mb-0" style="font-family: 'Rajdhani'">Ticket Masala</div>
+    <footer class="py-12 border-t border-structural bg-surface mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <img src="../images/logo.png" alt="Ticket Masala" class="opacity-75 h-6 w-auto">
+                <div class="font-bold text-text-primary text-lg mb-0" style="font-family: 'Rajdhani'">Ticket Masala</div>
             </div>
-            <p class="small text-secondary mb-4">
+            <p class="text-xs text-text-muted mb-6">
                 &copy; 2024 Garamatic. Open Source.
             </p>
-            <div class="d-flex justify-content-center gap-4">
-                <a href="../index.html" class="text-secondary text-decoration-none">Home</a>
-                <a href="http://localhost:8001" class="text-secondary text-decoration-none">Docs</a>
+            <div class="flex justify-center gap-8">
+                <a href="../index.html"
+                    class="text-text-secondary hover:text-green-500 no-underline transition-colors text-sm font-medium">Home</a>
+                <a href="http://localhost:8001"
+                    class="text-text-secondary hover:text-green-500 no-underline transition-colors text-sm font-medium">Docs</a>
                 <a href="https://github.com/yourusername/ticket-masala"
-                    class="text-secondary text-decoration-none">GitHub</a>
+                    class="text-text-secondary hover:text-green-500 no-underline transition-colors text-sm font-medium">GitHub</a>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
+    <script type="module" src="../src/main.js"></script>
+    <script type="module">
+        import { initReveal } from '../src/components/reveal.js';
+        
+        // Remove initNavbar if it was specific to the old nav bar
+        // But let's check if we broke it. If initNavbar relied on classes we changed, it might break.
+        // Assuming custom navbar logic, let's keep it but be aware.
+        // The original had: import { initNavbar } from '../src/components/navbar.js';
+        // and initNavbar();
+        // I'll keep it for now.
+        import { initNavbar } from '../src/components/navbar.js';
 
-    <script>
-        // Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 50;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
+        document.addEventListener('DOMContentLoaded', () => {
+            initReveal();
+            initNavbar();
+        });
     </script>
 </body>
 

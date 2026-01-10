@@ -4,330 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Masala - Anderson Multiverse</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Futura:wght@500;700&display=swap"
-        rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            line-height: 1.6;
-            color: #1a202c;
-            background: #f7f3e9;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 3rem 0;
-            border-bottom: 3px solid #2d2d2d;
-            margin-bottom: 3rem;
-        }
-
-        h1 {
-            font-family: 'Futura', 'Trebuchet MS', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #2d2d2d;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: #666;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .demo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .demo-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .demo-card {
-            background: white;
-            border: 3px solid #2d2d2d;
-            padding: 0;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .demo-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 8px 8px 0 #2d2d2d;
-        }
-
-        .card-header {
-            padding: 1.5rem;
-            border-bottom: 2px solid #2d2d2d;
-        }
-
-        .card-number {
-            font-family: 'Futura', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #888;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-title {
-            font-family: 'Futura', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .card-theme {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: #666;
-            margin-top: 0.25rem;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .card-description {
-            margin-bottom: 1rem;
-            color: #444;
-        }
-
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-        }
-
-        .port-badge {
-            font-family: monospace;
-            background: #f0f0f0;
-            padding: 0.25rem 0.5rem;
-            border: 1px solid #ddd;
-        }
-
-        .lang-badge {
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            font-size: 0.75rem;
-        }
-
-        /* Tenant-specific accent colors */
-        .desgoffe .card-header {
-            background: linear-gradient(135deg, #FDF5E6, #f0e6d3);
-        }
-
-        .desgoffe .card-title {
-            color: #5D3A5D;
-        }
-
-        .desgoffe .lang-badge {
-            color: #5D3A5D;
-        }
-
-        .whitman .card-header {
-            background: linear-gradient(135deg, #DDE4E8, #c8d4dc);
-        }
-
-        .whitman .card-title {
-            color: #004B87;
-        }
-
-        .whitman .lang-badge {
-            color: #004B87;
-        }
-
-        .liberty .card-header {
-            background: linear-gradient(135deg, #2F3131, #1a1a1a);
-        }
-
-        .liberty .card-title {
-            color: #E1AD01;
-        }
-
-        .liberty .card-number {
-            color: #666;
-        }
-
-        .liberty .card-theme {
-            color: #888;
-        }
-
-        .liberty .lang-badge {
-            color: #E1AD01;
-        }
-
-        .hennessey .card-header {
-            background: linear-gradient(135deg, #F5F9FA, #e8f0f4);
-        }
-
-        .hennessey .card-title {
-            color: #75AADB;
-        }
-
-        .hennessey .lang-badge {
-            color: #75AADB;
-        }
-
-        .tenant-logo {
-            max-height: 60px;
-            width: auto;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 3rem;
-            border-top: 3px solid #2d2d2d;
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        footer a {
-            color: #2d2d2d;
-            text-decoration: none;
-            margin: 0 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Ticket Masala - Tenant Demos</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <!-- Main Style Bundle (Vite) -->
+    <script type="module" src="../../src/main.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <header>
-            <h1>The Anderson Multiverse</h1>
-            <p class="subtitle">Four Industries. Four Visual Languages. One Engine.</p>
-        </header>
+<body class="bg-slate-900 text-white min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-        <div class="demo-grid">
-            <!-- Tenant A: Desgoffe -->
-            <a href="http://localhost:8091/Identity/Account/Login" class="demo-card desgoffe">
-                <div class="card-header">
-                    <img src="assets/desgoffe.png" alt="Desgoffe Logo" class="tenant-logo">
-                    <div class="card-number">Tenant A</div>
-                    <h2 class="card-title">Ville de Desgoffe</h2>
-                    <p class="card-theme">"Confectionery Bureaucracy"</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">
-                        <strong>The Bureaucratic Engine.</strong> Old-world charm meets state authority.
-                        Noise complaints, permits, and the meticulous Mayor.
-                    </p>
-                    <div class="card-meta">
-                        <span class="port-badge">:8091</span>
-                        <span class="lang-badge">Français</span>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-indigo-500/50 transition-all duration-300">
+                        <i class="fas fa-layer-group text-white text-lg"></i>
                     </div>
-                </div>
-            </a>
-
-            <!-- Tenant B: Whitman -->
-            <a href="http://localhost:8092/Identity/Account/Login" class="demo-card whitman">
-                <div class="card-header">
-                    <img src="assets/whitman.png" alt="Whitman Logo" class="tenant-logo">
-                    <div class="card-number">Tenant B</div>
-                    <h2 class="card-title">Whitman Spoor</h2>
-                    <p class="card-theme">"Scorched Earth Utility"</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">
-                        <strong>The Industrial Nervous System.</strong> Steel, schedules, and safety.
-                        Track repairs, broken switches, and gloved technicians.
-                    </p>
-                    <div class="card-meta">
-                        <span class="port-badge">:8092</span>
-                        <span class="lang-badge">Nederlands</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Tenant C: Liberty -->
-            <a href="http://localhost:8093/Identity/Account/Login" class="demo-card liberty">
-                <div class="card-header">
-                    <img src="assets/liberty.png" alt="Liberty Logo" class="tenant-logo">
-                    <div class="card-number">Tenant C</div>
-                    <h2 class="card-title">Liberty Systems</h2>
-                    <p class="card-theme">"Cyberpunk Minimalism"</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">
-                        <strong>The Agile Loom.</strong> Code, caffeine, and continuous integration.
-                        Bug reports, pull requests, and root cause analysis.
-                    </p>
-                    <div class="card-meta">
-                        <span class="port-badge">:8093</span>
-                        <span class="lang-badge">English</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Tenant D: Hennessey -->
-            <a href="http://localhost:8094/Identity/Account/Login" class="demo-card hennessey">
-                <div class="card-header">
-                    <img src="assets/hennessey.png" alt="Hennessey Logo" class="tenant-logo">
-                    <div class="card-number">Tenant D</div>
-                    <h2 class="card-title">Fonds Hennessey</h2>
-                    <p class="card-theme">"Marine Sterile"</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-description">
-                        <strong>The Ivory Tower.</strong> Grants, governance, and prestige.
-                        Research proposals, budget reviews, and Project Jaguar Shark.
-                    </p>
-                    <div class="card-meta">
-                        <span class="port-badge">:8094</span>
-                        <span class="lang-badge">Academic</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <footer>
-            <p>Ticket Masala: The Anderson Multiverse Demo Suite</p>
-            <div style="margin-top: 1rem;">
-                <a href="../marketing-site/index.html">Homepage</a>
-                <a href="http://localhost:8001">Documentation</a>
-                <a href="https://github.com/yourusername/ticket-masala">GitHub</a>
+                    <span class="text-xl font-bold tracking-tight">Ticket Masala</span>
+                </a>
+                <a href="https://github.com/your-repo/ticket-masala" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
             </div>
-        </footer>
-    </div>
-</body>
+        </div>
+    </nav>
 
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="container mx-auto max-w-7xl">
+            
+            <header class="text-center mb-16 space-y-4">
+                <h1 class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                    Choose Your Experience
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    One engine, four distinct realities. Explore how the polymorphic architecture adapts to different organizational needs.
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Desgoffe (Government) -->
+                <a href="../desgoffe/client/index.html" class="group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 border border-slate-700 hover:border-blue-500 shadow-xl">
+                    <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-blue-900/20 transition-colors"></div>
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                         <div class="absolute inset-0 flex items-center justify-center text-slate-300 opacity-20">
+                            <i class="fas fa-landmark text-9xl"></i>
+                         </div>
+                         <img src="../desgoffe.png" alt="Desgoffe" class="absolute bottom-4 right-4 h-16 w-auto object-contain drop-shadow-md">
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-blue-900/50 text-blue-300 rounded border border-blue-500/30">Government</span>
+                            <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded">Classic</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Ville de Desgoffe</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Citizen request portal centered on formal processes, accessibility, and bureaucratic efficiency.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Whitman (Industrial) -->
+                <a href="../whitman/client/index.html" class="group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 border border-slate-700 hover:border-orange-500 shadow-xl">
+                     <div class="absolute inset-0 bg-orange-900/10 group-hover:bg-orange-900/20 transition-colors"></div>
+                    <div class="h-48 bg-zinc-800 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center text-zinc-700 opacity-20">
+                             <i class="fas fa-train text-9xl"></i>
+                        </div>
+                        <img src="../whitman.png" alt="Whitman" class="absolute bottom-4 right-4 h-16 w-auto object-contain drop-shadow-md">
+                    </div>
+                    <div class="p-6 relative">
+                         <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-orange-900/50 text-orange-300 rounded border border-orange-500/30">Industrial</span>
+                             <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded">High Vis</span>
+                        </div>
+                        <h3 class="text-2xl font-bold font-sans uppercase tracking-tight text-white mb-2 group-hover:text-orange-400 transition-colors">Whitman Spoor</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            High-contrast safety reporting tool designed for field workers in hazardous environments.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Liberty (Cyberpunk) -->
+                <a href="../liberty/client/index.html" class="group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 border border-slate-700 hover:border-green-500 shadow-xl">
+                     <div class="absolute inset-0 bg-green-900/10 group-hover:bg-green-900/20 transition-colors"></div>
+                    <div class="h-48 bg-black relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center text-green-900 opacity-20">
+                             <i class="fas fa-terminal text-9xl"></i>
+                        </div>
+                        <img src="../liberty.png" alt="Liberty" class="absolute bottom-4 right-4 h-16 w-auto object-contain drop-shadow-md">
+                    </div>
+                    <div class="p-6 relative">
+                         <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-green-900/50 text-green-300 rounded border border-green-500/30">Tech</span>
+                             <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded">Dark Mode</span>
+                        </div>
+                        <h3 class="text-2xl font-mono font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Liberty Systems</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Developer-centric issue tracker featuring markdown support and code highlighting.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Hennessey (Academic) -->
+                <a href="../hennessey/client/index.html" class="group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 border border-slate-700 hover:border-indigo-300 shadow-xl">
+                     <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-indigo-900/20 transition-colors"></div>
+                    <div class="h-48 bg-[#F5F9FA] relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center text-indigo-100 opacity-50">
+                             <i class="fas fa-university text-9xl"></i>
+                        </div>
+                        <img src="../hennessey.png" alt="Hennessey" class="absolute bottom-4 right-4 h-16 w-auto object-contain drop-shadow-md">
+                    </div>
+                    <div class="p-6 relative">
+                         <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-indigo-900/50 text-indigo-300 rounded border border-indigo-400/30">Academic</span>
+                             <span class="px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded">Wizard</span>
+                        </div>
+                        <h3 class="text-2xl font-heading italic font-medium text-white mb-2 group-hover:text-indigo-200 transition-colors">Fonds Hennessey</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Grant application wizard for research funding, emphasizing clarity and structure.
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-950 py-8 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Ticket Masala. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
 </html>

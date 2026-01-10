@@ -1,27 +1,33 @@
 /**
  * Scroll Reveal - Animates elements as they enter the viewport
+ * Uses IntersectionObserver for performance.
  */
 
-const VISIBLE_THRESHOLD = 100;
-
-function revealElements() {
-    const reveals = document.querySelectorAll(".reveal");
-    const windowHeight = window.innerHeight;
-    
-    reveals.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - VISIBLE_THRESHOLD) {
-            el.classList.add("active");
-        }
-    });
-}
+const OBSERVER_OPTIONS = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
 
 export function initReveal() {
-    window.addEventListener("scroll", revealElements);
-    window.addEventListener("load", revealElements);
-    
-    // Initial check
-    revealElements();
+    const reveals = document.querySelectorAll(".reveal");
+
+    if (!('IntersectionObserver' in window)) {
+        // Fallback for very old browsers
+        reveals.forEach(el => el.classList.add("active"));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, OBSERVER_OPTIONS);
+
+    reveals.forEach(el => observer.observe(el));
 }
 
 export default { initReveal };

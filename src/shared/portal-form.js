@@ -21,6 +21,7 @@ export class PortalForm {
     constructor(config) {
         this.config = {
             minDescriptionLength: 10,
+            maxFileSize: 5 * 1024 * 1024, // 5MB
             ...config
         };
 
@@ -125,6 +126,15 @@ export class PortalForm {
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
                     return;
                 }
+                
+                // Validate File Size
+                if (file.size > this.config.maxFileSize) {
+                    alert(`File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`);
+                    this.fileInput.value = '';
+                    this.fileNameDisplay.textContent = this.config.messages.chooseFile;
+                    return;
+                }
+
                 this.fileNameDisplay.textContent = file.name;
             } else {
                 this.fileNameDisplay.textContent = this.config.messages.chooseFile;
@@ -191,19 +201,20 @@ export class PortalForm {
     async submitForm() {
         const formData = new FormData();
 
-        // Add standard fields
-        formData.append('CustomerName', document.getElementById('customerName').value);
-        formData.append('CustomerEmail', document.getElementById('customerEmail').value);
-        formData.append('CustomerPhone', document.getElementById('customerPhone').value || '');
-        formData.append('Description', document.getElementById('description').value);
-        formData.append('WorkItemType', document.getElementById('requestType').value);
-        formData.append('PriorityScore', document.getElementById('priorite').value);
+        // Add standard fields with sanitization
+        formData.append('CustomerName', this.sanitizeInput(document.getElementById('customerName').value));
+        formData.append('CustomerEmail', this.sanitizeInput(document.getElementById('customerEmail').value));
+        formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value || ''));
+        formData.append('Description', this.sanitizeInput(document.getElementById('description').value));
+        formData.append('WorkItemType', this.sanitizeInput(document.getElementById('requestType').value));
+        formData.append('PriorityScore', this.sanitizeInput(document.getElementById('priorite').value));
 
         // Add custom fields (tenant-specific)
         if (this.config.customFieldId) {
             const customField = document.getElementById(this.config.customFieldId);
             if (customField) {
-                formData.append('Tags', `${this.config.customFieldLabel}:${customField.value}`);
+                const sanitizedValue = this.sanitizeInput(customField.value);
+                formData.append('Tags', `${this.config.customFieldLabel}:${sanitizedValue}`);
             }
         }
 
@@ -213,13 +224,39 @@ export class PortalForm {
             formData.append('Attachment', file);
         }
 
+        // Prepare headers
+        const headers = {};
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (csrfToken) {
+            headers['X-CSRF-Token'] = csrfToken;
+        }
+
         // Submit to API
         const response = await fetch(this.config.apiEndpoint, {
             method: 'POST',
+            headers: headers,
             body: formData
         });
 
         return await response.json();
+    }
+
+    /**
+     * Sanitize user input to prevent XSS
+     * Removes HTML tags and executes basic escaping
+     * @param {string} input - Raw input string
+     * @returns {string} Sanitized string
+     */
+    sanitizeInput(input) {
+        if (!input) return '';
+        // Basic tag stripping
+        return input.replace(/<[^>]*>?/gm, "")
+            // Basic escaping for remaining characters
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
     /**

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="liberty">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Newsroom - Liberty Systems</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <!-- Highlight.js for Code Preview -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"></script>
     <link rel="manifest" href="manifest.json">
@@ -16,135 +16,182 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <!-- Main Style Bundle (Vite) -->
+    <script type="module" src="../../../src/main.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <img src="../liberty.png" alt="Liberty Systems" class="logo" loading="lazy">
-                <div>
-                    <h1 class="main-title">THE NEWSROOM</h1>
-                    <p class="subtitle">Liberty Systems • Issue Tracking</p>
-                </div>
+<body class="bg-canvas text-gray-300 min-h-screen flex flex-col font-heading antialiased selection:bg-primary selection:text-black">
+    <div class="container mx-auto px-4 max-w-6xl py-8 flex-grow">
+        
+        <header class="flex items-center gap-6 mb-10 border-b border-gray-800 pb-6">
+            <div class="relative group">
+                <div class="absolute inset-0 bg-primary opacity-20 blur-xl rounded-full group-hover:opacity-40 transition-opacity duration-500"></div>
+                <img src="../liberty.png" alt="Liberty Systems" class="h-16 w-auto relative z-10" loading="lazy">
+            </div>
+            <div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">THE NEWSROOM</h1>
+                <p class="text-sm font-mono text-primary flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Liberty Systems • Issue Tracking
+                </p>
             </div>
         </header>
 
-        <main class="main-content">
-            <form id="issueForm" class="issue-form">
-                <div class="form-section">
-                    <label for="issueType">Issue Type</label>
-                    <select id="issueType" name="issueType" required>
-                        <option value="">Select type...</option>
-                        <option value="BUG">🐛 Bug</option>
-                        <option value="FEATURE">✨ Feature Request</option>
-                        <option value="REGRESSION">⚠️ Regression</option>
-                        <option value="PERFORMANCE">⚡ Performance</option>
-                        <option value="SECURITY">🔒 Security</option>
-                    </select>
+        <main class="w-full">
+            <form id="issueForm" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: Form Controls -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-surface border border-gray-800 rounded-lg p-6 space-y-6 shadow-2xl">
+                        <!-- Issue Type -->
+                        <div class="space-y-2">
+                            <label for="issueType" class="text-xs font-mono text-gray-500 uppercase tracking-wider">Issue Type</label>
+                            <select id="issueType" name="issueType" required
+                                class="w-full bg-black border border-gray-700 text-white rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none font-mono text-sm">
+                                <option value="">Select type...</option>
+                                <option value="BUG">🐛 Bug Report</option>
+                                <option value="FEATURE">✨ Feature Request</option>
+                                <option value="REGRESSION">⚠️ Regression</option>
+                                <option value="PERFORMANCE">⚡ Performance Issue</option>
+                                <option value="SECURITY">🔒 Security Vulnerability</option>
+                            </select>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="space-y-2">
+                            <label for="title" class="text-xs font-mono text-gray-500 uppercase tracking-wider">Title</label>
+                            <input type="text" id="title" name="title" required placeholder="Brief, descriptive title"
+                                class="w-full bg-black border border-gray-700 text-white rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors placeholder-gray-700 font-sans">
+                        </div>
+
+                        <!-- Markdown Editor -->
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between border-b border-gray-800 pb-2">
+                                <label class="text-xs font-mono text-gray-500 uppercase tracking-wider">Description</label>
+                                <div class="flex gap-2 text-xs font-mono">
+                                    <button type="button" class="tab-btn px-3 py-1 rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors active-tab" data-tab="write">
+                                        <i class="fas fa-edit mr-1"></i> Write
+                                    </button>
+                                    <button type="button" class="tab-btn px-3 py-1 rounded bg-transparent text-gray-500 hover:text-white transition-colors" data-tab="preview">
+                                        <i class="fas fa-eye mr-1"></i> Preview
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="relative group">
+                                <textarea id="description" name="description" rows="12" required 
+                                    placeholder="Describe the issue... Markdown supported."
+                                    class="w-full bg-black border border-gray-700 text-gray-300 rounded p-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-mono text-sm leading-relaxed resize-y"></textarea>
+                                
+                                <div id="preview" class="hidden w-full min-h-[300px] bg-black border border-gray-700 rounded p-4 prose prose-invert prose-sm max-w-none font-sans overflow-y-auto"></div>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 text-[10px] text-gray-600 font-mono">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Markdown supported: **bold**, *italic*, `code`, ```blocks```</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-section">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required placeholder="Brief, descriptive title">
-                </div>
+                <!-- Right Column: Meta & Actions -->
+                <div class="space-y-6">
+                    <!-- Environment & Priority -->
+                    <div class="bg-surface border border-gray-800 rounded-lg p-6 space-y-6">
+                         <div class="space-y-2">
+                            <label for="priority" class="text-xs font-mono text-gray-500 uppercase tracking-wider">Priority</label>
+                            <select id="priority" name="priority" required
+                                class="w-full bg-black border border-gray-700 text-white rounded px-3 py-2 focus:border-primary outline-none font-mono text-sm">
+                                <option value="5">P3 - Low</option>
+                                <option value="10" selected>P2 - Medium</option>
+                                <option value="15">P1 - High</option>
+                                <option value="20" class="text-red-500 font-bold">P0 - Critical</option>
+                            </select>
+                        </div>
 
-                <div class="form-section">
-                    <div class="editor-tabs">
-                        <button type="button" class="tab-btn active" data-tab="write">
-                            <i class="fas fa-edit"></i> Write
+                        <div class="space-y-2">
+                            <label for="environment" class="text-xs font-mono text-gray-500 uppercase tracking-wider">Environment</label>
+                            <select id="environment" name="environment"
+                                class="w-full bg-black border border-gray-700 text-white rounded px-3 py-2 focus:border-primary outline-none font-mono text-sm">
+                                <option value="">Select...</option>
+                                <option value="Production">Production</option>
+                                <option value="Staging">Staging</option>
+                                <option value="Development">Development</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Attachments -->
+                    <div class="bg-surface border border-gray-800 rounded-lg p-6 space-y-4">
+                        <label class="text-xs font-mono text-gray-500 uppercase tracking-wider block">Attachment</label>
+                        <div class="relative">
+                            <input type="file" id="screenshot" name="screenshot" accept="image/*,.pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <div class="bg-black border border-dashed border-gray-700 rounded p-4 text-center hover:border-primary hover:bg-gray-900 transition-all cursor-pointer">
+                                <i class="fas fa-paperclip text-gray-500 mb-2"></i>
+                                <span id="fileName" class="block text-xs text-primary truncate">Choose file...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Reporter -->
+                     <div class="bg-surface border border-gray-800 rounded-lg p-6 space-y-4">
+                        <label class="text-xs font-mono text-gray-500 uppercase tracking-wider block">Reporter</label>
+                        <input type="text" id="reporterName" name="reporterName" placeholder="Name" required
+                            class="w-full bg-black border border-gray-700 text-white rounded px-3 py-2 focus:border-primary outline-none text-sm mb-3">
+                        <input type="email" id="reporterEmail" name="reporterEmail" placeholder="Email" required
+                            class="w-full bg-black border border-gray-700 text-white rounded px-3 py-2 focus:border-primary outline-none text-sm">
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="space-y-3 pt-4">
+                        <button type="submit" class="w-full btn btn-primary py-3 rounded font-bold uppercase tracking-wider flex items-center justify-center gap-2 group">
+                            <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                            Submit Issue
                         </button>
-                        <button type="button" class="tab-btn" data-tab="preview">
-                            <i class="fas fa-eye"></i> Preview
+                        <button type="reset" class="w-full btn btn-tiny py-2 rounded border border-gray-700 hover:border-red-500 hover:text-red-500 uppercase tracking-wider text-xs">
+                            Cancel
                         </button>
                     </div>
-
-                    <div class="editor-container">
-                        <textarea id="description" name="description" rows="12" required placeholder="Describe the issue... Markdown supported.
-
-**Example:**
-```javascript
-const bug = 'This is broken';
-```
-
-- Step 1: Navigate to login
-- Step 2: Click submit
-- Step 3: Observe error"></textarea>
-                        <div id="preview" class="markdown-preview" style="display: none;"></div>
-                    </div>
-
-                    <div class="editor-hint">
-                        <i class="fas fa-info-circle"></i>
-                        Markdown supported: **bold**, *italic*, `code`, ```code blocks```
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-section">
-                        <label for="priority">Priority</label>
-                        <select id="priority" name="priority" required>
-                            <option value="5">P3 - Low</option>
-                            <option value="10" selected>P2 - Medium</option>
-                            <option value="15">P1 - High</option>
-                            <option value="20">P0 - Critical</option>
-                        </select>
-                    </div>
-
-                    <div class="form-section">
-                        <label for="environment">Environment</label>
-                        <select id="environment" name="environment">
-                            <option value="">Select...</option>
-                            <option value="Production">Production</option>
-                            <option value="Staging">Staging</option>
-                            <option value="Development">Development</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <label for="screenshot">Screenshot / Attachment</label>
-                    <div class="file-upload">
-                        <input type="file" id="screenshot" name="screenshot" accept="image/*,.pdf">
-                        <label for="screenshot" class="file-label">
-                            <i class="fas fa-paperclip"></i>
-                            <span id="fileName">Choose file...</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <label>Reporter Info</label>
-                    <div class="form-row">
-                        <input type="text" id="reporterName" name="reporterName" placeholder="Your name" required>
-                        <input type="email" id="reporterEmail" name="reporterEmail" placeholder="your.email@example.com"
-                            required>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i>
-                        Submit Issue
-                    </button>
-                    <button type="reset" class="btn btn-secondary">
-                        <i class="fas fa-times"></i>
-                        Cancel
-                    </button>
                 </div>
             </form>
 
-            <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-                <div class="spinner"></div>
-                <p>Submitting issue...</p>
+            <!-- Loading Overlay -->
+            <div id="loadingOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center space-y-4" style="display: none;">
+                <div class="font-mono text-primary text-xl animate-pulse">
+                    > SUBMITTING_ISSUE<span class="animate-ping">_</span>
+                </div>
+                <div class="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary animate-[shimmer_2s_infinite]"></div>
+                </div>
             </div>
         </main>
 
-        <footer class="footer">
-            <p>Liberty Systems © 2025 • <a href="#">Documentation</a> • <a href="#">API</a> • <a href="#">Status</a></p>
+        <footer class="mt-20 py-8 border-t border-gray-800 text-center text-xs font-mono text-gray-600">
+            <p>Liberty Systems © 2025 • <a href="#" class="hover:text-primary transition-colors">Documentation</a> • <a href="#" class="hover:text-primary transition-colors">API</a> • <a href="#" class="hover:text-primary transition-colors">Status: <span class="text-green-500">OPERATIONAL</span></a></p>
         </footer>
     </div>
 
     <script src="script.js"></script>
+    <style>
+        .active-tab {
+            @apply bg-gray-800 text-white;
+        }
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E1AD01; 
+        }
+    </style>
 </body>
 
 </html>

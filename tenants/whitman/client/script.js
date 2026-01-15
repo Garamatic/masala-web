@@ -1,7 +1,8 @@
 // Whitman Spoor Portal - Meldpunt Spoor
 // Mobile-first with camera and geolocation supp// Configuration
-const API_BASE_URL = 'https://ticket-masala-api-whitman.fly.dev';
-const API_ENDPOINT = `${API_BASE_URL}/api/portal/submit`;
+const __TENANT = document.documentElement.getAttribute('data-theme') || 'whitman';
+const __API_BASE = window.__API_BASE__ || `https://ticket-masala-api-${__TENANT}.fly.dev`;
+const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Type selection
 const optionButtons = document.querySelectorAll('.option-btn');

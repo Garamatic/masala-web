@@ -3,10 +3,15 @@
 
 import { PortalForm } from '../../../src/shared/portal-form.js';
 
+// Dynamically derive API endpoint from the page or allow an override
+const __TENANT = document.documentElement.getAttribute('data-theme') || 'desgoffe';
+const __API_BASE = window.__API_BASE__ || `https://ticket-masala-api-${__TENANT}.fly.dev`;
+const __API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
+
 // Configuration for Desgoffe tenant
 const config = {
     formId: 'submissionForm',
-    apiEndpoint: 'https://ticket-masala-api-desgoffe.fly.dev/api/portal/submit',
+    apiEndpoint: __API_ENDPOINT,
     locale: 'fr',
     minDescriptionLength: 10,
     customFieldId: 'quartier',

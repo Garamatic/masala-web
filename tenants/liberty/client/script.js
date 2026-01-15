@@ -1,7 +1,8 @@
 // Liberty Systems Portal - The Newsroom
 // Markdown editor with preview and code// Configuration
-const API_BASE_URL = 'https://ticket-masala-api-liberty.fly.dev';
-const API_ENDPOINT = `${API_BASE_URL}/api/portal/submit`;
+const __TENANT = document.documentElement.getAttribute('data-theme') || 'liberty';
+const __API_BASE = window.__API_BASE__ || `https://ticket-masala-api-${__TENANT}.fly.dev`;
+const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Tab switching
 const tabButtons = document.querySelectorAll('.tab-btn');

@@ -38,9 +38,9 @@ export default {
     features_title_2: "Équipes Modernes",
     features_subtitle: "Tout ce dont vous avez besoin pour expédier plus rapidement et rester organisé.",
     feature_ai_title: "Autopilote IA",
-    feature_ai_desc: "GERDA AI catégorise automatiquement les tickets, attribue des priorités et rédige même des réponses basées sur votre base de connaissances.",
+    feature_ai_desc: "GERDA AI catégorise automatiquement les tickets, attribue des priorités et récupère les articles pertinents de la base de connaissances.",
     feature_workflow_title: "Moteur de Workflow",
-    feature_workflow_desc: "Constructeur de workflow visuel par glisser-déposer. Connectez les tickets aux commits git, aux déploiements et aux approbations des clients.",
+    feature_workflow_desc: "Moteur de workflow piloté par configuration. Définissez les états, transitions et règles d'automatisation via une simple configuration YAML.",
     feature_security_title: "Sécurité Renforcée",
     feature_security_desc: "Contrôle d'accès basé sur les rôles (RBAC), journaux d'audit et options de déploiement auto-hébergé pour garder vos données souveraines.",
 

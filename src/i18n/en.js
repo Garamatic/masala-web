@@ -38,9 +38,9 @@ export default {
     features_title_2: "Modern Teams",
     features_subtitle: "Everything you need to ship faster and stay organized.",
     feature_ai_title: "AI Autopilot",
-    feature_ai_desc: "GERDA AI automatically categorizes tickets, assigns priority, and even drafts responses based on your knowledge base.",
+    feature_ai_desc: "GERDA AI automatically categorizes tickets, assigns priority, and retrieves relevant knowledge base articles.",
     feature_workflow_title: "Workflow Engine",
-    feature_workflow_desc: "Visual drag-and-drop workflow builder. Connect tickets to git commits, deployments, and customer approvals.",
+    feature_workflow_desc: "Configuration-driven workflow engine. Define states, transitions, and automation rules using simple YAML configuration.",
     feature_security_title: "Ironclad Security",
     feature_security_desc: "Role-based access control (RBAC), audit logs, and self-hosted deployment options keep your data sovereign.",
 

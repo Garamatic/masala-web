@@ -171,8 +171,7 @@ export class PortalForm {
                 } else {
                     throw new Error(result.message || this.config.messages.submitError);
                 }
-            } catch (error) {
-                console.error('Submission error:', error);
+            } catch (_error) {
                 alert(this.config.messages.submitError);
                 if (this.loadingOverlay) {
                     this.loadingOverlay.style.display = 'none';

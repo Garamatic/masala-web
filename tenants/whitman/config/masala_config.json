@@ -21,5 +21,22 @@
         "Anticipation": {
             "IsEnabled": true
         }
+    },
+    "PerformanceProfile": {
+        "TargetResponseMsP95": 250,
+        "TargetOnSiteMinutesP80": 45,
+        "SlaDescription": "Incidenten met veiligheidsimpact worden automatisch naar de juiste ploeg en zone gerouteerd."
+    },
+    "DemoProfiles": {
+        "Operations": {
+            "Description": "Dagelijkse storingen en inspecties met standaard prioritering.",
+            "RankingStrategy": "OperationalRisk",
+            "DispatchingStrategy": "ZoneBased"
+        },
+        "Emergency": {
+            "Description": "Noodscenario voor kritieke incidenten langs druk bereden trajecten.",
+            "RankingStrategy": "SafetyFirst",
+            "DispatchingStrategy": "EmergencyCrew"
+        }
     }
 }

@@ -2,6 +2,7 @@ export default {
     // Navigation
     nav_features: 'Features',
     nav_solutions: 'Solutions',
+    nav_demos: 'Live Demos',
     nav_docs: 'Docs',
 
     // Hero

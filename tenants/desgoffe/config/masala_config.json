@@ -20,5 +20,22 @@
         "Anticipation": {
             "IsEnabled": false
         }
+    },
+    "PerformanceProfile": {
+        "TargetResponseMsP95": 300,
+        "TargetResolutionHoursP80": 120,
+        "SlaDescription": "Les demandes citoyennes sont priorisées selon le type, le quartier et la priorité déclarée."
+    },
+    "DemoProfiles": {
+        "Standard": {
+            "Description": "Traitement équilibré de toutes les demandes avec priorisation par urgence administrative.",
+            "RankingStrategy": "SeverityAndPriority",
+            "DispatchingStrategy": "ServiceBased"
+        },
+        "NuisanceFocus": {
+            "Description": "Profil axé sur les nuisances sonores et de voisinage avec résolution accélérée.",
+            "RankingStrategy": "NoiseComplaintsFirst",
+            "DispatchingStrategy": "NeighborhoodInspector"
+        }
     }
 }

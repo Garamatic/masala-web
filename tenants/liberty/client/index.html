@@ -61,7 +61,11 @@
                         placeholder="Search..."
                         class="bg-black border border-gray-700 text-white rounded px-3 py-1 focus:border-primary outline-none font-mono text-xs"
                     />
-                    <button type="submit" class="text-gray-500 hover:text-white transition-colors">
+                    <button
+                        type="submit"
+                        class="text-gray-500 hover:text-white transition-colors"
+                        aria-label="Search"
+                    >
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
@@ -79,30 +83,31 @@
                         <span class="text-primary">masala_domains.yaml</span>
                         and
                         <span class="text-primary">masala_config.json</span>
-                        .
-                    </p>
-                </div>
-                <div class="bg-surface border border-gray-800 rounded-lg p-4 space-y-1">
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500">AI pipeline</p>
-                    <p>
-                        GERDA ranks issues via WSJF, estimates effort from story points and
-                        dispatches by skill and component.
+                        for this tenant.
                     </p>
                 </div>
                 <div class="bg-surface border border-gray-800 rounded-lg p-4 space-y-1">
                     <p class="text-[10px] uppercase tracking-widest text-gray-500">
-                        Performance profile
+                        GERDA pipeline
                     </p>
                     <p>
-                        Demo target: P95 API response under 200&nbsp;ms and triage within
-                        15&nbsp;minutes for incidents.
+                        GERDA ranks issues via WSJF, estimates effort from story points and
+                        dispatches by skill and component ownership.
+                    </p>
+                </div>
+                <div class="bg-surface border border-gray-800 rounded-lg p-4 space-y-1">
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Demo profiles</p>
+                    <p>
+                        <span class="text-primary">ProductBacklog</span>
+                        optimaliseert roadmap-werk en grooming van features.
                     </p>
                     <p class="mt-1">
-                        Profiles:
-                        <span class="text-primary">ProductBacklog</span>
-                        (roadmap work) and
                         <span class="text-primary">IncidentRoom</span>
-                        (Sev1/Sev2 firefighting).
+                        is afgestemd op Sev1/Sev2-incidenten met agressieve escalatie.
+                    </p>
+                    <p class="mt-1">
+                        Target: P95 API-responstijd onder 200&nbsp;ms en triage binnen
+                        15&nbsp;minuten.
                     </p>
                 </div>
             </section>
@@ -262,9 +267,9 @@
                         <!-- Attachments -->
                         <div class="bg-surface border border-gray-800 rounded-lg p-6 space-y-4">
                             <label
-                            for="screenshot"
-                            class="text-xs font-mono text-gray-500 uppercase tracking-wider block"
-                        >
+                                for="screenshot"
+                                class="text-xs font-mono text-gray-500 uppercase tracking-wider block"
+                            >
                                 Attachment
                             </label>
                             <div class="relative">

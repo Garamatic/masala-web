@@ -46,16 +46,50 @@
             </header>
 
             <main id="main-content" class="w-full space-y-8" role="main">
-                <div
-                    class="glass-panel border-l-4 border-l-primary flex items-start space-x-4 bg-surface"
-                    role="status"
-                >
-                    <i class="fas fa-info-circle text-primary text-xl mt-1" aria-hidden="true"></i>
-                    <p class="text-text-secondary leading-relaxed">
-                        Bienvenue au Guichet Citoyen. Veuillez remplir le formulaire ci-dessous pour
-                        soumettre votre demande officielle.
-                    </p>
-                </div>
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="glass-panel border-l-4 border-l-primary flex items-start space-x-4 bg-surface"
+                        role="status"
+                    >
+                        <i
+                            class="fas fa-info-circle text-primary text-xl mt-1"
+                            aria-hidden="true"
+                        ></i>
+                        <p class="text-text-secondary leading-relaxed">
+                            Bienvenue au Guichet Citoyen. Utilisez ce portail pour soumettre des
+                            demandes officielles qui seront routées vers le bon service.
+                        </p>
+                    </div>
+                    <div
+                        class="glass-panel bg-surface-elevated border border-structural/60 text-sm"
+                    >
+                        <h2 class="text-xs font-bold tracking-widest text-secondary uppercase mb-2">
+                            Comment fonctionne cette démo
+                        </h2>
+                        <p class="text-text-secondary leading-relaxed">
+                            Types de dossiers, étiquettes et files d&apos;attente sont définis dans
+                            <span class="font-mono text-primary">masala_domains.yaml</span>
+                            . Les modules GERDA AI et les objectifs de performance vivent dans
+                            <span class="font-mono text-primary">masala_config.json</span>
+                            .
+                        </p>
+                    </div>
+                    <div
+                        class="glass-panel bg-surface-elevated border border-structural/60 text-sm"
+                    >
+                        <h2 class="text-xs font-bold tracking-widest text-secondary uppercase mb-2">
+                            Profils de démonstration
+                        </h2>
+                        <p class="text-text-secondary leading-relaxed">
+                            <span class="font-semibold text-primary">Standard</span>
+                            équilibre toutes les demandes selon leur urgence administrative.
+                        </p>
+                        <p class="text-text-secondary leading-relaxed mt-1">
+                            <span class="font-semibold text-primary">NuisanceFocus</span>
+                            met en avant les plaintes de nuisances sonores et de voisinage.
+                        </p>
+                    </div>
+                </section>
 
                 <section
                     class="glass-panel bg-surface-elevated border border-structural/60 space-y-3"
@@ -65,7 +99,8 @@
                         Wat deze demo illustreert
                     </h2>
                     <p class="text-sm text-text-secondary">
-                        Deze Ticket Masala instantie is geconfigureerd voor de Stad Desgoffe: aanvraagtypes, wijken en prioriteiten zijn gedefinieerd in
+                        Deze Ticket Masala instantie is geconfigureerd voor de Stad Desgoffe:
+                        aanvraagtypes, wijken en prioriteiten zijn gedefinieerd in
                         <span
                             class="font-mono text-xs bg-canvas px-1 py-0.5 rounded border border-structural/60"
                         >
@@ -83,30 +118,35 @@
                         <div class="space-y-1">
                             <dt class="font-semibold text-text-primary">Volledige flow</dt>
                             <dd>
-                                Portaal indiening → Ticket Masala API → AI-prioritering → Toewijzing aan gemeentelijke dienst.
+                                Portaal indiening → Ticket Masala API → AI-prioritering → Toewijzing
+                                aan gemeentelijke dienst.
                             </dd>
                         </div>
                         <div class="space-y-1">
                             <dt class="font-semibold text-text-primary">Prioriteitscriteria</dt>
                             <dd>
-                                Combinatie van aanvraagtype, wijk en verklaarde prioriteit, met toegewijde prestatieprofielen.
+                                Combinatie van aanvraagtype, wijk en verklaarde prioriteit, met
+                                toegewijde prestatieprofielen.
                             </dd>
                         </div>
                         <div class="space-y-1">
-                            <dt class="font-semibold text-text-primary">Configureerbare variabelen</dt>
+                            <dt class="font-semibold text-text-primary">
+                                Configureerbare variabelen
+                            </dt>
                             <dd>
-                                Dossiertypes, prioriteitsniveaus, streeftijden en routeringsstrategieën kunnen worden aangepast zonder de code te wijzigen.
+                                Dossiertypes, prioriteitsniveaus, streeftijden en
+                                routeringsstrategieën kunnen worden aangepast zonder de code te
+                                wijzigen.
                             </dd>
                         </div>
                         <div class="space-y-1 md:col-span-3">
-                            <dt class="font-semibold text-text-primary">
-                                Demo-profielen
-                            </dt>
+                            <dt class="font-semibold text-text-primary">Demo-profielen</dt>
                             <dd>
                                 <span class="font-mono">Standaard</span>
                                 voor een evenwichtig loket,
                                 <span class="font-mono">OverlastFocus</span>
-                                voor een scenario waar geluidsoverlast met prioriteit wordt behandeld.
+                                voor een scenario waar geluidsoverlast met prioriteit wordt
+                                behandeld.
                             </dd>
                         </div>
                     </dl>

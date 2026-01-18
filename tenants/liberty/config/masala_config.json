@@ -26,5 +26,22 @@
         "RootCauseAnalysis": {
             "IsEnabled": true
         }
+    },
+    "PerformanceProfile": {
+        "TargetResponseMsP95": 200,
+        "TargetTimeToTriagedMinutesP80": 15,
+        "SlaDescription": "Production incidents are triaged in minutes with WSJF-driven prioritization and skill-based routing."
+    },
+    "DemoProfiles": {
+        "ProductBacklog": {
+            "Description": "Scenario optimized for roadmap grooming and feature work.",
+            "RankingStrategy": "WSJF",
+            "DispatchingStrategy": "ComponentOwnership"
+        },
+        "IncidentRoom": {
+            "Description": "High-urgency profile for Sev1/Sev2 incidents with aggressive escalation.",
+            "RankingStrategy": "IncidentFirst",
+            "DispatchingStrategy": "OnCallRoster"
+        }
     }
 }

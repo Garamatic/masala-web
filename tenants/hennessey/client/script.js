@@ -1,7 +1,7 @@
 // Fonds Hennessey Portal - Application Wizard
 // Multi-step form with draft saving and// Configuration
 const __TENANT = document.documentElement.getAttribute('data-theme') || 'hennessey';
-const __API_BASE = window.__API_BASE__ || `https://ticket-masala-api-${__TENANT}.fly.dev`;
+const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 let currentStep = 1;

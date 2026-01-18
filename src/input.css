@@ -57,51 +57,64 @@
     }
 
     /* --- THEME: DESGOFFE (Government - Confectionery Bureaucracy) --- */
-    [data-theme="desgoffe"] {
-        --color-primary: #5D3A5D;
+    [data-theme='desgoffe'] {
+        --color-primary: #5d3a5d;
         --color-masala-hover: #4a2e4a;
         --font-heading: 'Rockwell', 'Roboto Slab', serif;
-        --bg-canvas: #FDF5E6;
-        --bg-surface: #FFFAF0;
-        --bg-surface-elevated: #FFF0E0;
+        --bg-canvas: #fdf5e6;
+        --bg-surface: #fffaf0;
+        --bg-surface-elevated: #fff0e0;
         --text-primary: #3d3d3d;
-        --text-secondary: #5D3A5D;
-        --text-muted: #9A2A2A;
+        --text-secondary: #5d3a5d;
+        --text-muted: #9a2a2a;
         --border-structural: rgba(93, 58, 93, 0.2);
         --radius-component: 4px;
         --shadow-glow: 0 0 40px rgba(93, 58, 93, 0.15);
     }
 
     /* --- THEME: WHITMAN (Infrastructure - Scorched Earth Utility) --- */
-    [data-theme="whitman"] {
-        --color-primary: #004B87;
+    [data-theme='whitman'] {
+        --color-primary: #004b87;
         --color-masala-hover: #003a6a;
         --font-heading: 'Oswald', 'Impact', sans-serif;
-        --bg-canvas: #DDE4E8;
+        --bg-canvas: #dde4e8;
+
+        /* High Contrast Text for Light Background */
+        --text-primary: #0f172a;
+        --text-secondary: #334155;
+        --text-muted: #475569;
+
         --text-inverse: #ffffff;
         --radius-component: 0px;
         --border-glow: rgba(0, 75, 135, 0.3);
         --shadow-glow: 0 0 40px rgba(0, 75, 135, 0.15);
+
+        /* Adjusted Borders & Surfaces for Light Theme */
+        --border-structural: rgba(0, 75, 135, 0.2);
+        --border-subtle: rgba(0, 75, 135, 0.1);
+        --bg-surface: rgba(255, 255, 255, 0.7);
+        --bg-surface-elevated: #ffffff;
+        --bg-glass: rgba(255, 255, 255, 0.5);
     }
 
     /* --- THEME: LIBERTY (Tech - Cyberpunk Minimalism) --- */
-    [data-theme="liberty"] {
-        --color-primary: #E1AD01;
+    [data-theme='liberty'] {
+        --color-primary: #e1ad01;
         --color-masala-hover: #c99a01;
         --font-heading: 'Inter', sans-serif;
         --bg-canvas: #1a1a1a;
         --radius-component: 6px;
-        --status-success: #98FF98;
+        --status-success: #98ff98;
         --border-glow: rgba(225, 173, 1, 0.3);
         --shadow-glow: 0 0 40px rgba(225, 173, 1, 0.2);
     }
 
     /* --- THEME: HENNESSEY (Research - Marine Sterile) --- */
-    [data-theme="hennessey"] {
-        --color-primary: #75AADB;
+    [data-theme='hennessey'] {
+        --color-primary: #75aadb;
         --color-masala-hover: #5d94c7;
         --font-heading: 'EB Garamond', 'Georgia', serif;
-        --bg-canvas: #F5F9FA;
+        --bg-canvas: #f5f9fa;
         --bg-surface: rgba(117, 170, 219, 0.04);
         --bg-surface-elevated: rgba(117, 170, 219, 0.08);
         --text-primary: #333333;
@@ -115,7 +128,9 @@
     body {
         @apply bg-canvas text-text-primary antialiased;
         font-family: var(--font-body);
-        transition: background-color 0.4s ease, color 0.3s ease;
+        transition:
+            background-color 0.4s ease,
+            color 0.3s ease;
     }
 
     h1,
@@ -140,7 +155,6 @@
    COMPONENTS LAYER - Reusable Components
    ========================================== */
 @layer components {
-
     /* --- BUTTONS (Premium Feel) --- */
     .btn {
         @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-component transition-all duration-300 cursor-pointer border border-transparent no-underline;
@@ -150,8 +164,14 @@
     .btn-primary,
     .btn-masala {
         @apply text-white text-sm tracking-wide;
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-masala-hover) 100%);
-        box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-masala-hover) 100%
+        );
+        box-shadow:
+            var(--shadow-md),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .btn-primary:hover,
@@ -184,7 +204,11 @@
 
     .btn-glow {
         @apply text-white border-0;
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-masala-hover) 100%);
+        background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-masala-hover) 100%
+        );
         box-shadow: var(--shadow-glow);
     }
 
@@ -278,7 +302,9 @@
     .offcanvas {
         @apply text-text-primary invisible backdrop-blur-2xl;
         background: var(--bg-surface);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+        transition:
+            transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            visibility 0.4s;
     }
 
     .offcanvas.show {
@@ -295,6 +321,7 @@
     .offcanvas-backdrop {
         @apply fixed inset-0 z-40 hidden;
         background: rgba(0, 0, 0, 0.6);
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
     }
 
@@ -311,8 +338,8 @@
         opacity: 1;
     }
 
-    [data-theme="desgoffe"] .btn-close,
-    [data-theme="hennessey"] .btn-close {
+    [data-theme='desgoffe'] .btn-close,
+    [data-theme='hennessey'] .btn-close {
         filter: none;
     }
 
@@ -396,7 +423,7 @@
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .section-grid>* {
+    .section-grid > * {
         @apply p-8 rounded-component;
         background: var(--bg-surface);
         border: 1px solid var(--border-structural);
@@ -412,7 +439,12 @@
    ========================================== */
 @layer utilities {
     .text-gradient-primary {
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-masala-hover) 50%, #67e8f9 100%);
+        background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-masala-hover) 50%,
+            #67e8f9 100%
+        );
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -432,19 +464,19 @@
     }
 
     /* Theme glow colors */
-    [data-theme="desgoffe"] .btn-glow {
+    [data-theme='desgoffe'] .btn-glow {
         box-shadow: 0 0 40px rgba(93, 58, 93, 0.3);
     }
 
-    [data-theme="whitman"] .btn-glow {
+    [data-theme='whitman'] .btn-glow {
         box-shadow: 0 0 40px rgba(0, 75, 135, 0.3);
     }
 
-    [data-theme="liberty"] .btn-glow {
+    [data-theme='liberty'] .btn-glow {
         box-shadow: 0 0 40px rgba(225, 173, 1, 0.3);
     }
 
-    [data-theme="hennessey"] .btn-glow {
+    [data-theme='hennessey'] .btn-glow {
         box-shadow: 0 0 40px rgba(117, 170, 219, 0.3);
     }
 }
@@ -453,7 +485,6 @@
    ANIMATIONS
    ========================================== */
 @keyframes float {
-
     0%,
     100% {
         transform: translateY(0px) rotate3d(1, 1, 1, -3deg);
@@ -487,6 +518,7 @@
     .glass-premium,
     .glass-panel,
     .glass-card {
+        -webkit-backdrop-filter: blur(12px) !important;
         backdrop-filter: blur(12px) !important;
     }
 

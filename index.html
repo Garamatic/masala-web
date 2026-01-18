@@ -1,137 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="default">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Primary Meta Tags -->
+        <title>Ticket Masala - Intelligent Workflow Orchestration</title>
+        <meta name="title" content="Ticket Masala - Intelligent Workflow Orchestration" />
+        <meta
+            name="description"
+            content="Stop drowning in tickets. Ticket Masala unifies your support tickets, projects, and team workflows into one beautiful, AI-powered platform."
+        />
+        <meta
+            name="keywords"
+            content="ticket management, workflow automation, AI, GERDA, multi-tenant, SaaS, .NET, Blazor"
+        />
+        <meta name="author" content="Garamatic" />
 
-    <!-- Primary Meta Tags -->
-    <title>Ticket Masala - Intelligent Workflow Orchestration</title>
-    <meta name="title" content="Ticket Masala - Intelligent Workflow Orchestration">
-    <meta name="description"
-        content="Stop drowning in tickets. Ticket Masala unifies your support tickets, projects, and team workflows into one beautiful, AI-powered platform.">
-    <meta name="keywords" content="ticket management, workflow automation, AI, GERDA, multi-tenant, SaaS, .NET, Blazor">
-    <meta name="author" content="Garamatic">
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ticketmasala.dev" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://ticketmasala.dev">
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ticketmasala.dev" />
+        <meta property="og:title" content="Ticket Masala - Intelligent Workflow Orchestration" />
+        <meta
+            property="og:description"
+            content="Stop drowning in tickets. Unify support, projects, and autonomous intelligence into one premium, intelligent operating system."
+        />
+        <meta property="og:image" content="https://ticketmasala.dev/images/og-image.png" />
+        <meta property="og:site_name" content="Ticket Masala" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ticketmasala.dev">
-    <meta property="og:title" content="Ticket Masala - Intelligent Workflow Orchestration">
-    <meta property="og:description"
-        content="Stop drowning in tickets. Unify support, projects, and autonomous intelligence into one premium, intelligent operating system.">
-    <meta property="og:image" content="https://ticketmasala.dev/images/og-image.png">
-    <meta property="og:site_name" content="Ticket Masala">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://ticketmasala.dev" />
+        <meta name="twitter:title" content="Ticket Masala - Intelligent Workflow Orchestration" />
+        <meta
+            name="twitter:description"
+            content="Stop drowning in tickets. Unify support, projects, and autonomous intelligence into one premium, intelligent operating system."
+        />
+        <meta name="twitter:image" content="https://ticketmasala.dev/images/og-image.png" />
+        <meta name="twitter:creator" content="@garamatic" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://ticketmasala.dev">
-    <meta name="twitter:title" content="Ticket Masala - Intelligent Workflow Orchestration">
-    <meta name="twitter:description"
-        content="Stop drowning in tickets. Unify support, projects, and autonomous intelligence into one premium, intelligent operating system.">
-    <meta name="twitter:image" content="https://ticketmasala.dev/images/og-image.png">
-    <meta name="twitter:creator" content="@garamatic">
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        <!-- Theme Color -->
+        <meta name="theme-color" content="#4CAF50" />
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#4CAF50">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Chivo:wght@400;700&family=Rajdhani:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Chivo:wght@400;700&family=Rajdhani:wght@500;700&display=swap"
-        rel="stylesheet">
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* Landing Page Specific - Hero Background Effects */
-        .hero-bg-glow {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 100vh;
-            background: radial-gradient(circle at 60% 0%, rgba(21, 128, 61, 0.08) 0%, transparent 60%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        .orb-1 {
-            top: 5%;
-            right: 10%;
-            width: 400px;
-            height: 400px;
-            background: rgba(22, 163, 74, 0.1);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .orb-2 {
-            bottom: 20%;
-            left: 10%;
-            width: 250px;
-            height: 250px;
-            background: rgba(134, 239, 172, 0.2);
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
+        <style>
+            /* Landing Page Specific - Hero Background Effects */
+            .hero-bg-glow {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                height: 100vh;
+                background: radial-gradient(
+                    circle at 60% 0%,
+                    rgba(21, 128, 61, 0.08) 0%,
+                    transparent 60%
+                );
+                z-index: -1;
+                pointer-events: none;
             }
 
-            50% {
-                transform: translateY(-20px);
+            .orb {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(80px);
+                z-index: -1;
+                opacity: 0.5;
             }
 
-            100% {
-                transform: translateY(0px);
+            .orb-1 {
+                top: 5%;
+                right: 10%;
+                width: 400px;
+                height: 400px;
+                background: rgba(22, 163, 74, 0.1);
+                animation: float 8s ease-in-out infinite;
             }
-        }
-    </style>
-</head>
 
-<body>
-    <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+            .orb-2 {
+                bottom: 20%;
+                left: 10%;
+                width: 250px;
+                height: 250px;
+                background: rgba(134, 239, 172, 0.2);
+                animation: float 10s ease-in-out infinite reverse;
+            }
 
-    <div class="hero-bg-glow" aria-hidden="true"></div>
-    <div class="orb orb-1" aria-hidden="true"></div>
-    <div class="orb orb-2" aria-hidden="true"></div>
+            @keyframes float {
+                0% {
+                    transform: translateY(0px);
+                }
 
-    {{> nav }}
+                50% {
+                    transform: translateY(-20px);
+                }
 
-    <main id="main-content">
-        {{> hero }}
-        {{> features }}
-        {{> solutions }}
-        {{> architecture }}
-        {{> testimonials }}
-    </main>
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+        </style>
+    </head>
 
-    {{> footer }}
+    <body>
+        <!-- Skip Link for Accessibility -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <script type="module" src="/src/main.js"></script>
-</body>
+        <div class="hero-bg-glow" aria-hidden="true"></div>
+        <div class="orb orb-1" aria-hidden="true"></div>
+        <div class="orb orb-2" aria-hidden="true"></div>
 
+        {{> nav }}
+
+        <main id="main-content">
+            {{> hero }} {{> features }} {{> solutions }} {{> demos }} {{> testimonials }}
+        </main>
+
+        {{> footer }}
+
+        <script type="module" src="/src/main.js"></script>
+    </body>
 </html>

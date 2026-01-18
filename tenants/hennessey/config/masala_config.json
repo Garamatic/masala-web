@@ -24,5 +24,22 @@
             "IsEnabled": true,
             "MaxLength": 500
         }
+    },
+    "PerformanceProfile": {
+        "TargetReviewDaysP80": 30,
+        "TargetDecisionDaysP80": 60,
+        "SlaDescription": "Grant proposals are reviewed in two phases: eligibility screening and scientific evaluation."
+    },
+    "DemoProfiles": {
+        "Standard": {
+            "Description": "Balanced portfolio with equal weight on budget discipline and research merit.",
+            "RankingStrategy": "MeritBased",
+            "DispatchingStrategy": "PortfolioBased"
+        },
+        "EarlyCareerFocus": {
+            "Description": "Scenario that favors early-career researchers with smaller budgets and shorter durations.",
+            "RankingStrategy": "EmergingTalent",
+            "DispatchingStrategy": "CareerStageRouting"
+        }
     }
 }

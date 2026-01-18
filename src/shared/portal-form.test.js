@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { PortalForm } from './portal-form.js';
 
 describe('PortalForm', () => {
-    let formElement;
     let config;
     let portalForm;
 
@@ -61,7 +60,7 @@ describe('PortalForm', () => {
             // Since we can't easily trigger the change event and check alert without more mocking,
             // we'll check the logic if we could isolate it, but given strictly "Vanilla JS" class structure,
             // we will simulate the check manually or mock alert.
-            global.alert = vi.fn();
+            globalThis.alert = vi.fn();
             
             const fileInput = document.getElementById('attachment');
             const badFile = new File(['content'], 'test.txt', { type: 'text/plain' });
@@ -77,12 +76,12 @@ describe('PortalForm', () => {
 
             fileInput.dispatchEvent(new Event('change'));
 
-            expect(global.alert).toHaveBeenCalledWith(config.messages.pdfOnly);
+            expect(globalThis.alert).toHaveBeenCalledWith(config.messages.pdfOnly);
             expect(fileInput.value).toBe(''); 
         });
 
         it('should reject files larger than 5MB', () => {
-            global.alert = vi.fn();
+            globalThis.alert = vi.fn();
             portalForm.init();
             
             const fileInput = document.getElementById('attachment');
@@ -97,8 +96,8 @@ describe('PortalForm', () => {
             fileInput.dispatchEvent(new Event('change'));
 
             // Check if alert was called with size message
-            expect(global.alert).toHaveBeenCalled();
-            expect(global.alert.mock.calls[0][0]).toContain('File size exceeds');
+            expect(globalThis.alert).toHaveBeenCalled();
+            expect(globalThis.alert.mock.calls[0][0]).toContain('File size exceeds');
         });
     });
 });

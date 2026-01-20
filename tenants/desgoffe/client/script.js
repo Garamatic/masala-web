@@ -12,6 +12,7 @@ const __API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 const config = {
     formId: 'submissionForm',
     apiEndpoint: __API_ENDPOINT,
+    tenant: 'desgoffe',
     locale: 'fr',
     minDescriptionLength: 10,
     customFieldId: 'quartier',

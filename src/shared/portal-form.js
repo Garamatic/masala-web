@@ -126,7 +126,7 @@ export class PortalForm {
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
                     return;
                 }
-                
+
                 // Validate File Size
                 if (file.size > this.config.maxFileSize) {
                     alert(`File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`);
@@ -228,6 +228,11 @@ export class PortalForm {
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         if (csrfToken) {
             headers['X-CSRF-Token'] = csrfToken;
+        }
+
+        // Add tenant header for backend routing
+        if (this.config.tenant) {
+            headers['X-Tenant'] = this.config.tenant;
         }
 
         // Submit to API

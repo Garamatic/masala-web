@@ -2,7 +2,7 @@ export default {
     // Navigation
     nav_features: 'Functies',
     nav_solutions: 'Oplossingen',
-    nav_demos: 'Live Demo\'s',
+    nav_demos: "Live Demo's",
     nav_docs: 'Documentatie',
 
     // Hero
@@ -102,6 +102,8 @@ export default {
     arch_tenant_desc: 'Volledige isolatie met aangepaste branding',
     how_title: 'Eén Kern.',
     how_title_2: 'Oneindige Skins.',
+    how_subtitle:
+        'Kies Uw Ervaring: Eén engine, vier verschillende realiteiten. Ontdek hoe de polymorfe architectuur zich aanpast aan verschillende organisatorische behoeften.',
 
     // Testimonials
     voices_title: 'Stemmen uit het',
@@ -119,4 +121,10 @@ export default {
     test_hennessey_title: 'Fonds Hennessey',
     test_hennessey_quote:
         '"Subsidies beheren vereist precisie. De AI compliance checker bespaart mijn team elke dag uren."',
+
+    // Liberty getuigenis (ontbrak)
+    test_liberty_name: 'Alex Chen',
+    test_liberty_title: 'Liberty Systems',
+    test_liberty_quote:
+        '"De dark mode interface is perfect voor onze 3 AM deploys. GERDA AI voorspelt incidenten voordat ze gebeuren."',
 };

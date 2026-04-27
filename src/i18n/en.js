@@ -101,6 +101,8 @@ export default {
     arch_tenant_desc: 'Complete isolation with custom branding',
     how_title: 'One Core.',
     how_title_2: 'Infinite Skins.',
+    how_subtitle:
+        'Choose Your Experience: One engine, four different realities. Discover how the polymorphic architecture adapts to different organizational needs.',
 
     // Testimonials
     voices_title: 'Voices of the',
@@ -118,4 +120,10 @@ export default {
     test_hennessey_title: 'Fonds Hennessey',
     test_hennessey_quote:
         '"Managing grants requires precision. The AI compliance checker saves my team hours every single day."',
+
+    // Liberty testimonial (missing)
+    test_liberty_name: 'Alex Chen',
+    test_liberty_title: 'Liberty Systems',
+    test_liberty_quote:
+        '"The dark mode interface is perfect for our 3 AM deploys. GERDA AI predicts incidents before they happen."',
 };

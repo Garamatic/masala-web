@@ -104,6 +104,8 @@ export default {
     arch_tenant_desc: 'Isolation complète avec branding personnalisé',
     how_title: 'Un Noyau.',
     how_title_2: 'Skins Infinis.',
+    how_subtitle:
+        "Choisissez Votre Expérience: Un moteur, quatre réalités différentes. Découvrez comment l'architecture polymorphe s'adapte à différents besoins organisationnels.",
 
     // Testimonials
     voices_title: 'Voix de',
@@ -121,4 +123,10 @@ export default {
     test_hennessey_title: 'Fonds Hennessey',
     test_hennessey_quote:
         '"Gérer les subventions exige de la précision. Le vérificateur de conformité IA fait gagner des heures à mon équipe chaque jour."',
+
+    // Témoignage Liberty (manquant)
+    test_liberty_name: 'Alex Chen',
+    test_liberty_title: 'Liberty Systems',
+    test_liberty_quote:
+        '"L\'interface en mode sombre est parfaite pour nos déploiements à 3h du matin. GERDA AI prédit les incidents avant qu\'ils ne surviennent."',
 };

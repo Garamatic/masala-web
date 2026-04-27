@@ -17,10 +17,19 @@ export default {
     btn_view_demos: 'View Demos',
     btn_explore_demos: 'Explore Live Demos',
 
+    // Hero badge
+    hero_badge_suffix: 'Automated Workflows',
+
     // Hero stats
     stat_opensource: 'Open Source',
-    stat_latency: 'Real-time',
+    stat_latency_label: 'Real-time',
+    stat_latency_value: 'Latency',
     stat_support: 'AI Support',
+
+    // Hero code window
+    rule_engine_active: 'Rule Engine Active',
+    system_processing: 'System Processing',
+    memory: 'Memory',
 
     // Theme-specific hero content
     theme_desgoffe_hero_title_1: 'Governing The',
@@ -105,6 +114,7 @@ export default {
     arch_tenant_desc: 'Complete isolation with custom branding',
     how_title: 'One Core.',
     how_title_2: 'Infinite Skins.',
+    how_badge: 'Architecture',
     how_subtitle:
         'Choose Your Experience: One engine, four different realities. Discover how the polymorphic architecture adapts to different organizational needs.',
 

@@ -17,10 +17,19 @@ export default {
     btn_view_demos: "Bekijk Demo's",
     btn_explore_demos: "Ontdek Live Demo's",
 
+    // Hero badge
+    hero_badge_suffix: 'Geautomatiseerde Workflows',
+
     // Hero stats
     stat_opensource: 'Open Source',
-    stat_latency: 'Real-time',
+    stat_latency_label: 'Real-time',
+    stat_latency_value: 'Latentie',
     stat_support: 'AI Support',
+
+    // Hero code window
+    rule_engine_active: 'Regel Engine Actief',
+    system_processing: 'Systeem Verwerking',
+    memory: 'Geheugen',
 
     // Thema-specifieke hero content
     theme_desgoffe_hero_title_1: 'Besturen Van De',
@@ -106,6 +115,7 @@ export default {
     arch_tenant_desc: 'Volledige isolatie met aangepaste branding',
     how_title: 'Eén Kern.',
     how_title_2: 'Oneindige Skins.',
+    how_badge: 'Architectuur',
     how_subtitle:
         'Kies Uw Ervaring: Eén engine, vier verschillende realiteiten. Ontdek hoe de polymorfe architectuur zich aanpast aan verschillende organisatorische behoeften.',
 

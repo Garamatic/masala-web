@@ -17,10 +17,19 @@ export default {
     btn_view_demos: 'Voir Démos',
     btn_explore_demos: 'Explorer Démos Live',
 
-    // Hero stats
+    // Badge hero
+    hero_badge_suffix: 'Workflows Automatisés',
+
+    // Stats hero
     stat_opensource: 'Open Source',
-    stat_latency: 'Temps Réel',
+    stat_latency_label: 'Temps Réel',
+    stat_latency_value: 'Latence',
     stat_support: 'Support IA',
+
+    // Fenêtre de code hero
+    rule_engine_active: 'Moteur de Règles Actif',
+    system_processing: 'Traitement Système',
+    memory: 'Mémoire',
 
     // Contenu hero spécifique au thème
     theme_desgoffe_hero_title_1: 'Gouverner La',
@@ -108,6 +117,7 @@ export default {
     arch_tenant_desc: 'Isolation complète avec branding personnalisé',
     how_title: 'Un Noyau.',
     how_title_2: 'Skins Infinis.',
+    how_badge: 'Architecture',
     how_subtitle:
         "Choisissez Votre Expérience: Un moteur, quatre réalités différentes. Découvrez comment l'architecture polymorphe s'adapte à différents besoins organisationnels.",
 

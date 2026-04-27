@@ -75,7 +75,6 @@ describe('i18n', () => {
         // It only falls back if the whole language dict is missing.
         // Let's verify this behavior.
 
-        const el = document.querySelector('[data-i18n="nav_features"]');
         // Since we deleted it from FR, and setLang uses FR dict, t[key] will be undefined.
         // So innerText should remain unchanged (or whatever previous value).
 

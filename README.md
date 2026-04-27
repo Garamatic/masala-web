@@ -63,6 +63,23 @@ masala-web/
 fly deploy
 ```
 
+### Docker Compose (Full Ecosystem)
+
+When using `docker-compose.ecosystem.yml`, you must set required environment variables:
+
+```bash
+# Required for Gatekeeper API authentication
+export GATEKEEPER_API_KEY="your-secure-random-key-here"
+
+# Required for Grafana admin access
+export GRAFANA_ADMIN_PASSWORD="your-secure-password-here"
+
+# Then run
+docker-compose -f docker-compose.ecosystem.yml up
+```
+
+**Security Note**: Never commit actual secrets to the repository. Use environment variables or a `.env` file (which is gitignored).
+
 ### Static Hosting
 
 Build and deploy `dist/` to:

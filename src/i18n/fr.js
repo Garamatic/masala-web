@@ -14,9 +14,13 @@ export default {
         "Arrêtez de vous noyer dans le chaos. Unifiez le support, les projets et l'intelligence autonome en un seul",
     hero_desc_2: "système d'exploitation intelligent et premium",
     hero_desc_3: 'pour votre entreprise.',
-    btn_start_trial: 'Essai Gratuit',
     btn_view_demos: 'Voir Démos',
     btn_explore_demos: 'Explorer Démos Live',
+
+    // Hero stats
+    stat_opensource: 'Open Source',
+    stat_latency: 'Temps Réel',
+    stat_support: 'Support IA',
 
     // Contenu hero spécifique au thème
     theme_desgoffe_hero_title_1: 'Gouverner La',
@@ -124,7 +128,31 @@ export default {
     test_hennessey_quote:
         '"Gérer les subventions exige de la précision. Le vérificateur de conformité IA fait gagner des heures à mon équipe chaque jour."',
 
-    // Témoignage Liberty (manquant)
+    // Cartes de démo
+    demo_tag_gov: 'Gouvernement',
+    demo_tag_classic: 'Classique',
+    demo_desc_desgoffe:
+        "Guichet citoyen axé sur les processus formels, l'accessibilité et l'efficacité bureaucratique.",
+
+    demo_tag_industrial: 'Industriel',
+    demo_tag_highvis: 'Haute Visibilité',
+    demo_desc_whitman:
+        'Outil de rapport de sécurité à haut contraste conçu pour les travailleurs sur le terrain.',
+
+    demo_tag_tech: 'Tech',
+    demo_tag_dark: 'Mode Sombre',
+    demo_desc_liberty:
+        'Interface DevOps cyberpunk pour réponse rapide aux incidents et utilisateurs techniques.',
+
+    demo_tag_grants: 'Subventions',
+    demo_tag_elegant: 'Élégant',
+    demo_desc_hennessey:
+        "Portail avancé de gestion de subventions axé sur le contenu long et l'évaluation au mérite.",
+
+    demo_backend: 'Backend',
+    demo_config: 'Configuration',
+
+    // Témoignage Liberty
     test_liberty_name: 'Alex Chen',
     test_liberty_title: 'Liberty Systems',
     test_liberty_quote:

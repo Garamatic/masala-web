@@ -75,10 +75,11 @@ describe('i18n', () => {
         // It only falls back if the whole language dict is missing.
         // Let's verify this behavior.
 
-        // Since we deleted it from FR, and setLang uses FR dict, t[key] will be undefined.
-        // So innerText should remain unchanged (or whatever previous value).
+        // The t() function returns the key itself when translation is missing.
+        // setLang only updates elements where translation !== key.
+        // So innerText remains unchanged when key is missing in target language.
 
-        // Actually, let's just restore translations for other tests
+        // Restore translations for other tests
         Object.assign(translations, originalTranslations);
     });
 });

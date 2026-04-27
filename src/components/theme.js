@@ -44,10 +44,16 @@ function updateThemeContent() {
     if (hasThemeDesc) {
         if (heroDesc1) {
             heroDesc1.innerText = themeDescText;
-            heroDesc1.style.display = ''; // Ensure visible
+            heroDesc1.style.display = '';
         }
-        if (heroDesc2) heroDesc2.style.display = 'none';
-        if (heroDesc3) heroDesc3.style.display = 'none';
+        if (heroDesc2) {
+            heroDesc2.style.display = 'none';
+            heroDesc2.innerText = '';
+        }
+        if (heroDesc3) {
+            heroDesc3.style.display = 'none';
+            heroDesc3.innerText = '';
+        }
     } else {
         // Restore default split description
         if (heroDesc1) {

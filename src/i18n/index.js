@@ -28,9 +28,11 @@ export function setLang(lang) {
     if (mobileLang) mobileLang.innerText = langLabel;
 
     // Dispatch event to notify other components (like Theme switcher)
-    window.dispatchEvent(new CustomEvent('languageChanged', { 
-        detail: { lang } 
-    }));
+    window.dispatchEvent(
+        new CustomEvent('languageChanged', {
+            detail: { lang },
+        })
+    );
 }
 
 /**
@@ -53,7 +55,7 @@ export function t(key, lang = currentLang) {
 }
 
 // Listen for theme changes to update content
-window.addEventListener('themeChanged', (_event) => {
+window.addEventListener('themeChanged', () => {
     // When theme changes, refresh content with current language
     setLang(currentLang);
 });

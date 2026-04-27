@@ -14,9 +14,13 @@ export default {
         'Stop met verdrinken in chaos. Verenig support, projecten en autonome intelligentie in één',
     hero_desc_2: 'premium, intelligent besturingssysteem',
     hero_desc_3: 'voor uw bedrijf.',
-    btn_start_trial: 'Start Gratis Proef',
     btn_view_demos: "Bekijk Demo's",
     btn_explore_demos: "Ontdek Live Demo's",
+
+    // Hero stats
+    stat_opensource: 'Open Source',
+    stat_latency: 'Real-time',
+    stat_support: 'AI Support',
 
     // Thema-specifieke hero content
     theme_desgoffe_hero_title_1: 'Besturen Van De',
@@ -122,7 +126,31 @@ export default {
     test_hennessey_quote:
         '"Subsidies beheren vereist precisie. De AI compliance checker bespaart mijn team elke dag uren."',
 
-    // Liberty getuigenis (ontbrak)
+    // Demo kaarten
+    demo_tag_gov: 'Overheid',
+    demo_tag_classic: 'Klassiek',
+    demo_desc_desgoffe:
+        'Burgerloket gericht op formele processen, toegankelijkheid en bureaucratische efficiëntie.',
+
+    demo_tag_industrial: 'Industrieel',
+    demo_tag_highvis: 'Hoge Zichtbaarheid',
+    demo_desc_whitman:
+        'Hoog-contrast veiligheidsrapportagetool ontworpen voor veldwerkers in gevaarlijke omgevingen.',
+
+    demo_tag_tech: 'Tech',
+    demo_tag_dark: 'Donkere Modus',
+    demo_desc_liberty:
+        'Cyberpunk-thema DevOps-interface voor snelle incidentrespons en technisch onderlegde gebruikers.',
+
+    demo_tag_grants: 'Subsidies',
+    demo_tag_elegant: 'Elegant',
+    demo_desc_hennessey:
+        'Geavanceerd subsidiebeheerportaal gericht op long-form content en beoordeling op basis van verdienste.',
+
+    demo_backend: 'Backend',
+    demo_config: 'Configuratie',
+
+    // Liberty getuigenis
     test_liberty_name: 'Alex Chen',
     test_liberty_title: 'Liberty Systems',
     test_liberty_quote:

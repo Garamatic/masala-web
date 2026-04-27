@@ -14,9 +14,13 @@ export default {
         'Stop drowning in chaos. Unify support, projects, and autonomous intelligence into one',
     hero_desc_2: 'premium, intelligent operating system',
     hero_desc_3: 'for your business.',
-    btn_start_trial: 'Start Free Trial',
     btn_view_demos: 'View Demos',
     btn_explore_demos: 'Explore Live Demos',
+
+    // Hero stats
+    stat_opensource: 'Open Source',
+    stat_latency: 'Real-time',
+    stat_support: 'AI Support',
 
     // Theme-specific hero content
     theme_desgoffe_hero_title_1: 'Governing The',
@@ -121,7 +125,31 @@ export default {
     test_hennessey_quote:
         '"Managing grants requires precision. The AI compliance checker saves my team hours every single day."',
 
-    // Liberty testimonial (missing)
+    // Demo cards
+    demo_tag_gov: 'Government',
+    demo_tag_classic: 'Classic',
+    demo_desc_desgoffe:
+        'Citizen portal focused on formal processes, accessibility and bureaucratic efficiency.',
+
+    demo_tag_industrial: 'Industrial',
+    demo_tag_highvis: 'High Visibility',
+    demo_desc_whitman:
+        'High-contrast safety reporting tool designed for field workers in hazardous environments.',
+
+    demo_tag_tech: 'Tech',
+    demo_tag_dark: 'Dark Mode',
+    demo_desc_liberty:
+        'Cyberpunk-themed DevOps interface for rapid incident response and technical users.',
+
+    demo_tag_grants: 'Grants',
+    demo_tag_elegant: 'Elegant',
+    demo_desc_hennessey:
+        'Advanced grant management portal focused on long-form content and merit-based review.',
+
+    demo_backend: 'Backend',
+    demo_config: 'Configuration',
+
+    // Liberty testimonial
     test_liberty_name: 'Alex Chen',
     test_liberty_title: 'Liberty Systems',
     test_liberty_quote:

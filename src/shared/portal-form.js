@@ -1,6 +1,6 @@
 /**
  * PortalForm - Reusable form handling for tenant portals
- * 
+ *
  * This class encapsulates all common form functionality including:
  * - Real-time validation with ARIA attributes
  * - Character counter for description field
@@ -22,7 +22,7 @@ export class PortalForm {
         this.config = {
             minDescriptionLength: 10,
             maxFileSize: 5 * 1024 * 1024, // 5MB
-            ...config
+            ...config,
         };
 
         this.form = document.getElementById(this.config.formId);
@@ -115,7 +115,7 @@ export class PortalForm {
     attachFileUploadHandler() {
         if (!this.fileInput || !this.fileNameDisplay) return;
 
-        this.fileInput.addEventListener('change', (e) => {
+        this.fileInput.addEventListener('change', e => {
             const file = e.target.files[0];
 
             if (file) {
@@ -129,7 +129,9 @@ export class PortalForm {
 
                 // Validate File Size
                 if (file.size > this.config.maxFileSize) {
-                    alert(`File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`);
+                    alert(
+                        `File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`
+                    );
                     this.fileInput.value = '';
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
                     return;
@@ -146,7 +148,7 @@ export class PortalForm {
      * Attach form submit handler
      */
     attachSubmitHandler() {
-        this.form.addEventListener('submit', async (e) => {
+        this.form.addEventListener('submit', async e => {
             e.preventDefault();
 
             // Validate form
@@ -171,7 +173,7 @@ export class PortalForm {
                 } else {
                     throw new Error(result.message || this.config.messages.submitError);
                 }
-            } catch (_error) {
+            } catch {
                 alert(this.config.messages.submitError);
                 if (this.loadingOverlay) {
                     this.loadingOverlay.style.display = 'none';
@@ -201,12 +203,30 @@ export class PortalForm {
         const formData = new FormData();
 
         // Add standard fields with sanitization
-        formData.append('CustomerName', this.sanitizeInput(document.getElementById('customerName').value));
-        formData.append('CustomerEmail', this.sanitizeInput(document.getElementById('customerEmail').value));
-        formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value || ''));
-        formData.append('Description', this.sanitizeInput(document.getElementById('description').value));
-        formData.append('WorkItemType', this.sanitizeInput(document.getElementById('requestType').value));
-        formData.append('PriorityScore', this.sanitizeInput(document.getElementById('priorite').value));
+        formData.append(
+            'CustomerName',
+            this.sanitizeInput(document.getElementById('customerName').value)
+        );
+        formData.append(
+            'CustomerEmail',
+            this.sanitizeInput(document.getElementById('customerEmail').value)
+        );
+        formData.append(
+            'CustomerPhone',
+            this.sanitizeInput(document.getElementById('customerPhone').value || '')
+        );
+        formData.append(
+            'Description',
+            this.sanitizeInput(document.getElementById('description').value)
+        );
+        formData.append(
+            'WorkItemType',
+            this.sanitizeInput(document.getElementById('requestType').value)
+        );
+        formData.append(
+            'PriorityScore',
+            this.sanitizeInput(document.getElementById('priorite').value)
+        );
 
         // Add custom fields (tenant-specific)
         if (this.config.customFieldId) {
@@ -225,7 +245,9 @@ export class PortalForm {
 
         // Prepare headers
         const headers = {};
-        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        const csrfToken = document
+            .querySelector('meta[name="csrf-token"]')
+            ?.getAttribute('content');
         if (csrfToken) {
             headers['X-CSRF-Token'] = csrfToken;
         }
@@ -239,7 +261,7 @@ export class PortalForm {
         const response = await fetch(this.config.apiEndpoint, {
             method: 'POST',
             headers: headers,
-            body: formData
+            body: formData,
         });
 
         return await response.json();
@@ -253,14 +275,17 @@ export class PortalForm {
      */
     sanitizeInput(input) {
         if (!input) return '';
-        // Basic tag stripping
-        return input.replace(/<[^>]*>?/gm, "")
-            // Basic escaping for remaining characters
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+        // Escape first to preserve any existing entities, then strip tags
+        return (
+            input
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;')
+                // Then strip any encoded tags that were created
+                .replace(/&lt;[^&]*&gt;?/gm, '')
+        );
     }
 
     /**

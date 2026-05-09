@@ -28,3 +28,15 @@ processes = ["app"]
 memory = "512mb"    # .NET might need more than 256mb
 cpu_kind = "shared"
 cpus = 1
+
+[env]
+  ASPNETCORE_ENVIRONMENT    = "Production"
+  MASALA_TENANT_ID          = "desgoffe"
+  MASALA_DB_PATH            = "/data/masala.db"
+
+  # ADD THESE:
+  RabbitMQ__HostName        = "YOUR_AZURE_VM_IP"
+  RabbitMQ__Port            = "5672"
+  RabbitMQ__UserName        = "your_rabbitmq_user"
+  RabbitMQ__Password        = "your_rabbitmq_password"
+  RabbitMQ__ExchangeName    = "garamatic.events"

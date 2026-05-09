@@ -197,6 +197,12 @@ export class PortalForm {
      * Submit form data to API
      * @returns {Promise<Object>} API response
      */
+
+    priorityToString(score) {
+    const map = { '5': 'low', '10': 'medium', '15': 'high', '20': 'urgent' };
+    return map[String(score)] ?? 'low';
+    }
+
     async submitForm() {
         const formData = new FormData();
 
@@ -206,8 +212,10 @@ export class PortalForm {
         formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value || ''));
         formData.append('Description', this.sanitizeInput(document.getElementById('description').value));
         formData.append('WorkItemType', this.sanitizeInput(document.getElementById('requestType').value));
-        formData.append('PriorityScore', this.sanitizeInput(document.getElementById('priorite').value));
-
+        const rawPriority = document.getElementById('priorite').value;
+        formData.append('PriorityScore', this.sanitizeInput(rawPriority));
+        formData.append('Priority', this.priorityToString(rawPriority)); // contract field
+        
         // Add custom fields (tenant-specific)
         if (this.config.customFieldId) {
             const customField = document.getElementById(this.config.customFieldId);

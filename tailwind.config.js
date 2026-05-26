@@ -16,7 +16,6 @@ export default {
         
         // Border colors
         structural: 'var(--border-structural)',
-        'border-structural': 'var(--border-structural)',
         'border-subtle': 'var(--border-subtle)',
         
         // Text colors

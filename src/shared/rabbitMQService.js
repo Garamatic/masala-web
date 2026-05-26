@@ -19,8 +19,10 @@ export class RabbitMQFormService {
      * @param {string} [tenantConfig.routingKey='event.ticket.created'] - Routing key
      */
     constructor(tenantConfig) {
+        if (!tenantConfig?.api?.baseUrl) {
+            throw new Error('RabbitMQFormService requires tenantConfig.api.baseUrl');
+        }
         this.config = tenantConfig;
-        this.baseUrl = tenantConfig.api.baseUrl;
     }
 
     /**
@@ -46,7 +48,7 @@ export class RabbitMQFormService {
         };
 
         const response = await fetch(
-            `${this.baseUrl}${this.config.api.submitEndpoint}`,
+            `${this.config.api.baseUrl}${this.config.api.submitEndpoint}`,
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

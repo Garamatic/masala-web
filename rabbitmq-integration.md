@@ -130,9 +130,10 @@ Add this private mapper:
 ```csharp
 private static string MapPriority(int score) => score switch
 {
-    >= 15 => "urgent",
-    >= 10 => "high",
-    >= 5  => "medium",
+    >= 20 => "urgent",
+    >= 15 => "high",
+    >= 10 => "medium",
+    >= 5  => "low",
     _     => "low",
 };
 ```

@@ -4,7 +4,7 @@
 import { PortalForm } from '../../../src/shared/portal-form.js';
 
 // Dynamically derive API endpoint from the page or allow an override
-const __API_BASE = window.__API_BASE__ || 'https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io';
+const __API_BASE = window.__API_BASE__ || 'http://localhost:5000';
 const __API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Configuration for Desgoffe tenant

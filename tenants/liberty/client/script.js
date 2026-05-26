@@ -1,7 +1,7 @@
 // Liberty Systems Portal - The Newsroom
 // Markdown editor with preview and code highlighting
 
-const __API_BASE = window.__API_BASE__ || 'https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io';
+const __API_BASE = window.__API_BASE__ || 'http://localhost:5000';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Tab switching

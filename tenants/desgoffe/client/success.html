@@ -31,6 +31,7 @@
     </div>
     <script>
         const raw = sessionStorage.getItem('submissionResult');
+        sessionStorage.removeItem('submissionResult');
         if (raw) {
             try {
                 const result = JSON.parse(raw);
@@ -42,8 +43,9 @@
                     document.getElementById('ticketQueue').textContent = `File : ${result.queue}`;
                     document.getElementById('ticketInfo').classList.remove('hidden');
                 }
-                sessionStorage.removeItem('submissionResult');
-            } catch (e) { }
+            } catch (e) {
+                console.error('Failed to parse submission result:', e);
+            }
         }
     </script>
 </body>

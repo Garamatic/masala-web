@@ -29,8 +29,8 @@ describe('PortalForm', () => {
                 chooseFile: 'Choose file',
                 submitError: 'Error',
                 charCounter: '{length}/{min}',
-                charCounterError: 'Min {min} chars'
-            }
+                charCounterError: 'Min {min} chars',
+            },
         };
 
         portalForm = new PortalForm(config);
@@ -77,7 +77,7 @@ describe('PortalForm', () => {
             const largeFile = {
                 name: 'large.pdf',
                 type: 'application/pdf',
-                size: 6 * 1024 * 1024 // 6MB
+                size: 6 * 1024 * 1024, // 6MB
             };
 
             Object.defineProperty(fileInput, 'files', { value: [largeFile] });
@@ -90,15 +90,15 @@ describe('PortalForm', () => {
         it('should accept PDF by extension when MIME type is missing', () => {
             globalThis.alert = vi.fn();
             portalForm.init();
-            
+
             const fileInput = document.getElementById('attachment');
             const fileNameDisplay = document.getElementById('fileName');
             const fileWithBadMime = {
                 name: 'report.pdf',
                 type: '', // Some systems report empty MIME type for PDFs
-                size: 1024
+                size: 1024,
             };
-            
+
             Object.defineProperty(fileInput, 'files', { value: [fileWithBadMime] });
             fileInput.dispatchEvent(new Event('change'));
 

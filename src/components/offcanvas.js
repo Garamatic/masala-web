@@ -37,15 +37,19 @@ export function initOffcanvas() {
     });
 
     // Close on backdrop click
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
         const openOffcanvas = document.querySelector('.offcanvas.show');
-        if (openOffcanvas && !openOffcanvas.contains(e.target) && !e.target.closest('[data-toggle="offcanvas"]')) {
+        if (
+            openOffcanvas &&
+            !openOffcanvas.contains(e.target) &&
+            !e.target.closest('[data-toggle="offcanvas"]')
+        ) {
             closeOffcanvas(openOffcanvas);
         }
     });
 
     // Close on Escape key
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (e.key === 'Escape') {
             const openOffcanvas = document.querySelector('.offcanvas.show');
             if (openOffcanvas) {
@@ -69,5 +73,3 @@ export function closeOffcanvas(offcanvas) {
         }
     }
 }
-
-

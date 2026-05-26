@@ -20,8 +20,9 @@ const config = {
         charCounterError: 'Veuillez saisir au moins {min} caractères',
         pdfOnly: 'Seuls les fichiers PDF sont acceptés.',
         chooseFile: 'Choisir un fichier PDF',
-        submitError: 'Une erreur est survenue lors de la soumission de votre demande. Veuillez réessayer.'
-    }
+        submitError:
+            'Une erreur est survenue lors de la soumission de votre demande. Veuillez réessayer.',
+    },
 };
 
 // Initialize form

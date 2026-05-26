@@ -6,22 +6,22 @@
 const OBSERVER_OPTIONS = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.1,
 };
 
 export function initReveal() {
-    const reveals = document.querySelectorAll(".reveal");
+    const reveals = document.querySelectorAll('.reveal');
 
     if (!('IntersectionObserver' in window)) {
         // Fallback for very old browsers
-        reveals.forEach(el => el.classList.add("active"));
+        reveals.forEach(el => el.classList.add('active'));
         return;
     }
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("active");
+                entry.target.classList.add('active');
                 observer.unobserve(entry.target); // Only animate once
             }
         });
@@ -29,5 +29,3 @@ export function initReveal() {
 
     reveals.forEach(el => observer.observe(el));
 }
-
-

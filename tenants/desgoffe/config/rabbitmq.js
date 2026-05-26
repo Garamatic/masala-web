@@ -10,12 +10,4 @@ export const rabbitmqConfig = {
     },
     exchange:   'garamatic.events',        // matches contract
     routingKey: 'event.ticket.created',    // matches contract routing key
-
-    // Maps form <select> values → contract priority enum
-    priorityMap: {
-        '5':  'low',
-        '10': 'medium',
-        '15': 'high',
-        '20': 'urgent',
-    },
 };

@@ -21,15 +21,18 @@ export function setLang(lang) {
     });
 
     // Update language indicators
-    const langLabel = lang.toUpperCase();
+    const langLabel = currentLang.toUpperCase();
     const desktopLang = document.getElementById('current-lang');
     const mobileLang = document.getElementById('current-lang-mobile');
     if (desktopLang) desktopLang.innerText = langLabel;
     if (mobileLang) mobileLang.innerText = langLabel;
 
+    // Update document language for screen readers
+    document.documentElement.setAttribute('lang', currentLang);
+
     // Dispatch event to notify other components (like Theme switcher)
-    window.dispatchEvent(new CustomEvent('languageChanged', { 
-        detail: { lang } 
+    window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { lang: currentLang }
     }));
 }
 

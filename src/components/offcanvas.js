@@ -17,6 +17,7 @@ export function initOffcanvas() {
             if (target) {
                 target.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                this.setAttribute('aria-expanded', 'true');
             }
         });
     });
@@ -62,6 +63,10 @@ export function closeOffcanvas(offcanvas) {
     if (offcanvas) {
         offcanvas.classList.remove('show');
         document.body.style.overflow = '';
+        const toggle = document.querySelector(`[data-target="#${offcanvas.id}"]`);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', 'false');
+        }
     }
 }
 

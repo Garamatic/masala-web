@@ -67,6 +67,7 @@ getLocationBtn.addEventListener('click', function () {
             }
         },
         function (error) {
+            locationStatus.classList.remove('active');
             locationStatus.innerHTML = `<i class="fas fa-times-circle"></i> Fout bij ophalen locatie: ${error.message}`;
             locationStatus.style.backgroundColor = '#f8d7da';
             locationStatus.style.borderColor = '#dc3545';

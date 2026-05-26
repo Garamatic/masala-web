@@ -27,11 +27,30 @@ tabButtons.forEach(btn => {
     });
 });
 
+// Basic sanitization for self-rendered preview (not a full sanitizer)
+function sanitizePreviewHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+
+    // Remove script tags and event handlers
+    tmp.querySelectorAll('script').forEach(el => el.remove());
+    tmp.querySelectorAll('*').forEach(el => {
+        const attrs = Array.from(el.attributes);
+        attrs.forEach(attr => {
+            if (attr.name.startsWith('on')) {
+                el.removeAttribute(attr.name);
+            }
+        });
+    });
+
+    return tmp.innerHTML;
+}
+
 // Update markdown preview
 function updatePreview() {
     const markdown = descriptionTextarea.value;
-    const html = marked.parse(markdown);
-    previewDiv.innerHTML = html;
+    const rawHtml = marked.parse(markdown);
+    previewDiv.innerHTML = sanitizePreviewHtml(rawHtml);
 
     // Highlight code blocks
     previewDiv.querySelectorAll('pre code').forEach((block) => {

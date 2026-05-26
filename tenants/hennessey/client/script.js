@@ -1,7 +1,7 @@
 // Fonds Hennessey Portal - Application Wizard
-// Multi-step form with draft saving and// Configuration
-const __TENANT = document.documentElement.getAttribute('data-theme') || 'hennessey';
-const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
+// Multi-step form with draft saving and step navigation
+
+const __API_BASE = window.__API_BASE__ || 'https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 let currentStep = 1;
@@ -93,6 +93,9 @@ function updateReview() {
     const reviewContent = document.getElementById('reviewContent');
     const data = getFormData();
 
+    const amount = parseInt(data.requestedAmount, 10);
+    const amountDisplay = Number.isFinite(amount) ? `€${amount.toLocaleString()}` : 'Not specified';
+
     reviewContent.innerHTML = `
         <p><strong>Project Title:</strong> ${data.projectTitle}</p>
         <p><strong>Grant Type:</strong> ${data.grantType}</p>
@@ -100,7 +103,7 @@ function updateReview() {
         <p><strong>Institution:</strong> ${data.institution}</p>
         <p><strong>Research Field:</strong> ${data.researchField}</p>
         <p><strong>Duration:</strong> ${data.duration} months</p>
-        <p><strong>Requested Amount:</strong> €${parseInt(data.requestedAmount).toLocaleString()}</p>
+        <p><strong>Requested Amount:</strong> ${amountDisplay}</p>
         <p><strong>Proposal Document:</strong> ${document.getElementById('proposal').files[0]?.name || 'Not uploaded'}</p>
     `;
 }
@@ -213,6 +216,10 @@ form.addEventListener('submit', async function (e) {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
         const result = await response.json();
 

@@ -39,19 +39,18 @@ describe('PortalForm', () => {
     describe('sanitizeInput', () => {
         it('should strip script tags', () => {
             const input = '<script>alert("xss")</script>Hello';
-            // Tags stripped, then distinct characters escaped
-            expect(portalForm.sanitizeInput(input)).toBe('alert(&quot;xss&quot;)Hello');
+            expect(portalForm.sanitizeInput(input)).toBe('alert("xss")Hello');
         });
 
-        it('should escape HTML characters', () => {
+        it('should strip HTML tags while preserving text', () => {
             const input = '<b>Bold</b> & "Quote"';
-            // Tags stripped, then characters escaped
-            expect(portalForm.sanitizeInput(input)).toBe('Bold &amp; &quot;Quote&quot;');
+            expect(portalForm.sanitizeInput(input)).toBe('Bold & "Quote"');
         });
 
         it('should handle empty input', () => {
             expect(portalForm.sanitizeInput(null)).toBe('');
             expect(portalForm.sanitizeInput(undefined)).toBe('');
+            expect(portalForm.sanitizeInput('')).toBe('');
         });
     });
 

@@ -30,4 +30,4 @@ export function initReveal() {
     reveals.forEach(el => observer.observe(el));
 }
 
-export default { initReveal };
+

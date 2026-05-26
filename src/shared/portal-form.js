@@ -14,9 +14,11 @@ export class PortalForm {
      * @param {Object} config - Configuration object
      * @param {string} config.formId - ID of the form element
      * @param {string} config.apiEndpoint - API endpoint URL for form submission
-     * @param {string} config.locale - Locale code (e.g., 'fr', 'en', 'nl')
-     * @param {number} config.minDescriptionLength - Minimum description length (default: 10)
+     * @param {number} [config.minDescriptionLength] - Minimum description length (default: 10)
      * @param {Object} config.messages - Localized messages
+     * @param {string} [config.tenant] - Tenant identifier for backend routing
+     * @param {string} [config.customFieldId] - ID of a tenant-specific custom field
+     * @param {string} [config.customFieldLabel] - Label for the custom field (used in Tags)
      */
     constructor(config) {
         this.config = {
@@ -79,7 +81,7 @@ export class PortalForm {
         // Create character counter element
         const counterElement = document.createElement('small');
         counterElement.className = 'char-counter';
-        counterElement.style.cssText = 'display: block; margin-top: 0.5rem; color: #666;';
+        counterElement.style.cssText = 'display: block; margin-top: 0.5rem;';
         this.descriptionField.parentNode.insertBefore(
             counterElement,
             this.descriptionField.nextSibling
@@ -95,10 +97,12 @@ export class PortalForm {
                 .replace('{min}', minLength);
 
             if (length >= minLength) {
-                counterElement.style.color = '#10b981'; // Green
+                counterElement.classList.add('char-counter-valid');
+                counterElement.classList.remove('char-counter-invalid');
                 this.descriptionField.setCustomValidity('');
             } else {
-                counterElement.style.color = '#ef4444'; // Red
+                counterElement.classList.add('char-counter-invalid');
+                counterElement.classList.remove('char-counter-valid');
                 this.descriptionField.setCustomValidity(
                     this.config.messages.charCounterError.replace('{min}', minLength)
                 );
@@ -171,7 +175,8 @@ export class PortalForm {
                 } else {
                     throw new Error(result.message || this.config.messages.submitError);
                 }
-            } catch (_error) {
+            } catch (error) {
+                console.error('Form submission failed:', error);
                 alert(this.config.messages.submitError);
                 if (this.loadingOverlay) {
                     this.loadingOverlay.style.display = 'none';
@@ -185,37 +190,45 @@ export class PortalForm {
      */
     highlightInvalidFields() {
         Array.from(this.form.elements).forEach(field => {
-            if (field.checkValidity && !field.checkValidity()) {
-                field.setAttribute('aria-invalid', 'true');
-                field.parentElement.classList.add('shake');
-                setTimeout(() => field.parentElement.classList.remove('shake'), 500);
+            if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+                if (!field.checkValidity()) {
+                    field.setAttribute('aria-invalid', 'true');
+                    field.parentElement?.classList.add('shake');
+                    setTimeout(() => field.parentElement?.classList.remove('shake'), 500);
+                }
             }
         });
+    }
+
+    /**
+     * Map numeric priority score to contract enum string.
+     * @param {string|number} score
+     * @returns {string}
+     */
+    priorityToString(score) {
+        const map = { '5': 'low', '10': 'medium', '15': 'high', '20': 'urgent' };
+        return map[score] ?? 'low';
     }
 
     /**
      * Submit form data to API
      * @returns {Promise<Object>} API response
      */
-
-    priorityToString(score) {
-    const map = { '5': 'low', '10': 'medium', '15': 'high', '20': 'urgent' };
-    return map[String(score)] ?? 'low';
-    }
-
     async submitForm() {
         const formData = new FormData();
 
         // Add standard fields with sanitization
+        // NOTE: This class expects specific field IDs (customerName, customerEmail,
+        // customerPhone, description, requestType, priorite). Tenant forms must match.
         formData.append('CustomerName', this.sanitizeInput(document.getElementById('customerName').value));
         formData.append('CustomerEmail', this.sanitizeInput(document.getElementById('customerEmail').value));
-        formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value || ''));
+        formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value));
         formData.append('Description', this.sanitizeInput(document.getElementById('description').value));
         formData.append('WorkItemType', this.sanitizeInput(document.getElementById('requestType').value));
         const rawPriority = document.getElementById('priorite').value;
-        formData.append('PriorityScore', this.sanitizeInput(rawPriority));
-        formData.append('Priority', this.priorityToString(rawPriority)); // contract field
-        
+        formData.append('PriorityScore', rawPriority);
+        formData.append('Priority', this.priorityToString(rawPriority));
+
         // Add custom fields (tenant-specific)
         if (this.config.customFieldId) {
             const customField = document.getElementById(this.config.customFieldId);
@@ -250,25 +263,22 @@ export class PortalForm {
             body: formData
         });
 
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status} ${response.statusText}`);
+        }
+
         return await response.json();
     }
 
     /**
-     * Sanitize user input to prevent XSS
-     * Removes HTML tags and executes basic escaping
+     * Sanitize user input by stripping HTML tags.
+     * The API is responsible for escaping when rendering.
      * @param {string} input - Raw input string
      * @returns {string} Sanitized string
      */
     sanitizeInput(input) {
         if (!input) return '';
-        // Basic tag stripping
-        return input.replace(/<[^>]*>?/gm, "")
-            // Basic escaping for remaining characters
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+        return input.replace(/<[^>]*>?/gm, '');
     }
 
     /**
@@ -280,10 +290,11 @@ export class PortalForm {
                 this.fileNameDisplay.textContent = this.config.messages.chooseFile;
             }
             if (this.descriptionField) {
-                this.descriptionField.dispatchEvent(new Event('input'));
+                // The reset event fires before values are cleared, so defer the update.
+                requestAnimationFrame(() => {
+                    this.descriptionField.dispatchEvent(new Event('input'));
+                });
             }
         });
     }
 }
-
-export default PortalForm;

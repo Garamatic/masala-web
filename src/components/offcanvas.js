@@ -25,11 +25,29 @@ export function initOffcanvas() {
         });
     });
 
-    // Close on link click
-    document.querySelectorAll('.offcanvas a[href^="#"]').forEach(link => {
+    // Close on any link click inside offcanvas
+    document.querySelectorAll('.offcanvas a').forEach(link => {
         link.addEventListener('click', () => {
             closeOffcanvas(link.closest('.offcanvas'));
         });
+    });
+
+    // Close on backdrop click
+    document.addEventListener('click', (e) => {
+        const openOffcanvas = document.querySelector('.offcanvas.show');
+        if (openOffcanvas && !openOffcanvas.contains(e.target) && !e.target.closest('[data-toggle="offcanvas"]')) {
+            closeOffcanvas(openOffcanvas);
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const openOffcanvas = document.querySelector('.offcanvas.show');
+            if (openOffcanvas) {
+                closeOffcanvas(openOffcanvas);
+            }
+        }
     });
 }
 
@@ -44,4 +62,4 @@ export function closeOffcanvas(offcanvas) {
     }
 }
 
-export default { initOffcanvas, closeOffcanvas };
+

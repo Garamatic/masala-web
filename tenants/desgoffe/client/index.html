@@ -14,8 +14,6 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
-        <!-- Runtime Configuration -->
-        <script src="/config.js"></script>
         <!-- Main Style Bundle (Vite) -->
         <script type="module" src="../../../src/main.js"></script>
     </head>
@@ -98,17 +96,17 @@
                     aria-label="Configuration du système"
                 >
                     <h2 class="text-sm font-bold tracking-widest text-secondary uppercase">
-                        Wat deze demo illustreert
+                        Ce que cette démo illustre
                     </h2>
                     <p class="text-sm text-text-secondary">
-                        Deze Ticket Masala instantie is geconfigureerd voor de Stad Desgoffe:
-                        aanvraagtypes, wijken en prioriteiten zijn gedefinieerd in
+                        Cette instance Ticket Masala est configurée pour la Ville de Desgoffe :
+                        types de demandes, quartiers et priorités sont définis dans
                         <span
                             class="font-mono text-xs bg-canvas px-1 py-0.5 rounded border border-structural/60"
                         >
                             masala_domains.yaml
                         </span>
-                        en de modules GERDA AI in
+                        et les modules GERDA AI dans
                         <span
                             class="font-mono text-xs bg-canvas px-1 py-0.5 rounded border border-structural/60"
                         >
@@ -118,37 +116,35 @@
                     </p>
                     <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-text-secondary">
                         <div class="space-y-1">
-                            <dt class="font-semibold text-text-primary">Volledige flow</dt>
+                            <dt class="font-semibold text-text-primary">Flux complet</dt>
                             <dd>
-                                Portaal indiening → Ticket Masala API → AI-prioritering → Toewijzing
-                                aan gemeentelijke dienst.
+                                Soumission portail → API Ticket Masala → priorisation IA →
+                                assignation au service municipal.
                             </dd>
                         </div>
                         <div class="space-y-1">
-                            <dt class="font-semibold text-text-primary">Prioriteitscriteria</dt>
+                            <dt class="font-semibold text-text-primary">Critères de priorité</dt>
                             <dd>
-                                Combinatie van aanvraagtype, wijk en verklaarde prioriteit, met
-                                toegewijde prestatieprofielen.
+                                Combinaison du type de demande, du quartier et de la priorité
+                                déclarée, avec des profils de performance dédiés.
                             </dd>
                         </div>
                         <div class="space-y-1">
                             <dt class="font-semibold text-text-primary">
-                                Configureerbare variabelen
+                                Variables configurables
                             </dt>
                             <dd>
-                                Dossiertypes, prioriteitsniveaus, streeftijden en
-                                routeringsstrategieën kunnen worden aangepast zonder de code te
-                                wijzigen.
+                                Types de dossiers, niveaux de priorité, délais cibles et
+                                stratégies de routage peuvent être adaptés sans modifier le code.
                             </dd>
                         </div>
                         <div class="space-y-1 md:col-span-3">
-                            <dt class="font-semibold text-text-primary">Demo-profielen</dt>
+                            <dt class="font-semibold text-text-primary">Profils de démonstration</dt>
                             <dd>
-                                <span class="font-mono">Standaard</span>
-                                voor een evenwichtig loket,
-                                <span class="font-mono">OverlastFocus</span>
-                                voor een scenario waar geluidsoverlast met prioriteit wordt
-                                behandeld.
+                                <span class="font-mono">Standard</span>
+                                pour un guichet équilibré,
+                                <span class="font-mono">NuisanceFocus</span>
+                                pour un scénario où les nuisances sonores sont traitées en priorité.
                             </dd>
                         </div>
                     </dl>

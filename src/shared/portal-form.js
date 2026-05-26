@@ -278,7 +278,7 @@ export class PortalForm {
      */
     sanitizeInput(input) {
         if (!input) return '';
-        return input.replace(/<[^>]*>?/gm, '');
+        return input.replace(/<[^>]*>?/g, '');
     }
 
     /**

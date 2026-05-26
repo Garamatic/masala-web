@@ -6,6 +6,9 @@
  * Initialize dropdown toggles
  */
 export function initDropdowns() {
+    if (document.body.dataset.dropdownsInitialized) return;
+    document.body.dataset.dropdownsInitialized = 'true';
+
     document.querySelectorAll('[data-toggle="dropdown"]').forEach(toggle => {
         toggle.addEventListener('click', function (e) {
             e.preventDefault();

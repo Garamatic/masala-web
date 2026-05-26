@@ -6,6 +6,9 @@
  * Initialize offcanvas (mobile menu)
  */
 export function initOffcanvas() {
+    if (document.body.dataset.offcanvasInitialized) return;
+    document.body.dataset.offcanvasInitialized = 'true';
+
     // Open handlers
     document.querySelectorAll('[data-toggle="offcanvas"]').forEach(toggle => {
         toggle.addEventListener('click', function (e) {

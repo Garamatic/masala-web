@@ -21,15 +21,17 @@ const prevBtn = document.getElementById('prevBtn');
 const submitBtn = document.getElementById('submitBtn');
 
 nextBtn.addEventListener('click', function () {
-    if (validateStep(currentStep)) {
+    if (currentStep < totalSteps && validateStep(currentStep)) {
         currentStep++;
         showStep(currentStep);
     }
 });
 
 prevBtn.addEventListener('click', function () {
-    currentStep--;
-    showStep(currentStep);
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
 });
 
 function showStep(step) {
@@ -67,10 +69,13 @@ function updateProgress() {
 
 function validateStep(step) {
     const stepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+    if (!stepElement) return false;
+
     const inputs = stepElement.querySelectorAll('input[required], select[required], textarea[required]');
 
     for (let input of inputs) {
-        if (!input.value) {
+        const isEmpty = input.type === 'checkbox' ? !input.checked : !input.value.trim();
+        if (isEmpty) {
             input.focus();
             alert('Please fill in all required fields');
             return false;
@@ -80,12 +85,22 @@ function validateStep(step) {
     // Additional validation for specific steps
     if (step === 2) {
         const abstract = document.getElementById('abstract').value;
-        if (abstract.length < 100) {
+        if (abstract.trim().length < 100) {
             alert('Project abstract must be at least 100 characters');
             return false;
         }
     }
 
+    return true;
+}
+
+function validateAllSteps() {
+    for (let step = 1; step <= totalSteps; step++) {
+        if (!validateStep(step)) {
+            showStep(step);
+            return false;
+        }
+    }
     return true;
 }
 
@@ -189,7 +204,7 @@ const loadingOverlay = document.getElementById('loadingOverlay');
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    if (!validateStep(totalSteps)) {
+    if (!validateAllSteps()) {
         return;
     }
 

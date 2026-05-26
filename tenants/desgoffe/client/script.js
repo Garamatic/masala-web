@@ -12,7 +12,6 @@ const config = {
     formId: 'submissionForm',
     apiEndpoint: __API_ENDPOINT,
     tenant: 'desgoffe',
-    locale: 'fr',
     minDescriptionLength: 10,
     customFieldId: 'quartier',
     customFieldLabel: 'Quartier',

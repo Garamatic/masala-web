@@ -111,16 +111,25 @@ function updateReview() {
     const amount = parseInt(data.requestedAmount, 10);
     const amountDisplay = Number.isFinite(amount) ? `€${amount.toLocaleString()}` : 'Not specified';
 
-    reviewContent.innerHTML = `
-        <p><strong>Project Title:</strong> ${data.projectTitle}</p>
-        <p><strong>Grant Type:</strong> ${data.grantType}</p>
-        <p><strong>Principal Investigator:</strong> ${data.principalInvestigator}</p>
-        <p><strong>Institution:</strong> ${data.institution}</p>
-        <p><strong>Research Field:</strong> ${data.researchField}</p>
-        <p><strong>Duration:</strong> ${data.duration} months</p>
-        <p><strong>Requested Amount:</strong> ${amountDisplay}</p>
-        <p><strong>Proposal Document:</strong> ${document.getElementById('proposal').files[0]?.name || 'Not uploaded'}</p>
-    `;
+    reviewContent.innerHTML = '';
+    const rows = [
+        ['Project Title', data.projectTitle],
+        ['Grant Type', data.grantType],
+        ['Principal Investigator', data.principalInvestigator],
+        ['Institution', data.institution],
+        ['Research Field', data.researchField],
+        ['Duration', `${data.duration} months`],
+        ['Requested Amount', amountDisplay],
+        ['Proposal Document', document.getElementById('proposal').files[0]?.name || 'Not uploaded'],
+    ];
+    rows.forEach(([label, value]) => {
+        const p = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = `${label}: `;
+        p.appendChild(strong);
+        p.appendChild(document.createTextNode(value));
+        reviewContent.appendChild(p);
+    });
 }
 
 // File inputs

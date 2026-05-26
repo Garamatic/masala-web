@@ -57,7 +57,11 @@ getLocationBtn.addEventListener('click', function () {
             latitudeInput.value = lat;
             longitudeInput.value = lon;
 
-            locationStatus.innerHTML = `<i class="fas fa-check-circle"></i> Locatie vastgelegd: ${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+            locationStatus.innerHTML = '';
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-check-circle';
+            locationStatus.appendChild(icon);
+            locationStatus.appendChild(document.createTextNode(` Locatie vastgelegd: ${lat.toFixed(6)}, ${lon.toFixed(6)}`));
             locationStatus.style.backgroundColor = '#d4edda';
             locationStatus.style.borderColor = '#28a745';
 
@@ -68,7 +72,11 @@ getLocationBtn.addEventListener('click', function () {
         },
         function (error) {
             locationStatus.classList.remove('active');
-            locationStatus.innerHTML = `<i class="fas fa-times-circle"></i> Fout bij ophalen locatie: ${error.message}`;
+            locationStatus.innerHTML = '';
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-times-circle';
+            locationStatus.appendChild(icon);
+            locationStatus.appendChild(document.createTextNode(` Fout bij ophalen locatie: ${error.message}`));
             locationStatus.style.backgroundColor = '#f8d7da';
             locationStatus.style.borderColor = '#dc3545';
         }
@@ -83,7 +91,11 @@ const photoPreview = document.getElementById('photoPreview');
 photoInput.addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (file) {
-        photoLabel.innerHTML = `<i class="fas fa-check"></i> ${file.name}`;
+        photoLabel.innerHTML = '';
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-check';
+        photoLabel.appendChild(icon);
+        photoLabel.appendChild(document.createTextNode(` ${file.name}`));
 
         // Show preview
         const reader = new FileReader();

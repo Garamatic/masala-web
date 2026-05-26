@@ -63,7 +63,7 @@ export function closeOffcanvas(offcanvas) {
     if (offcanvas) {
         offcanvas.classList.remove('show');
         document.body.style.overflow = '';
-        const toggle = document.querySelector(`[data-target="#${offcanvas.id}"]`);
+        const toggle = document.querySelector(`[data-target="#${CSS.escape(offcanvas.id)}"]`);
         if (toggle) {
             toggle.setAttribute('aria-expanded', 'false');
         }

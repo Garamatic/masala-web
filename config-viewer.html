@@ -134,14 +134,14 @@
         };
 
         async function loadConfig() {
-            if (!tenant) {
-                document.getElementById('json-content').innerText = '// Error: No tenant specified in URL parameter (?tenant=name)';
+            if (!tenant || !tenantInfo[tenant]) {
+                document.getElementById('json-content').innerText = '// Error: Unknown tenant. Valid options: desgoffe, whitman, liberty, hennessey';
                 return;
             }
 
             const path = `tenants/${tenant}/config/masala_config.json`;
             document.getElementById('file-path').innerText = path;
-            
+
             // Update badge
             const info = tenantInfo[tenant];
             if (info) {

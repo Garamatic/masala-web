@@ -57,15 +57,11 @@ export class PortalForm {
 
         inputs.forEach(input => {
             input.addEventListener('blur', function () {
-                if (this.checkValidity && !this.checkValidity()) {
-                    this.setAttribute('aria-invalid', 'true');
-                } else {
-                    this.setAttribute('aria-invalid', 'false');
-                }
+                this.setAttribute('aria-invalid', String(!this.checkValidity()));
             });
 
             input.addEventListener('input', function () {
-                if (this.checkValidity && this.checkValidity()) {
+                if (this.checkValidity()) {
                     this.setAttribute('aria-invalid', 'false');
                 }
             });
@@ -221,11 +217,21 @@ export class PortalForm {
         // Add standard fields with sanitization
         // NOTE: This class expects specific field IDs (customerName, customerEmail,
         // customerPhone, description, requestType, priorite). Tenant forms must match.
-        formData.append('CustomerName', this.sanitizeInput(document.getElementById('customerName').value));
-        formData.append('CustomerEmail', this.sanitizeInput(document.getElementById('customerEmail').value));
-        formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value));
-        formData.append('Description', this.sanitizeInput(document.getElementById('description').value));
-        formData.append('WorkItemType', this.sanitizeInput(document.getElementById('requestType').value));
+        const customerName = document.getElementById('customerName');
+        const customerEmail = document.getElementById('customerEmail');
+        const customerPhone = document.getElementById('customerPhone');
+        const description = document.getElementById('description');
+        const requestType = document.getElementById('requestType');
+
+        if (!customerName || !customerEmail || !description || !requestType) {
+            throw new Error('Required form field missing. Expected IDs: customerName, customerEmail, description, requestType');
+        }
+
+        formData.append('CustomerName', this.sanitizeInput(customerName.value));
+        formData.append('CustomerEmail', this.sanitizeInput(customerEmail.value));
+        formData.append('CustomerPhone', this.sanitizeInput(customerPhone?.value));
+        formData.append('Description', this.sanitizeInput(description.value));
+        formData.append('WorkItemType', this.sanitizeInput(requestType.value));
         const prioriteEl = document.getElementById('priorite');
         const rawPriority = prioriteEl?.value ?? '5';
         formData.append('PriorityScore', rawPriority);
@@ -274,13 +280,16 @@ export class PortalForm {
 
     /**
      * Sanitize user input by stripping HTML tags.
+     * Uses a detached DOM element for robust parsing.
      * The API is responsible for escaping when rendering.
      * @param {string} input - Raw input string
      * @returns {string} Sanitized string
      */
     sanitizeInput(input) {
         if (!input) return '';
-        return input.replace(/<[^>]*>?/g, '');
+        const tmp = document.createElement('div');
+        tmp.innerHTML = input;
+        return tmp.textContent || '';
     }
 
     /**

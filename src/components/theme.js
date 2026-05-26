@@ -24,10 +24,10 @@ function updateThemeContent() {
         // Check if theme key exists (returns something other than key)
         const themeText = t(themeKey, currentLang);
         if (themeText !== themeKey) {
-            el.innerText = themeText;
+            el.textContent = themeText;
         } else {
             // Fallback to base key
-            el.innerText = t(baseKey, currentLang);
+            el.textContent = t(baseKey, currentLang);
         }
     };
 
@@ -43,29 +43,29 @@ function updateThemeContent() {
 
     if (hasThemeDesc) {
         if (heroDesc1) {
-            heroDesc1.innerText = themeDescText;
+            heroDesc1.textContent = themeDescText;
             heroDesc1.style.display = '';
         }
         if (heroDesc2) {
             heroDesc2.style.display = 'none';
-            heroDesc2.innerText = '';
+            heroDesc2.textContent = '';
         }
         if (heroDesc3) {
             heroDesc3.style.display = 'none';
-            heroDesc3.innerText = '';
+            heroDesc3.textContent = '';
         }
     } else {
         // Restore default split description
         if (heroDesc1) {
-            heroDesc1.innerText = t('hero_desc_1', currentLang);
+            heroDesc1.textContent = t('hero_desc_1', currentLang);
             heroDesc1.style.display = '';
         }
         if (heroDesc2) {
-            heroDesc2.innerText = t('hero_desc_2', currentLang);
+            heroDesc2.textContent = t('hero_desc_2', currentLang);
             heroDesc2.style.display = '';
         }
         if (heroDesc3) {
-            heroDesc3.innerText = t('hero_desc_3', currentLang);
+            heroDesc3.textContent = t('hero_desc_3', currentLang);
             heroDesc3.style.display = '';
         }
     }

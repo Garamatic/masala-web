@@ -11,7 +11,7 @@ import { initNavbar } from './components/navbar.js';
 import { initDropdowns } from './components/dropdown.js';
 import { initOffcanvas } from './components/offcanvas.js';
 import { setTheme } from './components/theme.js';
-import { setLang } from './i18n/index.js';
+import { setLang, translations } from './i18n/index.js';
 
 // ==========================================
 // INITIALIZATION
@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initDropdowns();
     initOffcanvas();
 
-    // Set default language
-    setLang('en');
+    // Set default language (respect page-level override)
+    const pageLang = document.documentElement.getAttribute('lang');
+    setLang(pageLang && translations[pageLang] ? pageLang : 'en');
 });
 
 // ==========================================

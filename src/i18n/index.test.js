@@ -38,11 +38,11 @@ describe('i18n', () => {
 
         // Check DOM update for data-i18n
         const el = document.querySelector('[data-i18n="nav_features"]');
-        expect(el.innerText).toBe(translations.fr.nav_features);
+        expect(el.textContent).toBe(translations.fr.nav_features);
 
         // Check DOM update for language indicators
         const langIndicator = document.getElementById('current-lang');
-        expect(langIndicator.innerText).toBe('FR');
+        expect(langIndicator.textContent).toBe('FR');
 
         // Check event dispatch
         expect(dispatchSpy).toHaveBeenCalledWith(
@@ -54,9 +54,9 @@ describe('i18n', () => {
     });
 
     it('should leave DOM unchanged when translation key is missing', () => {
-        // Mock translations temporarily
-        const originalTranslations = { ...translations };
-        translations.fr = { ...translations.fr };
+        // Mock translations temporarily by cloning so we don't pollute module state
+        const originalFr = { ...translations.fr };
+        translations.fr = { ...originalFr };
         delete translations.fr['nav_features']; // Simulate missing key in FR
 
         try {
@@ -65,9 +65,9 @@ describe('i18n', () => {
             const el = document.querySelector('[data-i18n="nav_features"]');
             // When key is missing in target language, setLang does not update the element,
             // so it retains the previously applied English text.
-            expect(el.innerText).toBe(translations.en.nav_features);
+            expect(el.textContent).toBe(translations.en.nav_features);
         } finally {
-            Object.assign(translations, originalTranslations);
+            translations.fr = originalFr;
         }
     });
 });

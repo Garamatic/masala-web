@@ -15,8 +15,8 @@ export function setLang(lang) {
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
-            el.innerText = dict[key];
+        if (key in dict) {
+            el.textContent = dict[key];
         }
     });
 
@@ -24,16 +24,18 @@ export function setLang(lang) {
     const langLabel = currentLang.toUpperCase();
     const desktopLang = document.getElementById('current-lang');
     const mobileLang = document.getElementById('current-lang-mobile');
-    if (desktopLang) desktopLang.innerText = langLabel;
-    if (mobileLang) mobileLang.innerText = langLabel;
+    if (desktopLang) desktopLang.textContent = langLabel;
+    if (mobileLang) mobileLang.textContent = langLabel;
 
     // Update document language for screen readers
     document.documentElement.setAttribute('lang', currentLang);
 
     // Dispatch event to notify other components (like Theme switcher)
-    window.dispatchEvent(new CustomEvent('languageChanged', {
-        detail: { lang: currentLang }
-    }));
+    window.dispatchEvent(
+        new CustomEvent('languageChanged', {
+            detail: { lang: currentLang },
+        })
+    );
 }
 
 /**

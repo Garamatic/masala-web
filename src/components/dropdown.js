@@ -33,4 +33,4 @@ export function initDropdowns() {
     });
 }
 
-export default { initDropdowns };
+

@@ -1,7 +1,7 @@
 // Whitman Spoor Portal - Meldpunt Spoor
-// Mobile-first with camera and geolocation supp// Configuration
-const __TENANT = document.documentElement.getAttribute('data-theme') || 'whitman';
-const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
+// Mobile-first with camera and geolocation support
+
+const __API_BASE = window.__API_BASE__ || 'https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Type selection
@@ -144,6 +144,10 @@ form.addEventListener('submit', async function (e) {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
         const result = await response.json();
 

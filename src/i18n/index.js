@@ -52,11 +52,4 @@ export function t(key, lang = currentLang) {
     return dict[key] || key;
 }
 
-// Listen for theme changes to update content
-window.addEventListener('themeChanged', (_event) => {
-    // When theme changes, refresh content with current language
-    setLang(currentLang);
-});
 
-// Export for global access
-export default { setLang, getCurrentLang, t, translations };

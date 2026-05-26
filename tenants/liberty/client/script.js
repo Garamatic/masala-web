@@ -1,7 +1,7 @@
 // Liberty Systems Portal - The Newsroom
-// Markdown editor with preview and code// Configuration
-const __TENANT = document.documentElement.getAttribute('data-theme') || 'liberty';
-const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
+// Markdown editor with preview and code highlighting
+
+const __API_BASE = window.__API_BASE__ || 'https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Tab switching
@@ -98,6 +98,10 @@ form.addEventListener('submit', async function (e) {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
         const result = await response.json();
 

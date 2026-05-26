@@ -1,15 +1,48 @@
+/**
+ * RabbitMQFormService - Adapter for submitting portal forms via the
+ * Ticket Masala message bus (RabbitMQ / REST bridge).
+ *
+ * This class is consumed by tenant portals that wish to enqueue submissions
+ * rather than POSTing directly to the synchronous API.
+ */
+
 export class RabbitMQFormService {
+    /**
+     * @param {Object} tenantConfig - Tenant-specific RabbitMQ configuration
+     * @param {string} tenantConfig.tenant - Tenant identifier
+     * @param {Object} tenantConfig.api - API endpoint configuration
+     * @param {string} tenantConfig.api.baseUrl - Base URL for the submission bridge
+     * @param {string} tenantConfig.api.submitEndpoint - Path for the submit endpoint
+     * @param {Object} tenantConfig.queues - Queue names
+     * @param {string} tenantConfig.queues.formSubmissions - Target queue name
+     * @param {string} [tenantConfig.exchange='garamatic.events'] - Exchange name
+     * @param {string} [tenantConfig.routingKey='event.ticket.created'] - Routing key
+     */
     constructor(tenantConfig) {
         this.config = tenantConfig;
         this.baseUrl = tenantConfig.api.baseUrl;
     }
 
-    async submitForm(formData) {
+    /**
+     * Submit form data via the message bus.
+     *
+     * NOTE: This method accepts a plain object payload.  If you are working
+     * with a FormData instance from a file upload, convert it first:
+     *
+     *   const plain = Object.fromEntries(formData.entries());
+     *   await service.submitForm(plain);
+     *
+     * @param {Object} fields - Plain key/value object (not a FormData instance)
+     * @returns {Promise<Object>} Server response
+     */
+    async submitForm(fields) {
         const payload = {
-            ...formData,
+            ...fields,
             tenant: this.config.tenant,
             timestamp: new Date().toISOString(),
             queue: this.config.queues.formSubmissions,
+            exchange: this.config.exchange ?? 'garamatic.events',
+            routingKey: this.config.routingKey ?? 'event.ticket.created',
         };
 
         const response = await fetch(
@@ -21,7 +54,10 @@ export class RabbitMQFormService {
             }
         );
 
-        if (!response.ok) throw new Error(`Submit failed: ${response.statusText}`);
+        if (!response.ok) {
+            throw new Error(`Submit failed: ${response.status} ${response.statusText}`);
+        }
+
         return response.json();
     }
 }

@@ -55,46 +55,34 @@ describe('PortalForm', () => {
     });
 
     describe('File Validation', () => {
-        it('should validate PDF type via file upload handler (simulation)', () => {
-            // Since we can't easily trigger the change event and check alert without more mocking,
-            // we'll check the logic if we could isolate it, but given strictly "Vanilla JS" class structure,
-            // we will simulate the check manually or mock alert.
+        it('should validate PDF type via file upload handler', () => {
             globalThis.alert = vi.fn();
-            
+            portalForm.init();
+
             const fileInput = document.getElementById('attachment');
             const badFile = new File(['content'], 'test.txt', { type: 'text/plain' });
-            
-            // Dispatch change event
-            // Note: DataTransfer is needed to set files in jsdom usually, or Object.defineProperty
             Object.defineProperty(fileInput, 'files', { value: [badFile] });
-            
-            // Re-attach listener because we re-created DOM but PortalForm attached to old DOM? 
-            // No, beforeEach runs before every test.
-            // We need to call init() to attach listeners.
-            portalForm.init();
 
             fileInput.dispatchEvent(new Event('change'));
 
             expect(globalThis.alert).toHaveBeenCalledWith(config.messages.pdfOnly);
-            expect(fileInput.value).toBe(''); 
+            expect(fileInput.value).toBe('');
         });
 
         it('should reject files larger than 5MB', () => {
             globalThis.alert = vi.fn();
             portalForm.init();
-            
+
             const fileInput = document.getElementById('attachment');
-            // Mock a large file
-            const largeFile = { 
-                name: 'large.pdf', 
-                type: 'application/pdf', 
+            const largeFile = {
+                name: 'large.pdf',
+                type: 'application/pdf',
                 size: 6 * 1024 * 1024 // 6MB
             };
-            
+
             Object.defineProperty(fileInput, 'files', { value: [largeFile] });
             fileInput.dispatchEvent(new Event('change'));
 
-            // Check if alert was called with size message
             expect(globalThis.alert).toHaveBeenCalled();
             expect(globalThis.alert.mock.calls[0][0]).toContain('File size exceeds');
         });

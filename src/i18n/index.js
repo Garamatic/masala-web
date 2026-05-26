@@ -10,13 +10,13 @@ let currentLang = 'en';
  * @param {string} lang - Language code (en, nl, fr)
  */
 export function setLang(lang) {
-    currentLang = lang;
-    const t = translations[lang] || translations.en;
+    currentLang = translations[lang] ? lang : 'en';
+    const dict = translations[currentLang];
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-            el.innerText = t[key];
+        if (dict[key]) {
+            el.innerText = dict[key];
         }
     });
 

@@ -10,11 +10,12 @@ Thumbs.db
 node_modules/
 dist/
 
-# IDE files
+# IDE / agent files
 .vscode/
 .idea/
 *.swp
 *.bak
+.pi/
 
 # Logs
 *.log

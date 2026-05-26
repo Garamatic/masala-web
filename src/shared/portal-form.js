@@ -123,8 +123,9 @@ export class PortalForm {
             const file = e.target.files[0];
 
             if (file) {
-                // Validate PDF only
-                if (file.type !== 'application/pdf') {
+                // Validate PDF only (MIME type or extension fallback)
+                const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+                if (!isPdf) {
                     alert(this.config.messages.pdfOnly);
                     this.fileInput.value = '';
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
@@ -225,7 +226,8 @@ export class PortalForm {
         formData.append('CustomerPhone', this.sanitizeInput(document.getElementById('customerPhone').value));
         formData.append('Description', this.sanitizeInput(document.getElementById('description').value));
         formData.append('WorkItemType', this.sanitizeInput(document.getElementById('requestType').value));
-        const rawPriority = document.getElementById('priorite').value;
+        const prioriteEl = document.getElementById('priorite');
+        const rawPriority = prioriteEl?.value ?? '5';
         formData.append('PriorityScore', rawPriority);
         formData.append('Priority', this.priorityToString(rawPriority));
 

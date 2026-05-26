@@ -59,13 +59,15 @@ describe('i18n', () => {
         translations.fr = { ...translations.fr };
         delete translations.fr['nav_features']; // Simulate missing key in FR
 
-        setLang('fr');
+        try {
+            setLang('fr');
 
-        const el = document.querySelector('[data-i18n="nav_features"]');
-        // When key is missing in target language, setLang does not update the element,
-        // so it retains the previously applied English text.
-        expect(el.innerText).toBe(translations.en.nav_features);
-
-        Object.assign(translations, originalTranslations);
+            const el = document.querySelector('[data-i18n="nav_features"]');
+            // When key is missing in target language, setLang does not update the element,
+            // so it retains the previously applied English text.
+            expect(el.innerText).toBe(translations.en.nav_features);
+        } finally {
+            Object.assign(translations, originalTranslations);
+        }
     });
 });

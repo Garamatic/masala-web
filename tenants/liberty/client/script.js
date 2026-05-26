@@ -1,3 +1,4 @@
+/* global marked, hljs */
 // Liberty Systems Portal - The Newsroom
 // Markdown editor with preview and code highlighting
 
@@ -53,7 +54,7 @@ function updatePreview() {
     previewDiv.innerHTML = sanitizePreviewHtml(rawHtml);
 
     // Highlight code blocks
-    previewDiv.querySelectorAll('pre code').forEach((block) => {
+    previewDiv.querySelectorAll('pre code').forEach(block => {
         hljs.highlightElement(block);
     });
 }
@@ -97,7 +98,10 @@ form.addEventListener('submit', async function (e) {
 
         formData.append('CustomerName', document.getElementById('reporterName').value);
         formData.append('CustomerEmail', document.getElementById('reporterEmail').value);
-        formData.append('Description', `**${document.getElementById('title').value}**\n\n${descriptionTextarea.value}`);
+        formData.append(
+            'Description',
+            `**${document.getElementById('title').value}**\n\n${descriptionTextarea.value}`
+        );
         formData.append('WorkItemType', document.getElementById('issueType').value);
         formData.append('PriorityScore', document.getElementById('priority').value);
 
@@ -115,7 +119,7 @@ form.addEventListener('submit', async function (e) {
 
         const response = await fetch(API_ENDPOINT, {
             method: 'POST',
-            body: formData
+            body: formData,
         });
 
         if (!response.ok) {
@@ -130,7 +134,6 @@ form.addEventListener('submit', async function (e) {
         } else {
             throw new Error(result.message || 'Submission failed');
         }
-
     } catch (error) {
         console.error('Submission error:', error);
         alert('An error occurred while submitting the issue. Please try again.');

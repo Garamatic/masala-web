@@ -71,9 +71,11 @@ function validateStep(step) {
     const stepElement = document.querySelector(`.form-step[data-step="${step}"]`);
     if (!stepElement) return false;
 
-    const inputs = stepElement.querySelectorAll('input[required], select[required], textarea[required]');
+    const inputs = stepElement.querySelectorAll(
+        'input[required], select[required], textarea[required]'
+    );
 
-    for (let input of inputs) {
+    for (const input of inputs) {
         const isEmpty = input.type === 'checkbox' ? !input.checked : !input.value.trim();
         if (isEmpty) {
             input.focus();
@@ -138,11 +140,13 @@ function setupFileInputs() {
     const cvInput = document.getElementById('cv');
 
     proposalInput.addEventListener('change', function (e) {
-        document.getElementById('proposalName').textContent = e.target.files[0]?.name || 'Choose PDF file...';
+        document.getElementById('proposalName').textContent =
+            e.target.files[0]?.name || 'Choose PDF file...';
     });
 
     cvInput.addEventListener('change', function (e) {
-        document.getElementById('cvName').textContent = e.target.files[0]?.name || 'Choose PDF file...';
+        document.getElementById('cvName').textContent =
+            e.target.files[0]?.name || 'Choose PDF file...';
     });
 }
 
@@ -189,7 +193,7 @@ function getFormData() {
         budgetJustification: document.getElementById('budgetJustification').value,
         coFunding: document.getElementById('coFunding').checked,
         coFundingSources: document.getElementById('coFundingSources').value,
-        ethics: document.getElementById('ethics').value
+        ethics: document.getElementById('ethics').value,
     };
 }
 
@@ -225,10 +229,16 @@ form.addEventListener('submit', async function (e) {
 
         formData.append('CustomerName', data.principalInvestigator);
         formData.append('CustomerEmail', data.piEmail);
-        formData.append('Description', `**${data.projectTitle}**\n\n${data.abstract}\n\n**Objectives:**\n${data.objectives}`);
+        formData.append(
+            'Description',
+            `**${data.projectTitle}**\n\n${data.abstract}\n\n**Objectives:**\n${data.objectives}`
+        );
         formData.append('WorkItemType', data.grantType);
         formData.append('PriorityScore', '10');
-        formData.append('Tags', `Institution:${data.institution},Field:${data.researchField},Amount:${data.requestedAmount}`);
+        formData.append(
+            'Tags',
+            `Institution:${data.institution},Field:${data.researchField},Amount:${data.requestedAmount}`
+        );
 
         // Add proposal file
         const proposalFile = document.getElementById('proposal').files[0];
@@ -238,7 +248,7 @@ form.addEventListener('submit', async function (e) {
 
         const response = await fetch(API_ENDPOINT, {
             method: 'POST',
-            body: formData
+            body: formData,
         });
 
         if (!response.ok) {
@@ -254,7 +264,6 @@ form.addEventListener('submit', async function (e) {
         } else {
             throw new Error(result.message || 'Submission failed');
         }
-
     } catch (error) {
         console.error('Submission error:', error);
         alert('An error occurred while submitting your application. Please try again.');

@@ -15,7 +15,9 @@ tenants.forEach(tenant => {
     if (fs.existsSync(srcDir)) {
         fs.mkdirSync(destDir, { recursive: true });
         fs.readdirSync(srcDir)
-            .filter(file => file.endsWith('.json'))
+            .filter(
+                file => file.endsWith('.json') || file.endsWith('.yaml') || file.endsWith('.yml')
+            )
             .forEach(file => {
                 fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
             });

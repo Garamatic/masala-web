@@ -1,7 +1,7 @@
 export const rabbitmqConfig = {
     tenant: 'desgoffe',
     api: {
-        baseUrl:        window.__API_BASE__ || 'https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io',
+        baseUrl:        window.__API_BASE__ || 'http://localhost:5000',
         submitEndpoint: '/api/portal/submit',
     },
     queues: {

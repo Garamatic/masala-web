@@ -1,6 +1,12 @@
 // Whitman Spoor Portal - Meldpunt Spoor
 // Mobile-first with camera and geolocation support
 
+// Basic input sanitization (strip HTML tags)
+function sanitizeInput(input) {
+    if (!input) return '';
+    return String(input).replace(/<[^>]*>/g, '');
+}
+
 const __API_BASE = window.__API_BASE__ || 'http://localhost:5000';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
@@ -61,7 +67,9 @@ getLocationBtn.addEventListener('click', function () {
             const icon = document.createElement('i');
             icon.className = 'fas fa-check-circle';
             locationStatus.appendChild(icon);
-            locationStatus.appendChild(document.createTextNode(` Locatie vastgelegd: ${lat.toFixed(6)}, ${lon.toFixed(6)}`));
+            locationStatus.appendChild(
+                document.createTextNode(` Locatie vastgelegd: ${lat.toFixed(6)}, ${lon.toFixed(6)}`)
+            );
             locationStatus.style.backgroundColor = '#d4edda';
             locationStatus.style.borderColor = '#28a745';
 
@@ -76,7 +84,9 @@ getLocationBtn.addEventListener('click', function () {
             const icon = document.createElement('i');
             icon.className = 'fas fa-times-circle';
             locationStatus.appendChild(icon);
-            locationStatus.appendChild(document.createTextNode(` Fout bij ophalen locatie: ${error.message}`));
+            locationStatus.appendChild(
+                document.createTextNode(` Fout bij ophalen locatie: ${error.message}`)
+            );
             locationStatus.style.backgroundColor = '#f8d7da';
             locationStatus.style.borderColor = '#dc3545';
         }
@@ -100,7 +110,11 @@ photoInput.addEventListener('change', function (e) {
         // Show preview
         const reader = new FileReader();
         reader.onload = function (e) {
-            photoPreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+            photoPreview.textContent = '';
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Preview';
+            photoPreview.appendChild(img);
             photoPreview.classList.add('active');
         };
         reader.readAsDataURL(file);
@@ -131,16 +145,25 @@ form.addEventListener('submit', async function (e) {
     try {
         const formData = new FormData();
 
-        formData.append('CustomerName', document.getElementById('reporterName').value);
-        formData.append('CustomerEmail', document.getElementById('reporterEmail').value);
-        formData.append('CustomerPhone', document.getElementById('reporterPhone').value || '');
-        formData.append('Description', document.getElementById('description').value);
+        formData.append(
+            'CustomerName',
+            sanitizeInput(document.getElementById('reporterName').value)
+        );
+        formData.append(
+            'CustomerEmail',
+            sanitizeInput(document.getElementById('reporterEmail').value)
+        );
+        formData.append(
+            'CustomerPhone',
+            sanitizeInput(document.getElementById('reporterPhone').value || '')
+        );
+        formData.append('Description', sanitizeInput(document.getElementById('description').value));
         formData.append('WorkItemType', interventionTypeInput.value);
         formData.append('PriorityScore', priorityInput.value);
 
         // Add location
         const location = locationInput.value;
-        formData.append('Tags', `Locatie:${location}`);
+        formData.append('Tags', `Locatie:${sanitizeInput(location)}`);
 
         if (latitudeInput.value && longitudeInput.value) {
             formData.append('Latitude', latitudeInput.value);
@@ -155,7 +178,7 @@ form.addEventListener('submit', async function (e) {
 
         const response = await fetch(API_ENDPOINT, {
             method: 'POST',
-            body: formData
+            body: formData,
         });
 
         if (!response.ok) {
@@ -170,7 +193,6 @@ form.addEventListener('submit', async function (e) {
         } else {
             throw new Error(result.message || 'Fout bij verzenden');
         }
-
     } catch (error) {
         console.error('Submission error:', error);
         alert('Er is een fout opgetreden. Probeer het opnieuw.');

@@ -1,4 +1,3 @@
-/* global marked, hljs */
 // Liberty Systems Portal - The Newsroom
 // Markdown editor with preview and code highlighting
 
@@ -28,6 +27,12 @@ tabButtons.forEach(btn => {
     });
 });
 
+// Basic input sanitization (strip HTML tags)
+function sanitizeInput(input) {
+    if (!input) return '';
+    return String(input).replace(/<[^>]*>/g, '');
+}
+
 // Basic sanitization for self-rendered preview (not a full sanitizer)
 function sanitizePreviewHtml(html) {
     const tmp = document.createElement('div');
@@ -42,6 +47,13 @@ function sanitizePreviewHtml(html) {
                 el.removeAttribute(attr.name);
             }
         });
+        // Strip javascript: and data: URLs from href/src
+        if (el.tagName === 'A') {
+            const href = el.getAttribute('href');
+            if (href && (/^javascript:/i.test(href) || /^data:/i.test(href))) {
+                el.removeAttribute('href');
+            }
+        }
     });
 
     return tmp.innerHTML;
@@ -50,12 +62,12 @@ function sanitizePreviewHtml(html) {
 // Update markdown preview
 function updatePreview() {
     const markdown = descriptionTextarea.value;
-    const rawHtml = marked.parse(markdown);
+    const rawHtml = window.marked.parse(markdown);
     previewDiv.innerHTML = sanitizePreviewHtml(rawHtml);
 
     // Highlight code blocks
     previewDiv.querySelectorAll('pre code').forEach(block => {
-        hljs.highlightElement(block);
+        window.hljs.highlightElement(block);
     });
 }
 
@@ -96,19 +108,25 @@ form.addEventListener('submit', async function (e) {
     try {
         const formData = new FormData();
 
-        formData.append('CustomerName', document.getElementById('reporterName').value);
-        formData.append('CustomerEmail', document.getElementById('reporterEmail').value);
+        formData.append(
+            'CustomerName',
+            sanitizeInput(document.getElementById('reporterName').value)
+        );
+        formData.append(
+            'CustomerEmail',
+            sanitizeInput(document.getElementById('reporterEmail').value)
+        );
         formData.append(
             'Description',
-            `**${document.getElementById('title').value}**\n\n${descriptionTextarea.value}`
+            `**${sanitizeInput(document.getElementById('title').value)}**\n\n${sanitizeInput(descriptionTextarea.value)}`
         );
-        formData.append('WorkItemType', document.getElementById('issueType').value);
+        formData.append('WorkItemType', sanitizeInput(document.getElementById('issueType').value));
         formData.append('PriorityScore', document.getElementById('priority').value);
 
         // Add environment tag
         const environment = document.getElementById('environment').value;
         if (environment) {
-            formData.append('Tags', `Environment:${environment}`);
+            formData.append('Tags', `Environment:${sanitizeInput(environment)}`);
         }
 
         // Add file

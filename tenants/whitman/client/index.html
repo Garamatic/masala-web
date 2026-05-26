@@ -361,13 +361,6 @@
         <script type="module" src="script.js"></script>
         <style>
             /* Custom override for active state handling within Tailwind logic */
-            .option-btn.selected {
-                @apply border-primary bg-blue-50 text-primary;
-            }
-            /* Since we can't use @apply in style tags without PostCSS processing here, 
-           we rely on JS toggling classes or simple inline styles for the active state logic 
-           if the script.js handles it via classList. 
-           Assuming script.js toggles 'active' or 'selected'. */
             .option-btn.active {
                 border-color: var(--color-primary);
                 background-color: #eff6ff;

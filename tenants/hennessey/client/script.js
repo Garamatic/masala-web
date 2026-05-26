@@ -7,6 +7,12 @@ const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 let currentStep = 1;
 const totalSteps = 5;
 
+// Basic input sanitization (strip HTML tags)
+function sanitizeInput(input) {
+    if (!input) return '';
+    return String(input).replace(/<[^>]*>/g, '');
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
     loadDraft();
@@ -110,7 +116,7 @@ function updateReview() {
     const reviewContent = document.getElementById('reviewContent');
     const data = getFormData();
 
-    const amount = parseInt(data.requestedAmount, 10);
+    const amount = parseFloat(data.requestedAmount);
     const amountDisplay = Number.isFinite(amount) ? `€${amount.toLocaleString()}` : 'Not specified';
 
     reviewContent.innerHTML = '';
@@ -227,17 +233,17 @@ form.addEventListener('submit', async function (e) {
         const formData = new FormData();
         const data = getFormData();
 
-        formData.append('CustomerName', data.principalInvestigator);
-        formData.append('CustomerEmail', data.piEmail);
+        formData.append('CustomerName', sanitizeInput(data.principalInvestigator));
+        formData.append('CustomerEmail', sanitizeInput(data.piEmail));
         formData.append(
             'Description',
-            `**${data.projectTitle}**\n\n${data.abstract}\n\n**Objectives:**\n${data.objectives}`
+            `**${sanitizeInput(data.projectTitle)}**\n\n${sanitizeInput(data.abstract)}\n\n**Objectives:**\n${sanitizeInput(data.objectives)}`
         );
-        formData.append('WorkItemType', data.grantType);
+        formData.append('WorkItemType', sanitizeInput(data.grantType));
         formData.append('PriorityScore', '10');
         formData.append(
             'Tags',
-            `Institution:${data.institution},Field:${data.researchField},Amount:${data.requestedAmount}`
+            `Institution:${sanitizeInput(data.institution)},Field:${sanitizeInput(data.researchField)},Amount:${sanitizeInput(data.requestedAmount)}`
         );
 
         // Add proposal file

@@ -1,6 +1,6 @@
 /**
  * PortalForm - Reusable form handling for tenant portals
- * 
+ *
  * This class encapsulates all common form functionality including:
  * - Real-time validation with ARIA attributes
  * - Character counter for description field
@@ -24,7 +24,7 @@ export class PortalForm {
         this.config = {
             minDescriptionLength: 10,
             maxFileSize: 5 * 1024 * 1024, // 5MB
-            ...config
+            ...config,
         };
 
         this.form = document.getElementById(this.config.formId);
@@ -89,8 +89,8 @@ export class PortalForm {
             const minLength = this.config.minDescriptionLength;
 
             counterElement.textContent = this.config.messages.charCounter
-                .replace('{length}', length)
-                .replace('{min}', minLength);
+                .replace('{length}', String(length))
+                .replace('{min}', String(minLength));
 
             if (length >= minLength) {
                 counterElement.classList.add('char-counter-valid');
@@ -115,12 +115,13 @@ export class PortalForm {
     attachFileUploadHandler() {
         if (!this.fileInput || !this.fileNameDisplay) return;
 
-        this.fileInput.addEventListener('change', (e) => {
+        this.fileInput.addEventListener('change', e => {
             const file = e.target.files[0];
 
             if (file) {
                 // Validate PDF only (MIME type or extension fallback)
-                const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+                const isPdf =
+                    file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
                 if (!isPdf) {
                     alert(this.config.messages.pdfOnly);
                     this.fileInput.value = '';
@@ -130,7 +131,9 @@ export class PortalForm {
 
                 // Validate File Size
                 if (file.size > this.config.maxFileSize) {
-                    alert(`File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`);
+                    alert(
+                        `File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`
+                    );
                     this.fileInput.value = '';
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
                     return;
@@ -147,7 +150,7 @@ export class PortalForm {
      * Attach form submit handler
      */
     attachSubmitHandler() {
-        this.form.addEventListener('submit', async (e) => {
+        this.form.addEventListener('submit', async e => {
             e.preventDefault();
 
             // Validate form
@@ -187,7 +190,11 @@ export class PortalForm {
      */
     highlightInvalidFields() {
         Array.from(this.form.elements).forEach(field => {
-            if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+            if (
+                field instanceof HTMLInputElement ||
+                field instanceof HTMLTextAreaElement ||
+                field instanceof HTMLSelectElement
+            ) {
                 if (!field.checkValidity()) {
                     field.setAttribute('aria-invalid', 'true');
                     field.parentElement?.classList.add('shake');
@@ -203,7 +210,7 @@ export class PortalForm {
      * @returns {string}
      */
     priorityToString(score) {
-        const map = { '5': 'low', '10': 'medium', '15': 'high', '20': 'urgent' };
+        const map = { 5: 'low', 10: 'medium', 15: 'high', 20: 'urgent' };
         return map[score] ?? 'low';
     }
 
@@ -224,7 +231,9 @@ export class PortalForm {
         const requestType = document.getElementById('requestType');
 
         if (!customerName || !customerEmail || !description || !requestType) {
-            throw new Error('Required form field missing. Expected IDs: customerName, customerEmail, description, requestType');
+            throw new Error(
+                'Required form field missing. Expected IDs: customerName, customerEmail, description, requestType'
+            );
         }
 
         formData.append('CustomerName', this.sanitizeInput(customerName.value));
@@ -233,7 +242,7 @@ export class PortalForm {
         formData.append('Description', this.sanitizeInput(description.value));
         formData.append('WorkItemType', this.sanitizeInput(requestType.value));
         const prioriteEl = document.getElementById('priorite');
-        const rawPriority = prioriteEl?.value ?? '5';
+        const rawPriority = prioriteEl?.value || '5';
         formData.append('PriorityScore', rawPriority);
         formData.append('Priority', this.priorityToString(rawPriority));
 
@@ -254,7 +263,9 @@ export class PortalForm {
 
         // Prepare headers
         const headers = {};
-        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        const csrfToken = document
+            .querySelector('meta[name="csrf-token"]')
+            ?.getAttribute('content');
         if (csrfToken) {
             headers['X-CSRF-Token'] = csrfToken;
         }
@@ -268,7 +279,7 @@ export class PortalForm {
         const response = await fetch(this.config.apiEndpoint, {
             method: 'POST',
             headers: headers,
-            body: formData
+            body: formData,
         });
 
         if (!response.ok) {
@@ -287,9 +298,8 @@ export class PortalForm {
      */
     sanitizeInput(input) {
         if (!input) return '';
-        const tmp = document.createElement('div');
-        tmp.innerHTML = input;
-        return tmp.textContent || '';
+        // Strip all HTML tags to prevent XSS and mutation-based attacks.
+        return String(input).replace(/<[^>]*>/g, '');
     }
 
     /**

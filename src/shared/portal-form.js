@@ -291,14 +291,14 @@ export class PortalForm {
 
     /**
      * Sanitize user input by stripping HTML tags.
-     * Uses a detached DOM element for robust parsing.
+     * Uses a regex to remove tag-like sequences, preventing XSS and
+     * avoiding the pitfalls of DOM-based parsing (mutation, mXSS).
      * The API is responsible for escaping when rendering.
      * @param {string} input - Raw input string
      * @returns {string} Sanitized string
      */
     sanitizeInput(input) {
         if (!input) return '';
-        // Strip all HTML tags to prevent XSS and mutation-based attacks.
         return String(input).replace(/<[^>]*>/g, '');
     }
 

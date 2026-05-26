@@ -63,7 +63,7 @@ getLocationBtn.addEventListener('click', function () {
             latitudeInput.value = lat;
             longitudeInput.value = lon;
 
-            locationStatus.innerHTML = '';
+            locationStatus.textContent = '';
             const icon = document.createElement('i');
             icon.className = 'fas fa-check-circle';
             locationStatus.appendChild(icon);
@@ -80,7 +80,7 @@ getLocationBtn.addEventListener('click', function () {
         },
         function (error) {
             locationStatus.classList.remove('active');
-            locationStatus.innerHTML = '';
+            locationStatus.textContent = '';
             const icon = document.createElement('i');
             icon.className = 'fas fa-times-circle';
             locationStatus.appendChild(icon);
@@ -101,7 +101,7 @@ const photoPreview = document.getElementById('photoPreview');
 photoInput.addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (file) {
-        photoLabel.innerHTML = '';
+        photoLabel.textContent = '';
         const icon = document.createElement('i');
         icon.className = 'fas fa-check';
         photoLabel.appendChild(icon);

@@ -119,7 +119,7 @@ function updateReview() {
     const amount = parseFloat(data.requestedAmount);
     const amountDisplay = Number.isFinite(amount) ? `€${amount.toLocaleString()}` : 'Not specified';
 
-    reviewContent.innerHTML = '';
+    reviewContent.textContent = '';
     const rows = [
         ['Project Title', data.projectTitle],
         ['Grant Type', data.grantType],

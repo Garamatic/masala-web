@@ -164,19 +164,19 @@
 
             async function loadConfig() {
                 if (!tenant || !tenantInfo[tenant]) {
-                    document.getElementById('json-content').innerText =
+                    document.getElementById('json-content').textContent =
                         '// Error: Unknown tenant. Valid options: desgoffe, whitman, liberty, hennessey';
                     return;
                 }
 
                 const path = `tenants/${tenant}/config/masala_config.json`;
-                document.getElementById('file-path').innerText = path;
+                document.getElementById('file-path').textContent = path;
 
                 // Update badge
                 const info = tenantInfo[tenant];
                 if (info) {
                     const badge = document.getElementById('tenant-badge');
-                    badge.innerText = info.name;
+                    badge.textContent = info.name;
                     badge.classList.remove('hidden');
                     // Simple styling based on tenant
                     if (tenant === 'whitman')
@@ -217,13 +217,13 @@
                     // Re-run Prism highlight
                     Prism.highlightAll();
                 } catch (error) {
-                    document.getElementById('json-content').innerText =
+                    document.getElementById('json-content').textContent =
                         `// Error loading configuration:\n// ${error.message}\n// Make sure the file exists at: ${path}`;
                 }
             }
 
             function copyToClipboard() {
-                const content = document.getElementById('json-content').innerText;
+                const content = document.getElementById('json-content').textContent;
                 navigator.clipboard.writeText(content).then(() => {
                     const btn = document.querySelector('.btn-copy');
                     const originalText = btn.innerHTML;

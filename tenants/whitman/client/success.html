@@ -129,10 +129,17 @@
         </div>
 
         <script>
-            const result = JSON.parse(sessionStorage.getItem('submissionResult') || '{}');
-            document.getElementById('ticketNumber').textContent =
-                result.ticketNumber || 'INTERVENTIE #XXXX';
-            sessionStorage.removeItem('submissionResult');
+            const raw = sessionStorage.getItem('submissionResult');
+            if (raw) {
+                try {
+                    const result = JSON.parse(raw);
+                    sessionStorage.removeItem('submissionResult');
+                    document.getElementById('ticketNumber').textContent =
+                        result.ticketNumber || 'INTERVENTIE #XXXX';
+                } catch (e) {
+                    console.error('Failed to parse submission result:', e);
+                }
+            }
         </script>
     </body>
 </html>

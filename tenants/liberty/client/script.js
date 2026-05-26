@@ -33,14 +33,17 @@ function sanitizeInput(input) {
     return String(input).replace(/<[^>]*>/g, '');
 }
 
-// Basic sanitization for self-rendered preview (not a full sanitizer)
+// Basic sanitization for self-rendered preview (not a full sanitizer).
+// Parses through an inert <template> so scripts/images do not execute
+// during the parse phase, then strips events and dangerous hrefs.
 function sanitizePreviewHtml(html) {
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    const content = template.content;
 
     // Remove script tags and event handlers
-    tmp.querySelectorAll('script').forEach(el => el.remove());
-    tmp.querySelectorAll('*').forEach(el => {
+    content.querySelectorAll('script').forEach(el => el.remove());
+    content.querySelectorAll('*').forEach(el => {
         const attrs = Array.from(el.attributes);
         attrs.forEach(attr => {
             if (attr.name.startsWith('on')) {
@@ -56,7 +59,9 @@ function sanitizePreviewHtml(html) {
         }
     });
 
-    return tmp.innerHTML;
+    const wrapper = document.createElement('div');
+    wrapper.appendChild(content.cloneNode(true));
+    return wrapper.innerHTML;
 }
 
 // Update markdown preview

@@ -106,7 +106,7 @@
                     <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
                     <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
                 </div>
-                <span class="ml-4 text-xs text-slate-500 font-mono">masala_config.yaml</span>
+                <span class="ml-4 text-xs text-slate-500 font-mono">masala_config.json</span>
             </div>
 
             <!-- Code Area -->
@@ -127,21 +127,21 @@
         
         // Tenant configuration mapping
         const tenantInfo = {
-            'desgoffe': { name: 'Ville de Desgoffe', color: 'blue' },
-            'whitman': { name: 'Whitman Spoor', color: 'orange' },
-            'liberty': { name: 'Liberty Systems', color: 'green' },
-            'hennessey': { name: 'Fonds Hennessey', color: 'purple' }
+            'desgoffe': { name: 'Ville de Desgoffe' },
+            'whitman': { name: 'Whitman Spoor' },
+            'liberty': { name: 'Liberty Systems' },
+            'hennessey': { name: 'Fonds Hennessey' }
         };
 
         async function loadConfig() {
-            if (!tenant) {
-                document.getElementById('json-content').innerText = '// Error: No tenant specified in URL parameter (?tenant=name)';
+            if (!tenant || !tenantInfo[tenant]) {
+                document.getElementById('json-content').innerText = '// Error: Unknown tenant. Valid options: desgoffe, whitman, liberty, hennessey';
                 return;
             }
 
             const path = `tenants/${tenant}/config/masala_config.json`;
             document.getElementById('file-path').innerText = path;
-            
+
             // Update badge
             const info = tenantInfo[tenant];
             if (info) {

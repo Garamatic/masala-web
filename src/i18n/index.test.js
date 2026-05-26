@@ -53,33 +53,21 @@ describe('i18n', () => {
         );
     });
 
-    it('should fallback to English if translation missing in target language', () => {
-        // Create a mock translation for testing fallback if needed,
-        // but since we use real files, we can just test that setLang works.
-        // To test fallback logic in `t` specifically:
-
+    it('should leave DOM unchanged when translation key is missing', () => {
         // Mock translations temporarily
         const originalTranslations = { ...translations };
         translations.fr = { ...translations.fr };
         delete translations.fr['nav_features']; // Simulate missing key in FR
 
-        setLang('fr');
+        try {
+            setLang('fr');
 
-        // Should fallback to EN key value if logic supports it
-        // The code says: const t = translations[lang] || translations.en;
-        // if (t[key]) ...
-        // Wait, the code in index.js:
-        // const t = translations[lang] || translations.en;
-        // if (t[key]) ...
-        // It DOES NOT fallback to English if the key is missing in the target language dict!
-        // It only falls back if the whole language dict is missing.
-        // Let's verify this behavior.
-
-        // The t() function returns the key itself when translation is missing.
-        // setLang only updates elements where translation !== key.
-        // So innerText remains unchanged when key is missing in target language.
-
-        // Restore translations for other tests
-        Object.assign(translations, originalTranslations);
+            const el = document.querySelector('[data-i18n="nav_features"]');
+            // When key is missing in target language, setLang does not update the element,
+            // so it retains the previously applied English text.
+            expect(el.innerText).toBe(translations.en.nav_features);
+        } finally {
+            Object.assign(translations, originalTranslations);
+        }
     });
 });

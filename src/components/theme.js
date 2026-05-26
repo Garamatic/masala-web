@@ -84,5 +84,3 @@ export function setTheme(themeName) {
 window.addEventListener('languageChanged', () => {
     updateThemeContent();
 });
-
-export default { setTheme };

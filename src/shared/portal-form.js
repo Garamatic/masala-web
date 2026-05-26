@@ -1,6 +1,6 @@
 /**
  * PortalForm - Reusable form handling for tenant portals
- *
+ * 
  * This class encapsulates all common form functionality including:
  * - Real-time validation with ARIA attributes
  * - Character counter for description field
@@ -14,15 +14,17 @@ export class PortalForm {
      * @param {Object} config - Configuration object
      * @param {string} config.formId - ID of the form element
      * @param {string} config.apiEndpoint - API endpoint URL for form submission
-     * @param {string} config.locale - Locale code (e.g., 'fr', 'en', 'nl')
-     * @param {number} config.minDescriptionLength - Minimum description length (default: 10)
+     * @param {number} [config.minDescriptionLength] - Minimum description length (default: 10)
      * @param {Object} config.messages - Localized messages
+     * @param {string} [config.tenant] - Tenant identifier for backend routing
+     * @param {string} [config.customFieldId] - ID of a tenant-specific custom field
+     * @param {string} [config.customFieldLabel] - Label for the custom field (used in Tags)
      */
     constructor(config) {
         this.config = {
             minDescriptionLength: 10,
             maxFileSize: 5 * 1024 * 1024, // 5MB
-            ...config,
+            ...config
         };
 
         this.form = document.getElementById(this.config.formId);
@@ -55,15 +57,11 @@ export class PortalForm {
 
         inputs.forEach(input => {
             input.addEventListener('blur', function () {
-                if (this.checkValidity && !this.checkValidity()) {
-                    this.setAttribute('aria-invalid', 'true');
-                } else {
-                    this.setAttribute('aria-invalid', 'false');
-                }
+                this.setAttribute('aria-invalid', String(!this.checkValidity()));
             });
 
             input.addEventListener('input', function () {
-                if (this.checkValidity && this.checkValidity()) {
+                if (this.checkValidity()) {
                     this.setAttribute('aria-invalid', 'false');
                 }
             });
@@ -79,7 +77,7 @@ export class PortalForm {
         // Create character counter element
         const counterElement = document.createElement('small');
         counterElement.className = 'char-counter';
-        counterElement.style.cssText = 'display: block; margin-top: 0.5rem; color: #666;';
+        counterElement.style.cssText = 'display: block; margin-top: 0.5rem;';
         this.descriptionField.parentNode.insertBefore(
             counterElement,
             this.descriptionField.nextSibling
@@ -95,10 +93,12 @@ export class PortalForm {
                 .replace('{min}', minLength);
 
             if (length >= minLength) {
-                counterElement.style.color = '#10b981'; // Green
+                counterElement.classList.add('char-counter-valid');
+                counterElement.classList.remove('char-counter-invalid');
                 this.descriptionField.setCustomValidity('');
             } else {
-                counterElement.style.color = '#ef4444'; // Red
+                counterElement.classList.add('char-counter-invalid');
+                counterElement.classList.remove('char-counter-valid');
                 this.descriptionField.setCustomValidity(
                     this.config.messages.charCounterError.replace('{min}', minLength)
                 );
@@ -115,12 +115,13 @@ export class PortalForm {
     attachFileUploadHandler() {
         if (!this.fileInput || !this.fileNameDisplay) return;
 
-        this.fileInput.addEventListener('change', e => {
+        this.fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
 
             if (file) {
-                // Validate PDF only
-                if (file.type !== 'application/pdf') {
+                // Validate PDF only (MIME type or extension fallback)
+                const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+                if (!isPdf) {
                     alert(this.config.messages.pdfOnly);
                     this.fileInput.value = '';
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
@@ -129,9 +130,7 @@ export class PortalForm {
 
                 // Validate File Size
                 if (file.size > this.config.maxFileSize) {
-                    alert(
-                        `File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`
-                    );
+                    alert(`File size exceeds limit of ${this.config.maxFileSize / (1024 * 1024)}MB`);
                     this.fileInput.value = '';
                     this.fileNameDisplay.textContent = this.config.messages.chooseFile;
                     return;
@@ -148,7 +147,7 @@ export class PortalForm {
      * Attach form submit handler
      */
     attachSubmitHandler() {
-        this.form.addEventListener('submit', async e => {
+        this.form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             // Validate form
@@ -173,7 +172,8 @@ export class PortalForm {
                 } else {
                     throw new Error(result.message || this.config.messages.submitError);
                 }
-            } catch {
+            } catch (error) {
+                console.error('Form submission failed:', error);
                 alert(this.config.messages.submitError);
                 if (this.loadingOverlay) {
                     this.loadingOverlay.style.display = 'none';
@@ -187,12 +187,24 @@ export class PortalForm {
      */
     highlightInvalidFields() {
         Array.from(this.form.elements).forEach(field => {
-            if (field.checkValidity && !field.checkValidity()) {
-                field.setAttribute('aria-invalid', 'true');
-                field.parentElement.classList.add('shake');
-                setTimeout(() => field.parentElement.classList.remove('shake'), 500);
+            if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+                if (!field.checkValidity()) {
+                    field.setAttribute('aria-invalid', 'true');
+                    field.parentElement?.classList.add('shake');
+                    setTimeout(() => field.parentElement?.classList.remove('shake'), 500);
+                }
             }
         });
+    }
+
+    /**
+     * Map numeric priority score to contract enum string.
+     * @param {string|number} score
+     * @returns {string}
+     */
+    priorityToString(score) {
+        const map = { '5': 'low', '10': 'medium', '15': 'high', '20': 'urgent' };
+        return map[score] ?? 'low';
     }
 
     /**
@@ -203,30 +215,27 @@ export class PortalForm {
         const formData = new FormData();
 
         // Add standard fields with sanitization
-        formData.append(
-            'CustomerName',
-            this.sanitizeInput(document.getElementById('customerName').value)
-        );
-        formData.append(
-            'CustomerEmail',
-            this.sanitizeInput(document.getElementById('customerEmail').value)
-        );
-        formData.append(
-            'CustomerPhone',
-            this.sanitizeInput(document.getElementById('customerPhone').value || '')
-        );
-        formData.append(
-            'Description',
-            this.sanitizeInput(document.getElementById('description').value)
-        );
-        formData.append(
-            'WorkItemType',
-            this.sanitizeInput(document.getElementById('requestType').value)
-        );
-        formData.append(
-            'PriorityScore',
-            this.sanitizeInput(document.getElementById('priorite').value)
-        );
+        // NOTE: This class expects specific field IDs (customerName, customerEmail,
+        // customerPhone, description, requestType, priorite). Tenant forms must match.
+        const customerName = document.getElementById('customerName');
+        const customerEmail = document.getElementById('customerEmail');
+        const customerPhone = document.getElementById('customerPhone');
+        const description = document.getElementById('description');
+        const requestType = document.getElementById('requestType');
+
+        if (!customerName || !customerEmail || !description || !requestType) {
+            throw new Error('Required form field missing. Expected IDs: customerName, customerEmail, description, requestType');
+        }
+
+        formData.append('CustomerName', this.sanitizeInput(customerName.value));
+        formData.append('CustomerEmail', this.sanitizeInput(customerEmail.value));
+        formData.append('CustomerPhone', this.sanitizeInput(customerPhone?.value));
+        formData.append('Description', this.sanitizeInput(description.value));
+        formData.append('WorkItemType', this.sanitizeInput(requestType.value));
+        const prioriteEl = document.getElementById('priorite');
+        const rawPriority = prioriteEl?.value ?? '5';
+        formData.append('PriorityScore', rawPriority);
+        formData.append('Priority', this.priorityToString(rawPriority));
 
         // Add custom fields (tenant-specific)
         if (this.config.customFieldId) {
@@ -245,9 +254,7 @@ export class PortalForm {
 
         // Prepare headers
         const headers = {};
-        const csrfToken = document
-            .querySelector('meta[name="csrf-token"]')
-            ?.getAttribute('content');
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         if (csrfToken) {
             headers['X-CSRF-Token'] = csrfToken;
         }
@@ -261,31 +268,28 @@ export class PortalForm {
         const response = await fetch(this.config.apiEndpoint, {
             method: 'POST',
             headers: headers,
-            body: formData,
+            body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status} ${response.statusText}`);
+        }
 
         return await response.json();
     }
 
     /**
-     * Sanitize user input to prevent XSS
-     * Removes HTML tags and executes basic escaping
+     * Sanitize user input by stripping HTML tags.
+     * Uses a detached DOM element for robust parsing.
+     * The API is responsible for escaping when rendering.
      * @param {string} input - Raw input string
      * @returns {string} Sanitized string
      */
     sanitizeInput(input) {
         if (!input) return '';
-        // Escape first to preserve any existing entities, then strip tags
-        return (
-            input
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;')
-                // Then strip any encoded tags that were created
-                .replace(/&lt;[^&]*&gt;?/gm, '')
-        );
+        const tmp = document.createElement('div');
+        tmp.innerHTML = input;
+        return tmp.textContent || '';
     }
 
     /**
@@ -297,10 +301,11 @@ export class PortalForm {
                 this.fileNameDisplay.textContent = this.config.messages.chooseFile;
             }
             if (this.descriptionField) {
-                this.descriptionField.dispatchEvent(new Event('input'));
+                // The reset event fires before values are cleared, so defer the update.
+                requestAnimationFrame(() => {
+                    this.descriptionField.dispatchEvent(new Event('input'));
+                });
             }
         });
     }
 }
-
-export default PortalForm;

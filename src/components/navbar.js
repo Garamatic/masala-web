@@ -7,7 +7,7 @@ const SCROLL_THRESHOLD = 50;
 export function initNavbar() {
     const nav = document.getElementById('navbar');
     if (!nav) return;
-    
+
     const navInner = nav.querySelector('.container > div');
     let ticking = false;
 
@@ -15,10 +15,12 @@ export function initNavbar() {
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 if (window.scrollY > SCROLL_THRESHOLD) {
+                    nav.classList.remove('py-3');
                     nav.classList.add('py-2');
                     navInner?.classList.add('shadow-lg');
                 } else {
                     nav.classList.remove('py-2');
+                    nav.classList.add('py-3');
                     navInner?.classList.remove('shadow-lg');
                 }
                 ticking = false;
@@ -29,4 +31,4 @@ export function initNavbar() {
     });
 }
 
-export default { initNavbar };
+

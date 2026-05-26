@@ -1,7 +1,7 @@
 // Fonds Hennessey Portal - Application Wizard
-// Multi-step form with draft saving and// Configuration
-const __TENANT = document.documentElement.getAttribute('data-theme') || 'hennessey';
-const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
+// Multi-step form with draft saving and step navigation
+
+const __API_BASE = window.__API_BASE__ || 'http://localhost:5000';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 let currentStep = 1;
@@ -21,15 +21,17 @@ const prevBtn = document.getElementById('prevBtn');
 const submitBtn = document.getElementById('submitBtn');
 
 nextBtn.addEventListener('click', function () {
-    if (validateStep(currentStep)) {
+    if (currentStep < totalSteps && validateStep(currentStep)) {
         currentStep++;
         showStep(currentStep);
     }
 });
 
 prevBtn.addEventListener('click', function () {
-    currentStep--;
-    showStep(currentStep);
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
 });
 
 function showStep(step) {
@@ -67,10 +69,13 @@ function updateProgress() {
 
 function validateStep(step) {
     const stepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+    if (!stepElement) return false;
+
     const inputs = stepElement.querySelectorAll('input[required], select[required], textarea[required]');
 
     for (let input of inputs) {
-        if (!input.value) {
+        const isEmpty = input.type === 'checkbox' ? !input.checked : !input.value.trim();
+        if (isEmpty) {
             input.focus();
             alert('Please fill in all required fields');
             return false;
@@ -80,7 +85,7 @@ function validateStep(step) {
     // Additional validation for specific steps
     if (step === 2) {
         const abstract = document.getElementById('abstract').value;
-        if (abstract.length < 100) {
+        if (abstract.trim().length < 100) {
             alert('Project abstract must be at least 100 characters');
             return false;
         }
@@ -89,20 +94,42 @@ function validateStep(step) {
     return true;
 }
 
+function validateAllSteps() {
+    for (let step = 1; step <= totalSteps; step++) {
+        if (!validateStep(step)) {
+            showStep(step);
+            return false;
+        }
+    }
+    return true;
+}
+
 function updateReview() {
     const reviewContent = document.getElementById('reviewContent');
     const data = getFormData();
 
-    reviewContent.innerHTML = `
-        <p><strong>Project Title:</strong> ${data.projectTitle}</p>
-        <p><strong>Grant Type:</strong> ${data.grantType}</p>
-        <p><strong>Principal Investigator:</strong> ${data.principalInvestigator}</p>
-        <p><strong>Institution:</strong> ${data.institution}</p>
-        <p><strong>Research Field:</strong> ${data.researchField}</p>
-        <p><strong>Duration:</strong> ${data.duration} months</p>
-        <p><strong>Requested Amount:</strong> €${parseInt(data.requestedAmount).toLocaleString()}</p>
-        <p><strong>Proposal Document:</strong> ${document.getElementById('proposal').files[0]?.name || 'Not uploaded'}</p>
-    `;
+    const amount = parseInt(data.requestedAmount, 10);
+    const amountDisplay = Number.isFinite(amount) ? `€${amount.toLocaleString()}` : 'Not specified';
+
+    reviewContent.innerHTML = '';
+    const rows = [
+        ['Project Title', data.projectTitle],
+        ['Grant Type', data.grantType],
+        ['Principal Investigator', data.principalInvestigator],
+        ['Institution', data.institution],
+        ['Research Field', data.researchField],
+        ['Duration', `${data.duration} months`],
+        ['Requested Amount', amountDisplay],
+        ['Proposal Document', document.getElementById('proposal').files[0]?.name || 'Not uploaded'],
+    ];
+    rows.forEach(([label, value]) => {
+        const p = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = `${label}: `;
+        p.appendChild(strong);
+        p.appendChild(document.createTextNode(value));
+        reviewContent.appendChild(p);
+    });
 }
 
 // File inputs
@@ -186,7 +213,7 @@ const loadingOverlay = document.getElementById('loadingOverlay');
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    if (!validateStep(totalSteps)) {
+    if (!validateAllSteps()) {
         return;
     }
 
@@ -213,6 +240,10 @@ form.addEventListener('submit', async function (e) {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
         const result = await response.json();
 

@@ -1,7 +1,7 @@
 // Whitman Spoor Portal - Meldpunt Spoor
-// Mobile-first with camera and geolocation supp// Configuration
-const __TENANT = document.documentElement.getAttribute('data-theme') || 'whitman';
-const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
+// Mobile-first with camera and geolocation support
+
+const __API_BASE = window.__API_BASE__ || 'http://localhost:5000';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Type selection
@@ -57,7 +57,11 @@ getLocationBtn.addEventListener('click', function () {
             latitudeInput.value = lat;
             longitudeInput.value = lon;
 
-            locationStatus.innerHTML = `<i class="fas fa-check-circle"></i> Locatie vastgelegd: ${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+            locationStatus.innerHTML = '';
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-check-circle';
+            locationStatus.appendChild(icon);
+            locationStatus.appendChild(document.createTextNode(` Locatie vastgelegd: ${lat.toFixed(6)}, ${lon.toFixed(6)}`));
             locationStatus.style.backgroundColor = '#d4edda';
             locationStatus.style.borderColor = '#28a745';
 
@@ -67,7 +71,12 @@ getLocationBtn.addEventListener('click', function () {
             }
         },
         function (error) {
-            locationStatus.innerHTML = `<i class="fas fa-times-circle"></i> Fout bij ophalen locatie: ${error.message}`;
+            locationStatus.classList.remove('active');
+            locationStatus.innerHTML = '';
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-times-circle';
+            locationStatus.appendChild(icon);
+            locationStatus.appendChild(document.createTextNode(` Fout bij ophalen locatie: ${error.message}`));
             locationStatus.style.backgroundColor = '#f8d7da';
             locationStatus.style.borderColor = '#dc3545';
         }
@@ -82,7 +91,11 @@ const photoPreview = document.getElementById('photoPreview');
 photoInput.addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (file) {
-        photoLabel.innerHTML = `<i class="fas fa-check"></i> ${file.name}`;
+        photoLabel.innerHTML = '';
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-check';
+        photoLabel.appendChild(icon);
+        photoLabel.appendChild(document.createTextNode(` ${file.name}`));
 
         // Show preview
         const reader = new FileReader();
@@ -144,6 +157,10 @@ form.addEventListener('submit', async function (e) {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
         const result = await response.json();
 

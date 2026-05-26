@@ -10,29 +10,30 @@ let currentLang = 'en';
  * @param {string} lang - Language code (en, nl, fr)
  */
 export function setLang(lang) {
-    currentLang = lang;
-    const t = translations[lang] || translations.en;
+    currentLang = translations[lang] ? lang : 'en';
+    const dict = translations[currentLang];
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-            el.innerText = t[key];
+        if (dict[key]) {
+            el.innerText = dict[key];
         }
     });
 
     // Update language indicators
-    const langLabel = lang.toUpperCase();
+    const langLabel = currentLang.toUpperCase();
     const desktopLang = document.getElementById('current-lang');
     const mobileLang = document.getElementById('current-lang-mobile');
     if (desktopLang) desktopLang.innerText = langLabel;
     if (mobileLang) mobileLang.innerText = langLabel;
 
+    // Update document language for screen readers
+    document.documentElement.setAttribute('lang', currentLang);
+
     // Dispatch event to notify other components (like Theme switcher)
-    window.dispatchEvent(
-        new CustomEvent('languageChanged', {
-            detail: { lang },
-        })
-    );
+    window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { lang: currentLang }
+    }));
 }
 
 /**
@@ -53,12 +54,3 @@ export function t(key, lang = currentLang) {
     const dict = translations[lang] || translations.en;
     return dict[key] || key;
 }
-
-// Listen for theme changes to update content
-window.addEventListener('themeChanged', () => {
-    // When theme changes, refresh content with current language
-    setLang(currentLang);
-});
-
-// Export for global access
-export default { setLang, getCurrentLang, t, translations };

@@ -1,7 +1,7 @@
 // Liberty Systems Portal - The Newsroom
-// Markdown editor with preview and code// Configuration
-const __TENANT = document.documentElement.getAttribute('data-theme') || 'liberty';
-const __API_BASE = window.__API_BASE__ || `https://ca-ticket-masala.kindgrass-f8932dd8.westeurope.azurecontainerapps.io`;
+// Markdown editor with preview and code highlighting
+
+const __API_BASE = window.__API_BASE__ || 'http://localhost:5000';
 const API_ENDPOINT = `${__API_BASE}/api/portal/submit`;
 
 // Tab switching
@@ -27,11 +27,30 @@ tabButtons.forEach(btn => {
     });
 });
 
+// Basic sanitization for self-rendered preview (not a full sanitizer)
+function sanitizePreviewHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+
+    // Remove script tags and event handlers
+    tmp.querySelectorAll('script').forEach(el => el.remove());
+    tmp.querySelectorAll('*').forEach(el => {
+        const attrs = Array.from(el.attributes);
+        attrs.forEach(attr => {
+            if (attr.name.startsWith('on')) {
+                el.removeAttribute(attr.name);
+            }
+        });
+    });
+
+    return tmp.innerHTML;
+}
+
 // Update markdown preview
 function updatePreview() {
     const markdown = descriptionTextarea.value;
-    const html = marked.parse(markdown);
-    previewDiv.innerHTML = html;
+    const rawHtml = marked.parse(markdown);
+    previewDiv.innerHTML = sanitizePreviewHtml(rawHtml);
 
     // Highlight code blocks
     previewDiv.querySelectorAll('pre code').forEach((block) => {
@@ -98,6 +117,10 @@ form.addEventListener('submit', async function (e) {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
 
         const result = await response.json();
 

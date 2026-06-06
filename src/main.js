@@ -26,7 +26,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set default language (respect page-level override)
     const pageLang = document.documentElement.getAttribute('lang');
     setLang(pageLang && translations[pageLang] ? pageLang : 'en');
+
+    // Keyboard shortcuts
+    initKeyboardShortcuts();
 });
+
+// ==========================================
+// KEYBOARD SHORTCUTS
+// ==========================================
+const THEMES = ['default', 'desgoffe', 'whitman', 'liberty', 'hennessey'];
+const LANGS = ['en', 'nl', 'fr'];
+
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', e => {
+        // Skip if user is typing in an input or textarea
+        if (
+            e.target.tagName === 'INPUT' ||
+            e.target.tagName === 'TEXTAREA' ||
+            e.target.isContentEditable
+        ) {
+            return;
+        }
+
+        // T = cycle themes
+        if (e.key === 't' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            const current = document.body.getAttribute('data-theme') || 'default';
+            const idx = THEMES.indexOf(current);
+            const next = THEMES[(idx + 1) % THEMES.length];
+            setTheme(next);
+        }
+
+        // L = cycle languages
+        if (e.key === 'l' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            const current = document.documentElement.getAttribute('lang') || 'en';
+            const idx = LANGS.indexOf(current);
+            const next = LANGS[(idx + 1) % LANGS.length];
+            setLang(next);
+        }
+    });
+}
 
 // ==========================================
 // GLOBAL API (for onclick handlers in HTML)

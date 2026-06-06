@@ -14,12 +14,13 @@
                 </span>
             </h2>
             <p class='text-secondary text-xl mx-auto max-w-2xl' data-i18n='features_subtitle'>
-                Everything you need to ship faster and stay organized.
+                YAML-driven workflows, AI triage, and multi-tenant isolation. No vendor lock-in.
             </p>
         </div>
 
-        <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            <article class='reveal'>
+        <div class='grid grid-cols-1 lg:grid-cols-2 gap-8 items-start'>
+            <!-- Featured: AI Autopilot -->
+            <article class='reveal lg:row-span-2'>
                 <div class='card-dossier h-full interactive-lift'>
                     <div class='feature-icon mb-6'>
                         <i class='fas fa-brain fa-2x text-primary' aria-hidden='true'></i>
@@ -27,46 +28,85 @@
                     <h3 class='text-primary font-bold text-xl mb-3' data-i18n='feature_ai_title'>
                         AI Autopilot
                     </h3>
-                    <p class='text-secondary mb-0' data-i18n='feature_ai_desc'>
-                        GERDA AI automatically categorizes tickets, assigns priority, and retrieves
-                        relevant knowledge base articles.
+                    <p class='text-secondary mb-4' data-i18n='feature_ai_desc'>
+                        GERDA AI automatically categorizes tickets by content, assigns priority
+                        based on historical patterns, and retrieves relevant knowledge base articles
+                        before a human agent picks up the case.
                     </p>
+                    <ul class='list-none pl-0 text-secondary space-y-2'>
+                        <li class='flex items-center gap-2'>
+                            <i class='fas fa-check-circle text-success' aria-hidden='true'></i>
+                            <span>
+                                Spam detection and content filtering
+                            </span>
+                        </li>
+                        <li class='flex items-center gap-2'>
+                            <i class='fas fa-check-circle text-success' aria-hidden='true'></i>
+                            <span>
+                                Complexity scoring and load balancing
+                            </span>
+                        </li>
+                        <li class='flex items-center gap-2'>
+                            <i class='fas fa-check-circle text-success' aria-hidden='true'></i>
+                            <span>
+                                Automated summarization for handoffs
+                            </span>
+                        </li>
+                    </ul>
                 </div>
             </article>
 
+            <!-- Workflow Engine -->
             <article class='reveal'>
-                <div class='card-dossier h-full interactive-lift'>
-                    <div class='feature-icon mb-6'>
-                        <i class='fas fa-project-diagram fa-2x text-accent' aria-hidden='true'></i>
+                <div class='card-dossier interactive-lift'>
+                    <div class='flex items-start gap-4'>
+                        <div class='feature-icon mb-0'>
+                            <i
+                                class='fas fa-project-diagram fa-2x text-accent'
+                                aria-hidden='true'
+                            ></i>
+                        </div>
+                        <div>
+                            <h3
+                                class='text-primary font-bold text-xl mb-2'
+                                data-i18n='feature_workflow_title'
+                            >
+                                Workflow Engine
+                            </h3>
+                            <p class='text-secondary mb-0' data-i18n='feature_workflow_desc'>
+                                Configuration-driven state machine. Define states, transitions, and
+                                automation rules in YAML. No code changes needed to add a new
+                                workflow.
+                            </p>
+                        </div>
                     </div>
-                    <h3
-                        class='text-primary font-bold text-xl mb-3'
-                        data-i18n='feature_workflow_title'
-                    >
-                        Workflow Engine
-                    </h3>
-                    <p class='text-secondary mb-0' data-i18n='feature_workflow_desc'>
-                        Configuration-driven workflow engine. Define states, transitions, and
-                        automation rules using simple YAML configuration.
-                    </p>
                 </div>
             </article>
 
+            <!-- Security -->
             <article class='reveal'>
-                <div class='card-dossier h-full interactive-lift'>
-                    <div class='feature-icon mb-6'>
-                        <i class='fas fa-shield-halved fa-2x text-success' aria-hidden='true'></i>
+                <div class='card-dossier interactive-lift'>
+                    <div class='flex items-start gap-4'>
+                        <div class='feature-icon mb-0'>
+                            <i
+                                class='fas fa-shield-halved fa-2x text-success'
+                                aria-hidden='true'
+                            ></i>
+                        </div>
+                        <div>
+                            <h3
+                                class='text-primary font-bold text-xl mb-2'
+                                data-i18n='feature_security_title'
+                            >
+                                Ironclad Security
+                            </h3>
+                            <p class='text-secondary mb-0' data-i18n='feature_security_desc'>
+                                Role-based access control, audit logs, and self-hosted deployment.
+                                Your data stays on your infrastructure. No telemetry, no phoning
+                                home.
+                            </p>
+                        </div>
                     </div>
-                    <h3
-                        class='text-primary font-bold text-xl mb-3'
-                        data-i18n='feature_security_title'
-                    >
-                        Ironclad Security
-                    </h3>
-                    <p class='text-secondary mb-0' data-i18n='feature_security_desc'>
-                        Role-based access control (RBAC), audit logs, and self-hosted deployment
-                        options keep your data sovereign.
-                    </p>
                 </div>
             </article>
         </div>

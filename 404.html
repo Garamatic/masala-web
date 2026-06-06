@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="default">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page Not Found - Ticket Masala</title>
+        <meta name="robots" content="noindex" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="stylesheet" href="/assets/index.css" />
+        <style>
+            .error-page {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 2rem;
+            }
+            .error-code {
+                font-family: var(--font-heading);
+                font-size: clamp(4rem, 15vw, 8rem);
+                font-weight: 700;
+                line-height: 1;
+                color: var(--color-primary);
+                margin-bottom: 1rem;
+            }
+            .error-message {
+                font-family: var(--font-body);
+                font-size: 1.25rem;
+                color: var(--text-secondary);
+                margin-bottom: 2rem;
+                max-width: 28ch;
+            }
+            .error-actions {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="error-page" role="main">
+            <div>
+                <div class="error-code" aria-hidden="true">404</div>
+                <h1 class="error-message">
+                    This page doesn't exist. It may have been moved or the URL might be wrong.
+                </h1>
+                <div class="error-actions">
+                    <a
+                        href="/"
+                        class="btn btn-masala px-6 py-3 text-base no-underline inline-flex items-center"
+                    >
+                        <i class="fas fa-home mr-2" aria-hidden="true"></i>
+                        Back to Home
+                    </a>
+                    <a
+                        href="https://masala-doc.fly.dev"
+                        class="btn btn-glass px-6 py-3 text-base no-underline inline-flex items-center"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <i class="fas fa-book mr-2" aria-hidden="true"></i>
+                        Read the Docs
+                    </a>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

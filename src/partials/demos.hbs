@@ -1,7 +1,7 @@
 <section
     id='demos'
     class='section-spacer bg-canvas relative overflow-hidden'
-    aria-label='Live Demos'
+    aria-label='Live Demo'
 >
     <div class='container mx-auto px-4 relative z-10'>
         <header class='text-center mb-16 space-y-4 reveal'>
@@ -9,27 +9,25 @@
                 class='badge bg-primary/10 text-primary px-3 py-2 rounded-sm mb-3 font-bold inline-block'
                 data-i18n='how_badge'
             >
-                Architecture
+                Integration
             </span>
             <h2 class='text-4xl md:text-5xl font-bold text-text-primary'>
                 One Core.
                 <span class='text-gradient-primary'>
-                    Infinite Skins.
+                    One Portal.
                 </span>
             </h2>
             <p class='text-lg md:text-xl text-secondary max-w-2xl mx-auto' data-i18n='how_subtitle'>
-                Choose Your Experience: One engine, four different realities. Discover how the
-                polymorphic architecture adapts to different organizational needs.
+                See how Ticket Masala integrates with a real-world municipal portal.
             </p>
         </header>
 
-        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-            <!-- Desgoffe (Government) -->
+        <div class='max-w-3xl mx-auto'>
             <article
                 class='group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-2 hover:border-blue-500 shadow-xl'
             >
                 <a
-                    href='tenants/desgoffe/client/index.html'
+                    href='http://localhost:8093'
                     target='_blank'
                     rel='noopener noreferrer'
                     class='block no-underline'
@@ -41,27 +39,22 @@
                         class='h-48 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-900 relative overflow-hidden flex items-center justify-center'
                     >
                         <div class='bg-white rounded-full p-4'>
-                            <img
-                                src='tenants/assets/desgoffe.png'
-                                alt='Desgoffe'
-                                class='h-16 w-auto object-contain'
-                                loading='lazy'
-                            />
+                            <div class='w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white font-bold text-2xl'>
+                                D
+                            </div>
                         </div>
                     </div>
                     <div class='p-6 relative'>
                         <div class='flex items-center gap-2 mb-3'>
                             <span
                                 class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-blue-900/50 text-blue-300 rounded border border-blue-500/30'
-                                data-i18n='demo_tag_gov'
                             >
                                 Government
                             </span>
                             <span
                                 class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded'
-                                data-i18n='demo_tag_classic'
                             >
-                                Classic
+                                Live Demo
                             </span>
                         </div>
                         <h3
@@ -71,283 +64,30 @@
                         </h3>
                         <p
                             class='text-sm text-gray-400 leading-relaxed'
-                            data-i18n='demo_desc_desgoffe'
                         >
-                            Citizen portal focused on formal processes, accessibility and
-                            bureaucratic efficiency.
+                            Citizen portal demonstrating Ticket Masala integration:
+                            submit requests, track status, and view the full lifecycle.
                         </p>
                     </div>
                 </a>
                 <div class='px-6 pb-6 pt-0 relative flex gap-2'>
                     <a
-                        href='http://localhost:5000/Identity/Account/Login?tenant=desgoffe'
+                        href='http://localhost:8093'
                         target='_blank'
                         rel='noopener noreferrer'
                         class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='Staff Login - Desgoffe'
+                    >
+                        <i class='fas fa-external-link-alt mr-1' aria-hidden='true'></i>
+                        Open Portal
+                    </a>
+                    <a
+                        href='http://localhost:8085'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
                     >
                         <i class='fas fa-server mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_backend'>
-                            Backend
-                        </span>
-                    </a>
-                    <a
-                        href='tenants/desgoffe/config/masala_config.json'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='View Configuration'
-                    >
-                        <i class='fas fa-code mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_config'>
-                            Configuration
-                        </span>
-                    </a>
-                </div>
-            </article>
-
-            <!-- Whitman (Industrial) -->
-            <article
-                class='group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-2 hover:border-orange-500 shadow-xl'
-            >
-                <a
-                    href='tenants/whitman/client/index.html'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    class='block no-underline'
-                >
-                    <div
-                        class='absolute inset-0 bg-orange-900/10 group-hover:bg-orange-900/20 transition-colors'
-                    ></div>
-                    <div
-                        class='h-48 bg-gradient-to-br from-slate-900 via-slate-900 to-sky-800 relative overflow-hidden flex items-center justify-center'
-                    >
-                        <div class='bg-white rounded-full p-4'>
-                            <img
-                                src='tenants/assets/whitman.png'
-                                alt='Whitman'
-                                class='h-16 w-auto object-contain'
-                                loading='lazy'
-                            />
-                        </div>
-                    </div>
-                    <div class='p-6 relative'>
-                        <div class='flex items-center gap-2 mb-3'>
-                            <span
-                                class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-orange-900/50 text-orange-300 rounded border border-orange-500/30'
-                                data-i18n='demo_tag_industrial'
-                            >
-                                Industrial
-                            </span>
-                            <span
-                                class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded'
-                                data-i18n='demo_tag_highvis'
-                            >
-                                High Visibility
-                            </span>
-                        </div>
-                        <h3
-                            class='text-2xl font-bold font-sans uppercase tracking-tight text-white mb-2 group-hover:text-orange-400 transition-colors'
-                        >
-                            Whitman Spoor
-                        </h3>
-                        <p
-                            class='text-sm text-gray-400 leading-relaxed'
-                            data-i18n='demo_desc_whitman'
-                        >
-                            High-contrast safety reporting tool designed for field workers in
-                            hazardous environments.
-                        </p>
-                    </div>
-                </a>
-                <div class='px-6 pb-6 pt-0 relative flex gap-2'>
-                    <a
-                        href='http://localhost:5000/Identity/Account/Login?tenant=whitman'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='Staff Login - Whitman'
-                    >
-                        <i class='fas fa-server mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_backend'>
-                            Backend
-                        </span>
-                    </a>
-                    <a
-                        href='tenants/whitman/config/masala_config.json'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='View Configuration'
-                    >
-                        <i class='fas fa-code mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_config'>
-                            Configuration
-                        </span>
-                    </a>
-                </div>
-            </article>
-
-            <!-- Liberty (Cyberpunk) -->
-            <article
-                class='group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-2 hover:border-green-500 shadow-xl'
-            >
-                <a
-                    href='tenants/liberty/client/index.html'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    class='block no-underline'
-                >
-                    <div
-                        class='absolute inset-0 bg-green-900/10 group-hover:bg-green-900/20 transition-colors'
-                    ></div>
-                    <div
-                        class='h-48 bg-gradient-to-br from-black via-slate-900 to-emerald-800 relative overflow-hidden flex items-center justify-center'
-                    >
-                        <div class='bg-white rounded-full p-4'>
-                            <img
-                                src='tenants/assets/liberty.png'
-                                alt='Liberty'
-                                class='h-16 w-auto object-contain'
-                                loading='lazy'
-                            />
-                        </div>
-                    </div>
-                    <div class='p-6 relative'>
-                        <div class='flex items-center gap-2 mb-3'>
-                            <span
-                                class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-green-900/50 text-green-300 rounded border border-green-500/30'
-                                data-i18n='demo_tag_tech'
-                            >
-                                Tech
-                            </span>
-                            <span
-                                class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded'
-                                data-i18n='demo_tag_dark'
-                            >
-                                Dark Mode
-                            </span>
-                        </div>
-                        <h3
-                            class='text-2xl font-mono font-bold text-white mb-2 group-hover:text-green-400 transition-colors'
-                        >
-                            Liberty Systems
-                        </h3>
-                        <p
-                            class='text-sm text-gray-400 leading-relaxed'
-                            data-i18n='demo_desc_liberty'
-                        >
-                            Cyberpunk-themed DevOps interface for rapid incident response and
-                            technical users.
-                        </p>
-                    </div>
-                </a>
-                <div class='px-6 pb-6 pt-0 relative flex gap-2'>
-                    <a
-                        href='http://localhost:5000/Identity/Account/Login?tenant=liberty'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='Staff Login - Liberty'
-                    >
-                        <i class='fas fa-server mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_backend'>
-                            Backend
-                        </span>
-                    </a>
-                    <a
-                        href='tenants/liberty/config/masala_config.json'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='View Configuration'
-                    >
-                        <i class='fas fa-code mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_config'>
-                            Configuration
-                        </span>
-                    </a>
-                </div>
-            </article>
-
-            <!-- Hennessey (Grant Management) -->
-            <article
-                class='group relative bg-slate-800 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-2 hover:border-purple-500 shadow-xl'
-            >
-                <a
-                    href='tenants/hennessey/client/index.html'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    class='block no-underline'
-                >
-                    <div
-                        class='absolute inset-0 bg-purple-900/10 group-hover:bg-purple-900/20 transition-colors'
-                    ></div>
-                    <div
-                        class='h-48 bg-gradient-to-br from-slate-900 via-slate-900 to-purple-900 relative overflow-hidden flex items-center justify-center'
-                    >
-                        <div class='bg-white rounded-full p-4'>
-                            <img
-                                src='tenants/assets/hennessey.png'
-                                alt='Hennessey'
-                                class='h-16 w-auto object-contain'
-                                loading='lazy'
-                            />
-                        </div>
-                    </div>
-                    <div class='p-6 relative'>
-                        <div class='flex items-center gap-2 mb-3'>
-                            <span
-                                class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-purple-900/50 text-purple-300 rounded border border-purple-500/30'
-                                data-i18n='demo_tag_grants'
-                            >
-                                Grants
-                            </span>
-                            <span
-                                class='px-2 py-1 text-[10px] uppercase font-bold tracking-wider bg-slate-700 text-gray-300 rounded'
-                                data-i18n='demo_tag_elegant'
-                            >
-                                Elegant
-                            </span>
-                        </div>
-                        <h3
-                            class='text-2xl font-serif font-bold text-white mb-2 group-hover:text-purple-300 transition-colors'
-                        >
-                            Hennessey Foundation
-                        </h3>
-                        <p
-                            class='text-sm text-gray-400 leading-relaxed'
-                            data-i18n='demo_desc_hennessey'
-                        >
-                            Advanced grant management portal focused on long-form content and
-                            merit-based review.
-                        </p>
-                    </div>
-                </a>
-                <div class='px-6 pb-6 pt-0 relative flex gap-2'>
-                    <a
-                        href='http://localhost:5000/Identity/Account/Login?tenant=hennessey'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='Staff Login - Hennessey'
-                    >
-                        <i class='fas fa-server mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_backend'>
-                            Backend
-                        </span>
-                    </a>
-                    <a
-                        href='tenants/hennessey/config/masala_config.json'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors no-underline'
-                        title='View Configuration'
-                    >
-                        <i class='fas fa-code mr-1' aria-hidden='true'></i>
-                        <span data-i18n='demo_config'>
-                            Configuration
-                        </span>
+                        Backend
                     </a>
                 </div>
             </article>
